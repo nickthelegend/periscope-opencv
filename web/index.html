@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Periscope · see who's coming around the corner</title>
+<meta name="description" content="An ordinary camera reads the faint floor shadow a hidden person casts at a wall corner and warns before they step into view.">
+<meta name="theme-color" content="#0a0c10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10; --bg-2: #0d1015; --panel: #11141a; --panel-2: #161a22; --well: #07090c;
+    --line: #20252f; --line-2: #2c3340;
+    --ink: #eceff4; --ink-2: #a9b1bf; --ink-3: #7b8494;
+    --accent: #9b97ff; --accent-2: #b9b6ff; --accent-ink: #110f2b;
+    --clear: #3ccf8e; --present: #f2b53c; --coming: #ff5b4f; --learn: #7b8494;
+    --radius: 14px; --radius-s: 9px;
+    --ease: cubic-bezier(.16, 1, .3, 1);
+    --shadow: 0 1px 0 rgba(255,255,255,.035) inset, 0 2px 4px rgba(0,0,0,.3);
+    --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: dark; scrollbar-color: var(--line-2) var(--bg); }
+  body {
+    margin: 0; color: var(--ink); caret-color: var(--accent);
+    font: 15px/1.55 "Geist", system-ui, sans-serif;
+    background:
+      radial-gradient(1100px 520px at 85% -12%, rgba(155,151,255,.075), transparent 62%),
+      radial-gradient(800px 420px at -5% 0%, rgba(60,207,142,.04), transparent 60%),
+      var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  body.alarm { background:
+      radial-gradient(1100px 520px at 85% -12%, rgba(255,91,79,.11), transparent 62%),
+      radial-gradient(800px 420px at -5% 0%, rgba(60,207,142,.03), transparent 60%),
+      var(--bg); }
+  ::selection { background: rgba(155,151,255,.34); color: #fff; }
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 99px; border: 3px solid var(--bg); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+  a { color: var(--accent-2); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: #fff; }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 18px 24px 96px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* header */
+  header { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 4px 0 18px; border-bottom: 1px solid var(--line); }
+  .mark { display: flex; align-items: center; gap: 11px; margin-right: auto; color: var(--ink); text-decoration: none; }
+  .mark svg { width: 30px; height: 30px; }
+  .mark b { font-weight: 700; font-size: 17px; letter-spacing: .2em; }
+  .runpick { position: relative; display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 99px; background: var(--panel); color: var(--ink-2); font-size: 13px; }
+  .runpick select { appearance: none; background: transparent; border: 0; color: var(--ink); font: inherit; padding-right: 16px; cursor: pointer; max-width: 260px; text-overflow: ellipsis; }
+  .runpick select:focus { outline: none; }
+  .runpick:focus-within { border-color: var(--accent); }
+  .runpick::after { content: ""; position: absolute; right: 12px; top: 14px; width: 6px; height: 6px; border-right: 1.5px solid var(--ink-3); border-bottom: 1.5px solid var(--ink-3); transform: rotate(45deg); pointer-events: none; }
+  .tag { display: inline-flex; align-items: center; gap: 7px; height: 26px; padding: 0 10px; border-radius: 99px; font-size: 12px; font-weight: 500; color: var(--ink-2); border: 1px solid var(--line-2); white-space: nowrap; }
+  .tag.synth { color: #d9d7ff; border-color: rgba(155,151,255,.4); background: rgba(155,151,255,.08); }
+  .status { display: inline-flex; align-items: center; gap: 9px; height: 34px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--panel); font-size: 13px; font-weight: 500; transition: border-color .3s var(--ease), background .3s var(--ease); }
+  .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--learn); box-shadow: 0 0 0 3px rgba(123,132,148,.18); }
+  .status[data-s="clear"] .dot { background: var(--clear); box-shadow: 0 0 0 3px rgba(60,207,142,.18); }
+  .status[data-s="present"] .dot { background: var(--present); box-shadow: 0 0 0 3px rgba(242,181,60,.2); }
+  .status[data-s="coming"] { border-color: rgba(255,91,79,.55); background: rgba(255,91,79,.1); }
+  .status[data-s="coming"] .dot { background: var(--coming); box-shadow: 0 0 0 3px rgba(255,91,79,.25); animation: ping 1s var(--ease) infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(255,91,79,.55); } 100% { box-shadow: 0 0 0 9px rgba(255,91,79,0); } }
+
+  /* intro */
+  .intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: end; padding: 34px 0 24px; }
+  .intro h1 { margin: 0; font-weight: 600; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.02; letter-spacing: -.03em; text-wrap: balance; }
+  .intro h1 span { color: var(--accent-2); }
+  .intro p { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 58ch; text-wrap: pretty; }
+  .intro p b { color: var(--ink); font-weight: 500; }
+
+  /* console grid */
+  .console { display: grid; grid-template-columns: minmax(0, 1.42fr) minmax(0, 1fr); gap: 16px; }
+  .panel { position: relative; background: linear-gradient(180deg, var(--panel), var(--bg-2)); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); min-width: 0; }
+  .ph { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 14px 0 16px; min-height: 46px; }
+  .ph h2 { margin: 0 auto 0 0; font-size: 15px; font-weight: 600; letter-spacing: -.005em; display: flex; align-items: baseline; gap: 9px; }
+  .ph h2 small { font-size: 12px; font-weight: 400; color: var(--ink-3); }
+  .seg { display: inline-flex; padding: 3px; gap: 2px; border: 1px solid var(--line); border-radius: 10px; background: var(--well); }
+  .seg button { appearance: none; border: 0; background: transparent; color: var(--ink-3); font: 500 13px "Geist", sans-serif; height: 26px; padding: 0 10px; border-radius: 7px; cursor: pointer; transition: color .2s, background .2s; }
+  .seg button:hover { color: var(--ink); }
+  .seg button[aria-pressed="true"] { background: var(--panel-2); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.05) inset, 0 1px 2px rgba(0,0,0,.4); }
+
+  /* floor view */
+  .floor { grid-row: span 2; display: flex; flex-direction: column; }
+  .stage { position: relative; margin: 12px; border-radius: 10px; overflow: hidden; background: var(--well); aspect-ratio: 4 / 3; border: 1px solid var(--line); }
+  .stage video, .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .stage video { object-fit: fill; }
+  .stage video.off { visibility: hidden; }
+  .stage .hud { position: absolute; left: 10px; bottom: 10px; display: flex; gap: 6px; flex-wrap: wrap; pointer-events: none; }
+  .hud span { font: 500 12px var(--mono); color: #e6e8ee; background: rgba(7,9,12,.72); border: 1px solid rgba(255,255,255,.08); padding: 3px 7px; border-radius: 6px; backdrop-filter: blur(6px); }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 0 16px 14px; font-size: 13px; color: var(--ink-3); }
+  .legend i { display: inline-block; width: 14px; height: 2px; vertical-align: middle; margin-right: 6px; border-radius: 2px; }
+
+  /* alert */
+  .alert { padding: 18px 18px 16px; overflow: hidden; transition: border-color .35s var(--ease), background .35s var(--ease); }
+  .alert h3 .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; background: var(--learn); margin: 0 12px 0 2px; vertical-align: .14em; }
+  .alert h3 { margin: 2px 0 6px; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.08; letter-spacing: -.025em; font-weight: 600; }
+  .alert p { margin: 0; color: var(--ink-2); font-size: 14px; min-height: 2.9em; }
+  .alert .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 16px; border-top: 1px solid var(--line); }
+  .alert .row div { padding: 12px 12px 0 0; }
+  .alert .row div + div { padding-left: 14px; border-left: 1px solid var(--line); }
+  .alert .row dt { font-size: 12px; color: var(--ink-3); margin: 0 0 2px; }
+  .alert .row dd { margin: 0; font: 500 22px/1.15 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .alert .row dd small { font-size: 13px; color: var(--ink-3); margin-left: 2px; }
+  .alert[data-s="clear"] h3 .dot { background: var(--clear); }
+  .alert[data-s="present"] h3 .dot { background: var(--present); }
+  .alert[data-s="present"] { border-color: rgba(242,181,60,.38); }
+  .alert[data-s="coming"] { border-color: rgba(255,91,79,.7); background: linear-gradient(180deg, rgba(255,91,79,.16), rgba(255,91,79,.04) 70%), var(--panel); }
+  .alert[data-s="coming"] h3 .dot { background: var(--coming); animation: ping 1s var(--ease) infinite; }
+  .alert[data-s="coming"] h3 { color: #fff; }
+  .alert[data-s="coming"] { animation: alarm-in .7s var(--ease) both; }
+  @keyframes alarm-in { 0% { box-shadow: 0 0 0 0 rgba(255,91,79,.55), var(--shadow); } 100% { box-shadow: 0 0 0 14px rgba(255,91,79,0), var(--shadow); } }
+  .alert .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--line); }
+  .alert .bar b { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: left; background: var(--accent); transition: transform .15s linear; }
+  .alert[data-s="coming"] .bar b { background: var(--coming); }
+  .alert[data-s="present"] .bar b { background: var(--present); }
+
+  /* map */
+  .map { display: flex; flex-direction: column; }
+  .mapbox { position: relative; margin: 10px 12px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--well); overflow: hidden; aspect-ratio: 16 / 9; }
+  .mapbox svg, .mapbox video { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mapbox video { object-fit: contain; background: #000; }
+  .mapbox .note { position: absolute; left: 10px; top: 8px; font-size: 12px; color: var(--ink-3); pointer-events: none; }
+  .wallfill { fill: #1a1e27; }
+  .wallline { stroke: #3a4252; stroke-width: .045; fill: none; }
+  .gridl { stroke: #151922; stroke-width: .02; }
+  .lbl { fill: var(--ink-3); font: 500 var(--fs, .26px) "Geist", sans-serif; }
+  .lbl.m { font-family: var(--mono); font-size: calc(var(--fs, .26px) * .9); }
+  .lbl.t { fill: rgba(236,239,244,.75); }
+
+  /* spacetime */
+  .st { grid-column: 1 / -1; }
+  .stwrap { position: relative; margin: 10px 12px 12px; }
+  .stcanvas { position: relative; height: 210px; border-radius: 10px; border: 1px solid var(--line); background: var(--well); overflow: hidden; cursor: ew-resize; touch-action: none; }
+  .stcanvas canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .zcanvas { position: relative; height: 58px; margin-top: 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--well); overflow: hidden; }
+  .zcanvas canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .axisl { position: absolute; left: -2px; top: 0; bottom: 0; }
+  .transport { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 0 12px 12px; }
+  .btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 34px; padding: 0 14px; border-radius: 9px; border: 1px solid var(--line-2); background: var(--panel-2); color: var(--ink); font: 500 13px "Geist", sans-serif; cursor: pointer; transition: background .2s, border-color .2s, transform .15s var(--ease); }
+  .btn:hover { border-color: #3d4556; background: #1b2029; }
+  .btn:active { transform: scale(.97); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+  .btn.icon { width: 34px; padding: 0; }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+  .clock { font: 500 13px var(--mono); color: var(--ink-2); font-variant-numeric: tabular-nums; min-width: 98px; }
+  .spacer { flex: 1; }
+  .keys { font-size: 12px; color: var(--ink-3); }
+  kbd { font: 500 11px var(--mono); padding: 1px 5px; border-radius: 5px; border: 1px solid var(--line-2); border-bottom-width: 2px; color: var(--ink-2); }
+
+  /* agent + evidence */
+  .lower { display: grid; grid-template-columns: minmax(0, 1.42fr) minmax(0, 1fr); gap: 16px; margin-top: 16px; }
+  .agent .decision { margin: 6px 16px 0; padding: 12px 0 14px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: center; }
+  .agent .decision svg { grid-row: span 2; width: 22px; height: 22px; color: var(--accent-2); }
+  .agent .decision b { font-size: 15px; font-weight: 600; }
+  .agent .decision span { font-size: 14px; color: var(--ink-2); }
+  .agent .decision[data-a="stop_vehicle"] b { color: #ffb3ad; }
+  .agent .decision[data-a="stop_vehicle"] svg { color: var(--coming); }
+  .agent .decision[data-a="relearn_background"] svg, .agent .decision[data-a="add_light"] svg, .agent .decision[data-a="steady_camera"] svg, .agent .decision[data-a="recalibrate"] svg { color: var(--present); }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 0; padding: 6px 0 8px; }
+  .checks { list-style: none; margin: 0; padding: 8px 16px; }
+  .checks li { display: grid; grid-template-columns: 14px 1fr auto; gap: 10px; align-items: center; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 13px; color: var(--ink-2); }
+  .checks li:last-child { border-bottom: 0; }
+  .checks li i { width: 8px; height: 8px; border-radius: 50%; background: var(--clear); justify-self: center; }
+  .checks li.bad i { background: var(--present); }
+  .checks li .num { color: var(--ink); font-size: 13px; }
+  .log { list-style: none; margin: 0; padding: 8px 16px; border-left: 1px solid var(--line); max-height: 300px; overflow: auto; }
+  .log li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 6px 6px; margin: 0 -6px; border-radius: 7px; font-size: 13px; color: var(--ink-2); cursor: pointer; transition: background .15s, opacity .3s; }
+  .log li:hover { background: var(--panel-2); color: var(--ink); }
+  .log li.future { opacity: .38; }
+  .log li .num { font-size: 12px; color: var(--ink-3); padding-top: 1px; }
+  .log li b { color: var(--ink); font-weight: 500; }
+  .log li.warn b { color: #ffb3ad; }
+  .log li.amber b { color: #f6cf7d; }
+  .evidence dl { margin: 0; padding: 4px 16px 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  .evidence dl div { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .evidence dt { font-size: 13px; color: var(--ink-3); }
+  .evidence dd { margin: 3px 0 0; font: 500 24px/1.1 var(--mono); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .evidence dd small { font: 400 13px "Geist", sans-serif; color: var(--ink-3); margin-left: 4px; letter-spacing: 0; }
+  .evidence .fine { padding: 12px 16px 16px; margin: 0; font-size: 13px; color: var(--ink-3); }
+  .evidence .fine b { color: var(--ink-2); font-weight: 500; }
+
+  /* how it works */
+  .how { margin-top: 64px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+  .how h2 { margin: 0 0 14px; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.08; letter-spacing: -.025em; font-weight: 600; text-wrap: balance; }
+  .how p { margin: 0 0 14px; color: var(--ink-2); max-width: 62ch; }
+  .how ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+  .how ol li { display: grid; grid-template-columns: 120px 1fr; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 14px; }
+  .how ol li b { color: var(--ink); font-weight: 600; font-size: 14px; }
+  .diagram { border: 1px solid var(--line); border-radius: var(--radius); background: var(--well); padding: 10px; }
+  .diagram svg { width: 100%; height: auto; display: block; }
+  .limits { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .limits h3 { margin: 0 0 6px; font-size: 14px; font-weight: 600; }
+  .limits p { margin: 0; color: var(--ink-2); font-size: 14px; }
+  footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--ink-3); font-size: 13px; display: flex; gap: 18px; flex-wrap: wrap; }
+
+  .empty { padding: 60px 20px; text-align: center; color: var(--ink-2); }
+  .empty b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
+
+  @media (max-width: 1080px) {
+    .console, .lower { grid-template-columns: minmax(0, 1fr); }
+    .floor .transport { order: 1; padding: 12px 12px 0; }
+    .floor .stage { order: 2; }
+    .floor .legend { order: 3; }
+    .floor { grid-row: auto; }
+    .intro { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-top: 24px; }
+    .how { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 12px 14px 72px; }
+    header { gap: 10px; }
+    .mark { margin-right: 0; }
+    .status { order: 1; margin-left: auto; }
+    .runpick { order: 2; flex: 1 1 auto; min-width: 0; }
+    .runpick select { max-width: none; width: 100%; }
+    .tag.synth { display: none; }
+    .ph h2 { flex-wrap: wrap; row-gap: 0; }
+    .ph h2 small { flex-basis: 100%; }
+    .alert .row dd { font-size: 18px; }
+    .cols { grid-template-columns: minmax(0, 1fr); }
+    .log { border-left: 0; border-top: 1px solid var(--line); max-height: none; }
+    .stcanvas { height: 170px; }
+    .evidence dl { grid-template-columns: 1fr 1fr; gap: 0 12px; }
+    .evidence dd { font-size: 20px; }
+    .how ol li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .limits { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .keys { display: none; }
+    .floor .transport { gap: 8px; }
+    .transport .seg { display: none; }
+    .transport .clock { min-width: 0; margin-left: auto; }
+    .transport .spacer { display: none; }
+    .ph { padding-left: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<!--
+THESIS: The category-standard monitoring console, played straight at full craft: the floor camera, the hidden person's bearing and the alert share one clock, so every warning is traceable to the shadow that caused it.
+OWN-WORLD: Near-black panels, hairline borders, Geist + Geist Mono for measurements only; indigo accent for the system's own marks (wedge, bearing), green/amber/red reserved for corner state.
+STORY: A judge sees the floor, the shadow made visible, the bearing on a plan, and "Someone is coming" fire before line of sight; then the agent's reasoning and the scores.
+FIRST VIEWPORT: Header with run and live state; one-line thesis; floor camera (left, large) with the calibrated wedge and bearing ray; alert card and plan-view map (right); spacetime strip begins at the fold. Play is the primary action.
+FORM: canon (user's choice, seed 4efc73df); craft bar: Quiver, Linear/Vercel, Grafana, Waymo viz.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+<div class="wrap">
+  <header>
+    <a class="mark" href="./" aria-label="Periscope home">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="9" fill="#14171f" stroke="#2c3340"/>
+        <path d="M9 24V9h14" fill="none" stroke="#eceff4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 9l13.5 5.5M9 9l9 11" stroke="#9b97ff" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="9" cy="9" r="2.2" fill="#9b97ff"/>
+      </svg>
+      <b>PERISCOPE</b>
+    </a>
+    <label class="runpick"><span class="sr">Run</span>
+      <select id="runSel" aria-label="Choose a run"></select>
+    </label>
+    <span class="tag synth" id="kindTag" hidden>Synthetic scene</span>
+    <span class="status" id="status" data-s="learning" role="status" aria-live="polite"><span class="dot"></span><span id="statusTxt">Loading run</span></span>
+  </header>
+
+  <section class="intro">
+    <h1>See who's coming <span>around the corner.</span></h1>
+    <p>A person in the hidden hallway blocks a sliver of the light that reaches the floor beside the corner, a change of <b>about 0.3% of brightness</b>. Periscope reads that shadow with an ordinary camera, turns it into the person's bearing every frame, and warns a forklift or robot <b>before they step into view</b>.</p>
+  </section>
+
+  <main class="console" id="console">
+    <section class="panel floor" aria-labelledby="floorH">
+      <div class="ph">
+        <h2 id="floorH">Floor camera <small>calibrated wedge, 0° wall to 90°</small></h2>
+        <div class="seg" role="group" aria-label="Floor view">
+          <button type="button" aria-pressed="true" data-view="floor">Camera</button>
+          <button type="button" aria-pressed="false" data-view="shadow">Shadow ×70</button>
+        </div>
+      </div>
+      <div class="stage" id="stage">
+        <video id="vFloor" muted playsinline preload="auto"></video>
+        <video id="vShadow" class="off" muted playsinline preload="auto"></video>
+        <canvas id="overlay" aria-hidden="true"></canvas>
+        <div class="hud"><span id="hudT">t 0.00 s</span><span id="hudPhi">bearing –</span></div>
+      </div>
+      <div class="transport">
+        <button class="btn primary" id="playBtn" type="button" aria-label="Play">
+          <svg class="i" viewBox="0 0 24 24" id="playIco"><path d="M7 5l12 7-12 7z" fill="currentColor" stroke="none"/></svg><span id="playTxt">Play run</span>
+        </button>
+        <button class="btn icon" id="restartBtn" type="button" aria-label="Restart"><svg class="i" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v5h5"/></svg></button>
+        <div class="seg" role="group" aria-label="Speed">
+          <button type="button" aria-pressed="false" data-rate="0.5">0.5×</button>
+          <button type="button" aria-pressed="true" data-rate="1">1×</button>
+          <button type="button" aria-pressed="false" data-rate="2">2×</button>
+        </div>
+        <span class="clock" id="clock">0.00 / 0.00 s</span>
+        <span class="spacer"></span>
+        <span class="keys"><kbd>Space</kbd> play · <kbd>←</kbd><kbd>→</kbd> step</span>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--accent)"></i>Calibrated floor wedge</span>
+        <span><i style="background:#fff"></i>Shadow edge at the tracked bearing</span>
+        <span><i style="background:var(--ink-3)"></i>15° angle rays</span>
+      </div>
+    </section>
+
+    <section class="panel alert" id="alert" data-s="learning" aria-live="polite" aria-labelledby="alertH">
+      <h3><span class="dot" aria-hidden="true"></span><span id="alertH">Learning the empty hallway</span></h3>
+      <p id="alertP">Hold still. Periscope is measuring the floor and its noise before it watches for shadows.</p>
+      <dl class="row">
+        <div><dt>Bearing</dt><dd id="aPhi">–</dd></div>
+        <div><dt>In view in</dt><dd id="aEta">–</dd></div>
+        <div><dt>Shadow strength</dt><dd id="aZ">–</dd></div>
+      </dl>
+      <div class="bar" aria-hidden="true"><b id="aBar"></b></div>
+    </section>
+
+    <section class="panel map" aria-labelledby="mapH">
+      <div class="ph">
+        <h2 id="mapH">Corner map <small>plan view</small></h2>
+        <div class="seg" role="group" aria-label="Map view">
+          <button type="button" aria-pressed="true" data-map="plan">Plan</button>
+          <button type="button" aria-pressed="false" data-map="hidden" id="hiddenBtn">Hidden hallway</button>
+        </div>
+      </div>
+      <div class="mapbox">
+        <svg id="plan" viewBox="-9.6 -2.75 12.4 5.6" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Plan view of the corner with the tracked bearing"></svg>
+        <video id="vHidden" muted playsinline preload="auto" hidden></video>
+        <span class="note" id="mapNote">Periscope knows the bearing, not the distance.</span>
+      </div>
+    </section>
+
+    <section class="panel st" aria-labelledby="stH">
+      <div class="ph">
+        <h2 id="stH">Spacetime <small>recovered light from the hidden side, by bearing and time</small></h2>
+        <div class="seg" role="group" aria-label="Spacetime overlays">
+          <button type="button" aria-pressed="true" data-ov="track">Track</button>
+          <button type="button" aria-pressed="true" data-ov="truth" id="truthBtn">Truth</button>
+        </div>
+      </div>
+      <div class="stwrap">
+        <div class="stcanvas" id="stBox" role="slider" tabindex="0" aria-label="Timeline: drag to scrub" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+          <canvas id="stCanvas"></canvas>
+        </div>
+        <div class="zcanvas"><canvas id="zCanvas" aria-hidden="true"></canvas></div>
+      </div>
+    </section>
+  </main>
+
+  <section class="lower">
+    <section class="panel agent" aria-labelledby="agH">
+      <div class="ph"><h2 id="agH">Signal agent <small>decides whether the shadow is readable, and what to do</small></h2></div>
+      <div class="decision" id="decision" data-a="watch">
+        <svg viewBox="0 0 24 24" class="i"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
+        <b id="decA">Watching</b>
+        <span id="decW">Signal is readable.</span>
+      </div>
+      <div class="cols">
+        <ul class="checks" id="checks" aria-label="Signal checks"></ul>
+        <ol class="log" id="log" aria-label="Decision log"></ol>
+      </div>
+    </section>
+
+    <section class="panel evidence" aria-labelledby="evH">
+      <div class="ph"><h2 id="evH">Scored against ground truth</h2></div>
+      <dl id="scores"></dl>
+      <p class="fine" id="fine"></p>
+    </section>
+  </section>
+
+  <section class="how" aria-labelledby="howH">
+    <div>
+      <h2 id="howH">The floor beside a corner is a one-pixel camera pointed at the hidden hallway.</h2>
+      <p>Each spot on the floor next to the wall edge sees the hidden side through a slit that widens with its angle from the wall. A spot at 30° gathers light from the first 30° of the hidden hallway; a spot at 60° from the first 60°. Comparing neighbouring angles recovers how much light comes from each direction, and a person shows up as a moving dip in their own colour.</p>
+      <p>This is MIT's CornerCam (Bouman et al., ICCV 2017). Periscope adds what a product needs: a calibrated wedge, shake and lighting compensation, a noise model that knows when it can't see, and an agent that acts on it.</p>
+    </div>
+    <div>
+      <div class="diagram" aria-hidden="true">
+        <svg viewBox="0 0 520 230">
+          <rect x="0" y="0" width="520" height="230" fill="#07090c"/>
+          <rect x="20" y="20" width="210" height="80" fill="#1a1e27"/>
+          <path d="M20 100h210V220" fill="none" stroke="#3a4252" stroke-width="2"/>
+          <text x="32" y="58" fill="#7b8494" font-family="Geist" font-size="13">wall</text>
+          <text x="40" y="132" fill="#7b8494" font-family="Geist" font-size="13">hidden hallway</text>
+          <g transform="translate(150 150)"><circle r="13" fill="#d23d33"/><circle r="13" fill="none" stroke="#ff8a80" stroke-opacity=".5"/></g>
+          <circle cx="230" cy="100" r="4" fill="#9b97ff"/>
+          <path d="M230 100 L 400 100 A170 170 0 0 1 230 270" fill="rgba(155,151,255,.08)" stroke="none"/>
+          <path d="M230 100 L 352 220" stroke="#9b97ff" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <path d="M352 220 L 150 150" stroke="#ff8a80" stroke-width="1.2" stroke-dasharray="2 4"/>
+          <path d="M352 220 L 230 100 L 120 30" stroke="#eceff4" stroke-opacity=".35" stroke-width="1"/>
+          <circle cx="352" cy="220" r="4" fill="#eceff4"/>
+          <text x="300" y="120" fill="#b9b6ff" font-family="Geist" font-size="13">floor wedge</text>
+          <text x="364" y="214" fill="#a9b1bf" font-family="Geist" font-size="12">floor spot</text>
+          <text x="248" y="190" fill="#7b8494" font-family="Geist" font-size="12" transform="rotate(-36 248 190)">sees past the edge</text>
+          <g transform="translate(470 196)"><rect x="-16" y="-10" width="30" height="20" rx="4" fill="#161a22" stroke="#2c3340"/><circle r="5" fill="none" stroke="#a9b1bf"/></g>
+          <text x="438" y="178" fill="#7b8494" font-family="Geist" font-size="12">camera</text>
+        </svg>
+      </div>
+      <ol>
+        <li><b>Calibrate</b><span>Five tape marks fix the corner, the wall line and a true floor angle for every pixel.</span></li>
+        <li><b>Learn</b><span>Two seconds of empty hallway set the background and the noise floor.</span></li>
+        <li><b>Reconstruct</b><span>90 angular bins, divided by the background, inverted with a regularised least squares into 45 hidden directions.</span></li>
+        <li><b>Track &amp; act</b><span>A noise-calibrated score finds the person, an α-β filter follows the bearing, the agent sends stop.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="limits" aria-label="Limits">
+    <div><h3>Bearing, not distance</h3><p>One corner gives the angle only. Distance needs a second edge (a doorway) or a second camera.</p></div>
+    <div><h3>Needs light and a steady view</h3><p>Range falls roughly as 1/d³. A dim hallway, grey clothing or a shaking mount shrink it; the agent says so instead of guessing.</p></div>
+    <div><h3>Compression erases it</h3><p>A normal phone video at ~13 Mbps loses about half the range. Record near-lossless, or bin the floor on the device and send 1 KB per frame.</p></div>
+  </section>
+
+  <footer>
+    <span>Periscope · OpenCV AI Competition 2026 entry</span>
+    <a href="https://people.csail.mit.edu/klbouman/pw/papers_and_presentations/cornercam_iccv2017.pdf">CornerCam paper (ICCV 2017)</a>
+    <span id="sceneFoot"></span>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const ICONS = {
+    watch: '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/>',
+    stop_vehicle: '<path d="M8.5 3h7L21 8.5v7L15.5 21h-7L3 15.5v-7z"/><path d="M8 12h8"/>',
+    relearn_background: '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v5h5"/>',
+    add_light: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+    steady_camera: '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+    recalibrate: '<circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>',
+    reframe: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
+  };
+  const ACTION = {
+    watch: "Watching", stop_vehicle: "Stop the vehicle", relearn_background: "Re-learn the background",
+    add_light: "Add light", steady_camera: "Steady the camera", recalibrate: "Recalibrate", reframe: "Reframe the view",
+  };
+  const CHECK = {
+    signal: ["Predicted range", (v) => v == null ? "–" : v.toFixed(1) + " m"],
+    noise: ["Pixel noise", (v) => v.toFixed(2) + " %"],
+    shake: ["Camera shake", (v) => v.toFixed(2) + " px"],
+    drift: ["View drift", (v) => v.toFixed(1) + " px"],
+    exposure: ["Light change", (v) => (v >= 0 ? "+" : "") + v.toFixed(2) + " %"],
+    clipping: ["Clipped pixels", (v) => v.toFixed(2) + " %"],
+    wedge: ["Wedge pixels", (v) => v.toLocaleString()],
+  };
+  const STATE_TXT = {
+    learning: ["Learning the empty hallway", "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.", "Learning"],
+    clear: ["Corner clear", "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are beyond range.", "Clear"],
+    present: ["Someone in the hidden hallway", "", "Someone hidden"],
+    coming: ["Someone is coming", "", "Someone is coming"],
+  };
+
+  const vF = $("#vFloor"), vS = $("#vShadow"), vH = $("#vHidden");
+  const ov = $("#overlay"), oc = ov.getContext("2d");
+  const st = $("#stCanvas"), sc = st.getContext("2d");
+  const zc = $("#zCanvas"), zx = zc.getContext("2d");
+  let run = null, base = "", stImg = null, frameIdx = -1, playing = false, showTrack = true, showTruth = true;
+  let decisions = [], lastQ = null;
+
+  // ---------- loading ----------
+  async function listRuns() {
+    const sel = $("#runSel");
+    let runs = [];
+    try { const r = await fetch("api/runs"); if (r.ok) runs = await r.json(); } catch (_) {}
+    if (!runs.length) runs = [{ id: "demo", title: "Synthetic corner · red top · lit hallway" }];
+    sel.innerHTML = runs.map((r) => `<option value="${r.id}">${r.title.replace(/</g, "&lt;")}</option>`).join("");
+    const want = new URLSearchParams(location.search).get("run");
+    if (want && runs.some((r) => r.id === want)) sel.value = want;
+    sel.onchange = () => { history.replaceState(null, "", "?run=" + sel.value); load(sel.value); };
+    load(sel.value);
+  }
+
+  function setSrc(v, name) {
+    v.innerHTML = "";
+    const webm = run.assets[name].replace(/\.mp4$/, ".webm");
+    for (const [src, type] of [[base + webm, "video/webm"], [base + run.assets[name], "video/mp4"]]) {
+      const s = document.createElement("source"); s.src = src; s.type = type; v.appendChild(s);
+    }
+    v.load();
+  }
+
+  async function load(id) {
+    pause();
+    base = `runs/${id}/`;
+    const res = await fetch(base + "run.json");
+    if (!res.ok) { $("#console").innerHTML = `<div class="panel empty" style="grid-column:1/-1"><b>That run could not be loaded.</b>Check that runs/${id}/run.json exists, or pick another run.</div>`; return; }
+    run = await res.json();
+    const synth = run.scene && run.scene.kind === "synthetic";
+    $("#kindTag").hidden = !synth;
+    setSrc(vF, "floor"); setSrc(vS, "shadow");
+    const hasHidden = !!run.assets.hidden;
+    $("#hiddenBtn").hidden = !hasHidden;
+    if (hasHidden) setSrc(vH, "hidden");
+    $("#truthBtn").hidden = !run.truth;
+    stImg = await spacetimePixels(base + run.assets.spacetime);
+    decisions = buildLog();
+    renderLog();
+    renderScores();
+    drawPlanStatic();
+    const dur = run.frames.length / run.fps;
+    $("#stBox").setAttribute("aria-valuemax", dur.toFixed(2));
+    $("#sceneFoot").textContent = synth ? `Synthetic: per-pixel SNR ${run.scene.snr3} at 3 m · noise ${run.scene.noise_dn} DN · signal ${run.scene.signal3_dn} DN` : "Recorded footage";
+    frameIdx = -1; lastQ = null;
+    vF.currentTime = 0;
+    resize();
+    show(0);
+  }
+
+  // Spacetime PNG is rows=time, cols=bearing. Re-tint it for a dark field: neutral grey -> background,
+  // strong deviations keep the recovered colour.
+  function spacetimePixels(url) {
+    return new Promise((ok) => {
+      const im = new Image();
+      im.onload = () => {
+        const c = document.createElement("canvas"); c.width = im.width; c.height = im.height;
+        const x = c.getContext("2d"); x.drawImage(im, 0, 0);
+        const src = x.getImageData(0, 0, im.width, im.height).data;
+        const T = im.height, P = im.width;
+        const out = new ImageData(T, P);          // transposed: x = time, y = bearing (90 at top)
+        for (let t = 0; t < T; t++) for (let p = 0; p < P; p++) {
+          const i = (t * P + p) * 4, o = ((P - 1 - p) * T + t) * 4;
+          const r = src[i], g = src[i + 1], b = src[i + 2];
+          const d = Math.max(Math.abs(r - 128), Math.abs(g - 128), Math.abs(b - 128));
+          const a = Math.min(1, Math.max(0, (d - 6) / 70));
+          out.data[o] = 9 + (Math.min(255, r * 1.08) - 9) * a;
+          out.data[o + 1] = 11 + (g - 11) * a;
+          out.data[o + 2] = 15 + (b - 15) * a;
+          out.data[o + 3] = 255;
+        }
+        const oc2 = document.createElement("canvas"); oc2.width = T; oc2.height = P;
+        oc2.getContext("2d").putImageData(out, 0, 0);
+        ok(oc2);
+      };
+      im.onerror = () => ok(null);
+      im.src = url;
+    });
+  }
+
+  // ---------- decisions log ----------
+  function buildLog() {
+    const L = [], F = run.frames;
+    let prev = null;
+    for (let i = 0; i < F.length; i++) {
+      const f = F[i], s = f.s;
+      if (s !== prev) {
+        if (prev === "learning" && s !== "learning") L.push({ i, cls: "", b: L.length ? "Background re-learned" : "Background learned", t: "noise floor measured; watching" });
+        if (s === "present" && prev !== "coming") L.push({ i, cls: "amber", b: `Shadow at ${f.phi.toFixed(0)}°`, t: "someone is in the hidden hallway" });
+        if (s === "coming") L.push({ i, cls: "warn", b: "Stop sent", t: `closing on the corner at ${f.phi.toFixed(0)}°` });
+        if (s === "present" && prev === "coming") L.push({ i, cls: "amber", b: "Moving away", t: `bearing ${f.phi.toFixed(0)}° and rising` });
+        if (s === "clear" && (prev === "present" || prev === "coming")) L.push({ i, cls: "", b: "Corner clear", t: "shadow below the noise floor" });
+      }
+      prev = s;
+    }
+    for (const e of run.events || []) {
+      const i = Math.round(e.t * run.fps);
+      L.push({ i, cls: "amber", b: ACTION[e.action] || e.action, t: e.why });
+    }
+    L.sort((a, b) => a.i - b.i);
+    return L;
+  }
+  function renderLog() {
+    $("#log").innerHTML = decisions.map((d, k) => `<li data-k="${k}" class="${d.cls}" tabindex="0"><span class="num">${(d.i / run.fps).toFixed(1)} s</span><span><b>${d.b}</b> · ${d.t}</span></li>`).join("");
+    for (const li of $("#log").children) {
+      const go = () => seek(decisions[+li.dataset.k].i);
+      li.onclick = go; li.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
+    }
+  }
+
+  function renderScores() {
+    const s = run.score, el = $("#scores"), fine = $("#fine");
+    if (!s) {
+      el.innerHTML = `<div style="grid-column:1/-1"><dt>No ground truth for this run</dt><dd style="font-size:15px;font-family:Geist;color:var(--ink-2)">Score it with tools/score_footage.py and a second camera.</dd></div>`;
+      fine.textContent = ""; return;
+    }
+    const n = s.near || s, f = s.far || s;
+    const v = (x, d = 1) => x == null ? "–" : x.toFixed(d);
+    el.innerHTML = [
+      ["First detection", v(f.first_detect_distance_m), "m from corner"],
+      ["Warning lead", v(f.lead_time_s), "s"],
+      ["Bearing error", v(n.angle_mae_deg), "° mean"],
+      ["Detected within 3 m", v(n.recall * 100, 0), "% of frames"],
+      ["False alarms", v(f.false_alarm_rate * 100, 1), "% empty frames"],
+      ["Bearing error p90", v(n.angle_p90_deg), "°"],
+    ].map(([a, b, c]) => `<div><dt>${a}</dt><dd>${b}<small>${c}</small></dd></div>`).join("");
+    fine.innerHTML = run.scene && run.scene.kind === "synthetic"
+      ? `<b>Synthetic run</b>, scored against the renderer's truth. Lead time is measured to the walker's closest point, 1.4 m from the corner. Real-footage scores come from a second camera in the hidden hallway (FILMING.md).`
+      : `Scored against a second camera filming the hidden hallway.`;
+  }
+
+  // ---------- plan view ----------
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; }
+  let planDyn = null;
+  function drawPlanStatic() {
+    const svg = $("#plan"); svg.innerHTML = "";
+    const g = el("g", { transform: "scale(1,-1)" }, svg);         // floor y up
+    const W = (run.scene && run.scene.hall_width) || 2.0;
+    for (let x = -9; x <= 2; x++) el("line", { x1: x, y1: -2.7, x2: x, y2: 2.7, class: "gridl" }, g);
+    for (let y = -2; y <= 2; y++) el("line", { x1: -9.6, y1: y, x2: 2.8, y2: y, class: "gridl" }, g);
+    // walls: the corner block (x<0, y<0), far wall of hidden hallway, outer wall of the camera side
+    el("path", { d: `M-9.6 0 H0 V-2.75 H-9.6 Z`, class: "wallfill" }, g);
+    el("path", { d: `M-9.6 0 H0 V-2.75`, class: "wallline" }, g);
+    el("path", { d: `M-9.6 ${W} H2.2 V-2.75`, class: "wallline" }, g);
+    el("path", { d: `M-9.6 ${W} H2.2 V${W + 0.2} H-9.6 Z`, class: "wallfill" }, g);
+    // floor wedge (0..1 m, 0..90 deg): wall direction -y, 90 deg direction +x
+    el("path", { d: "M0 0 L0 -1 A1 1 0 0 1 1 0 Z", fill: "rgba(155,151,255,.16)", stroke: "rgba(155,151,255,.6)", "stroke-width": .025 }, g);
+    // camera
+    const cam = el("g", { transform: "translate(1.05 -1.75)" }, g);
+    el("path", { d: "M0 0 L-0.75 1.55 L0.15 1.6 Z", fill: "rgba(255,255,255,.04)" }, cam);
+    el("rect", { x: -.16, y: -.11, width: .32, height: .22, rx: .05, fill: "#161a22", stroke: "#a9b1bf", "stroke-width": .03 }, cam);
+    planDyn = el("g", {}, g);
+    // labels (unflipped)
+    const t = (x, y, s, cls = "lbl", anchor = "start") => { const e = el("text", { x, y: -y, class: cls, "text-anchor": anchor }, svg); e.textContent = s; };
+    t(-9.3, W / 2 - 0.08, "hidden hallway");
+    t(-9.3, -1.5, "wall");
+    t(1.05, -2.25, "camera", "lbl", "middle");
+    t(0.62, -0.62, "wedge", "lbl m", "middle");
+    for (const [d, lab] of [[2, "2 m"], [4, "4 m"], [6, "6 m"], [8, "8 m"]]) t(-d, 0.12, lab, "lbl m", "middle");
+  }
+  function drawPlan(i) {
+    if (!planDyn) return;
+    planDyn.innerHTML = "";
+    const f = run.frames[i], W = (run.scene && run.scene.hall_width) || 2.0;
+    const tr = run.truth && run.truth.xy[i];
+    if (showTruth && tr) {
+      el("circle", { cx: tr[0], cy: tr[1], r: .26, fill: "none", stroke: "rgba(236,239,244,.5)", "stroke-width": .03, "stroke-dasharray": ".07 .06" }, planDyn);
+      el("circle", { cx: tr[0], cy: tr[1], r: .05, fill: "rgba(236,239,244,.7)" }, planDyn);
+      const lab = el("text", { x: tr[0] + 0.34, y: -(tr[1] + 0.34), class: "lbl t", "text-anchor": "start", transform: "scale(1,-1)" }, planDyn);
+      lab.textContent = "true position";
+    }
+    if (f.phi == null) return;
+    const col = f.s === "coming" ? "#ff5b4f" : "#9b97ff";
+    const ray = (deg) => { const a = (90 + deg) * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
+      const t = Math.min(s > 1e-6 ? W / s : 99, c < -1e-6 ? 9.6 / -c : 99); return [c * t, s * t]; };
+    const [x1, y1] = ray(f.phi - 3), [x2, y2] = ray(f.phi + 3), [xm, ym] = ray(f.phi);
+    el("path", { d: `M0 0 L${x1} ${y1} L${x2} ${y2} Z`, fill: f.s === "coming" ? "rgba(255,91,79,.2)" : "rgba(155,151,255,.18)" }, planDyn);
+    el("line", { x1: 0, y1: 0, x2: xm, y2: ym, stroke: col, "stroke-width": .045, "stroke-linecap": "round" }, planDyn);
+    el("circle", { cx: 0, cy: 0, r: .09, fill: col }, planDyn);
+  }
+
+  // ---------- overlay on the floor view ----------
+  function drawOverlay(i) {
+    const r = ov.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    if (ov.width !== Math.round(r.width * dpr)) { ov.width = Math.round(r.width * dpr); ov.height = Math.round(r.height * dpr); }
+    const sx = ov.width / run.size[0], sy = ov.height / run.size[1];
+    oc.setTransform(1, 0, 0, 1, 0, 0); oc.clearRect(0, 0, ov.width, ov.height);
+    oc.setTransform(sx, 0, 0, sy, 0, 0);
+    const c = run.calib, lw = 1.4 / sx;
+    oc.beginPath(); c.wedge.forEach(([x, y], k) => k ? oc.lineTo(x, y) : oc.moveTo(x, y)); oc.closePath();
+    oc.fillStyle = "rgba(155,151,255,.10)"; oc.fill();
+    oc.strokeStyle = "rgba(155,151,255,.9)"; oc.lineWidth = lw; oc.stroke();
+    oc.strokeStyle = "rgba(255,255,255,.22)"; oc.lineWidth = lw * .7; oc.setLineDash([3 / sx, 3 / sx]);
+    for (const k in c.rays) { const [[a, b], [d, e]] = c.rays[k]; oc.beginPath(); oc.moveTo(a, b); oc.lineTo(d, e); oc.stroke(); }
+    oc.setLineDash([]);
+    oc.font = `500 ${11 / sx}px Geist Mono, monospace`;
+    oc.lineJoin = "round"; oc.lineWidth = 3 / sx; oc.strokeStyle = "rgba(7,9,12,.75)"; oc.fillStyle = "#eceff4";
+    for (const k of ["0", "45", "90"]) { const [, [d, e]] = c.rays[k]; oc.strokeText(k + "°", d + 4 / sx, e + 4 / sx); oc.fillText(k + "°", d + 4 / sx, e + 4 / sx); }
+    const f = run.frames[i];
+    if (f && f.phi != null) {
+      // interpolate the ray for the tracked bearing between the 15-degree calibration rays
+      const lo = Math.max(0, Math.min(75, Math.floor(f.phi / 15) * 15)), hi = lo + 15, w = (f.phi - lo) / 15;
+      const A = c.rays[String(lo)], B = c.rays[String(hi)];
+      const p0 = [A[0][0] + (B[0][0] - A[0][0]) * w, A[0][1] + (B[0][1] - A[0][1]) * w];
+      const p1 = [A[1][0] + (B[1][0] - A[1][0]) * w, A[1][1] + (B[1][1] - A[1][1]) * w];
+      const col = f.s === "coming" ? "#ff5b4f" : "#ffffff";
+      oc.shadowColor = "rgba(0,0,0,.6)"; oc.shadowBlur = 4 / sx; oc.shadowOffsetY = 1 / sy;
+      oc.strokeStyle = col; oc.lineWidth = 2.4 / sx; oc.beginPath(); oc.moveTo(c.corner[0], c.corner[1]); oc.lineTo(p1[0], p1[1]); oc.stroke();
+      oc.shadowBlur = 0; oc.shadowOffsetY = 0;
+    }
+    oc.fillStyle = "#9b97ff"; oc.beginPath(); oc.arc(c.corner[0], c.corner[1], 3.6 / sx, 0, Math.PI * 2); oc.fill();
+  }
+
+  // ---------- spacetime + evidence strip ----------
+  function sizeCanvas(cv) { const r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    const w = Math.max(1, Math.round(r.width * dpr)), h = Math.max(1, Math.round(r.height * dpr));
+    if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; } return dpr; }
+  function drawSpacetime(i) {
+    const dpr = sizeCanvas(st), W = st.width, H = st.height, F = run.frames, T = F.length;
+    const padL = 40 * dpr, padB = 18 * dpr, iw = W - padL - 8 * dpr, ih = H - padB - 8 * dpr, y0 = 8 * dpr;
+    sc.setTransform(1, 0, 0, 1, 0, 0); sc.fillStyle = "#07090c"; sc.fillRect(0, 0, W, H);
+    const X = (k) => padL + (k / (T - 1)) * iw, Y = (p) => y0 + (1 - p / 90) * ih;
+    if (stImg) { sc.imageSmoothingEnabled = true; sc.drawImage(stImg, padL, y0, iw, ih); }
+    // future: veil, so the strip fills in as the run plays
+    sc.fillStyle = "rgba(7,9,12,.78)"; sc.fillRect(X(i), y0, padL + iw - X(i), ih);
+    // learning bands
+    sc.fillStyle = "rgba(123,132,148,.10)";
+    let s0 = null;
+    for (let k = 0; k <= T; k++) { const L = k < T && F[k].s === "learning"; if (L && s0 == null) s0 = k; if (!L && s0 != null) { sc.fillRect(X(s0), y0, X(k) - X(s0), ih); s0 = null; } }
+    // grid + axis
+    sc.strokeStyle = "rgba(255,255,255,.06)"; sc.lineWidth = 1; sc.fillStyle = "#7b8494"; sc.font = `${11 * dpr}px Geist Mono, monospace`; sc.textAlign = "right"; sc.textBaseline = "middle";
+    for (const p of [0, 30, 60, 90]) { sc.beginPath(); sc.moveTo(padL, Y(p)); sc.lineTo(padL + iw, Y(p)); sc.stroke(); sc.fillText(p + "°", padL - 8 * dpr, Y(p)); }
+    sc.textAlign = "center"; sc.textBaseline = "top";
+    const dur = T / run.fps;
+    for (let s = 0; s <= dur; s += dur > 30 ? 5 : 2) sc.fillText(s + "s", X(s * run.fps), y0 + ih + 4 * dpr);
+    // truth (dashed) and track
+    if (showTruth && run.truth) {
+      sc.strokeStyle = "rgba(236,239,244,.55)"; sc.lineWidth = 1.2 * dpr; sc.setLineDash([4 * dpr, 4 * dpr]); sc.beginPath();
+      let on = false;
+      for (let k = 0; k < T; k++) { const p = run.truth.phi[k]; if (p == null || p < 0 || p > 90) { on = false; continue; } on ? sc.lineTo(X(k), Y(p)) : sc.moveTo(X(k), Y(p)); on = true; }
+      sc.stroke(); sc.setLineDash([]);
+    }
+    if (showTrack) {
+      sc.lineWidth = 2.2 * dpr; sc.lineCap = "round";
+      for (let k = 1; k <= i; k++) {
+        const a = F[k - 1], b = F[k]; if (a.phi == null || b.phi == null) continue;
+        sc.strokeStyle = b.s === "coming" ? "#ff5b4f" : "#b9b6ff";
+        sc.beginPath(); sc.moveTo(X(k - 1), Y(a.phi)); sc.lineTo(X(k), Y(b.phi)); sc.stroke();
+      }
+    }
+    // playhead
+    sc.strokeStyle = "#eceff4"; sc.lineWidth = 1.2 * dpr; sc.beginPath(); sc.moveTo(X(i), y0 - 2); sc.lineTo(X(i), y0 + ih); sc.stroke();
+    sc.fillStyle = "#eceff4"; sc.beginPath(); sc.moveTo(X(i) - 5 * dpr, y0 - 2); sc.lineTo(X(i) + 5 * dpr, y0 - 2); sc.lineTo(X(i), y0 + 5 * dpr); sc.fill();
+    stGeom = { padL, iw, dpr };
+  }
+  let stGeom = null;
+  function drawZ(i) {
+    const dpr = sizeCanvas(zc), W = zc.width, H = zc.height, F = run.frames, T = F.length;
+    const padL = 40 * dpr, iw = W - padL - 8 * dpr, top = 6 * dpr, ih = H - 12 * dpr;
+    zx.setTransform(1, 0, 0, 1, 0, 0); zx.fillStyle = "#07090c"; zx.fillRect(0, 0, W, H);
+    const X = (k) => padL + (k / (T - 1)) * iw, zmax = 400;
+    const Y = (z) => top + ih - (Math.log10(1 + Math.max(0, z)) / Math.log10(1 + zmax)) * ih;
+    zx.fillStyle = "#7b8494"; zx.font = `${10.5 * dpr}px Geist Mono, monospace`; zx.textAlign = "right"; zx.textBaseline = "middle";
+    zx.fillText("σ", padL - 8 * dpr, top + ih / 2);
+    zx.strokeStyle = "rgba(242,181,60,.55)"; zx.setLineDash([3 * dpr, 3 * dpr]); zx.lineWidth = 1;
+    zx.beginPath(); zx.moveTo(padL, Y(24)); zx.lineTo(padL + iw, Y(24)); zx.stroke(); zx.setLineDash([]);
+    zx.beginPath(); zx.lineWidth = 1.4 * dpr; zx.strokeStyle = "#9b97ff";
+    for (let k = 0; k <= i; k++) { const y = Y(F[k].z || 0); k ? zx.lineTo(X(k), y) : zx.moveTo(X(k), y); }
+    zx.stroke();
+    zx.strokeStyle = "rgba(236,239,244,.7)"; zx.beginPath(); zx.moveTo(X(i), top); zx.lineTo(X(i), top + ih); zx.stroke();
+    zx.textAlign = "left"; zx.fillStyle = "rgba(242,181,60,.85)"; zx.fillText("detection threshold 4.9σ", padL + 6 * dpr, Y(24) - 8 * dpr);
+  }
+
+  // ---------- state panels ----------
+  function setState(i) {
+    const f = run.frames[i], s = f.s;
+    document.body.classList.toggle("alarm", s === "coming");
+    const [h, p0, short] = STATE_TXT[s] || STATE_TXT.clear;
+    $("#status").dataset.s = s; $("#statusTxt").textContent = short;
+    const A = $("#alert"); A.dataset.s = s;
+    $("#alertH").textContent = h;
+    let p = p0;
+    if (s === "present") p = f.pd != null && f.pd > 2 ? `Bearing ${f.phi.toFixed(0)}° and rising: they are walking away from the corner.` : `Bearing ${f.phi.toFixed(0)}°. Watching which way they move.`;
+    if (s === "coming") p = `Bearing ${f.phi.toFixed(0)}° and closing on the corner. Stop sent to the vehicle.`;
+    $("#alertP").textContent = p;
+    $("#aPhi").innerHTML = f.phi == null ? "–" : `${f.phi.toFixed(1)}<small>°</small>`;
+    $("#aEta").innerHTML = f.eta == null || s !== "coming" ? "–" : `${f.eta.toFixed(1)}<small>s</small>`;
+    $("#aZ").innerHTML = s === "learning" ? "–" : `${Math.sqrt(Math.max(0, f.z)).toFixed(1)}<small>σ</small>`;
+    $("#aBar").style.transform = `scaleX(${s === "learning" ? 0 : Math.min(1, Math.log10(1 + f.z) / Math.log10(401))})`;
+    $("#hudPhi").textContent = f.phi == null ? "bearing –" : `bearing ${f.phi.toFixed(1)}°`;
+    // agent: latest quality sample at or before i
+    let q = null; for (let k = i; k >= 0; k--) if (run.frames[k].q) { q = run.frames[k].q; break; }
+    const action = s === "coming" ? "stop_vehicle" : s === "learning" ? "learning" : (q ? q.a : "watch");
+    const D = $("#decision");
+    const why = action === "learning" ? "Measuring the empty floor and its noise before trusting any change." :
+      action === "stop_vehicle" ? `Bearing ${f.phi.toFixed(0)}° and falling ${Math.abs(f.pd || 0).toFixed(0)}°/s: the walker is heading for the corner line.` :
+      action === "watch" ? (s === "present" ? `Shadow at ${f.phi.toFixed(0)}° is ${Math.sqrt(f.z).toFixed(1)}σ above noise; not closing on the corner.` : "Noise, shake and light are inside limits; nothing above the noise floor.") :
+      ({ relearn_background: "Light changed since the background was learned.", add_light: "Predicted range is too short to warn in time.",
+         steady_camera: "Shake is larger than the shadow can tolerate.", recalibrate: "The view has slid since the tape marks were clicked.",
+         reframe: "Too little floor beside the corner is in view." })[action] || "";
+    $("#decW").textContent = why;
+    if (D.dataset.a !== action) {
+      D.dataset.a = action;
+      D.querySelector("svg").innerHTML = ICONS[action === "learning" ? "relearn_background" : action] || ICONS.watch;
+      $("#decA").textContent = action === "learning" ? "Learning the background" : ACTION[action] || action;
+    }
+    if (q && q !== lastQ) {
+      lastQ = q; const m = q.m;
+      const rows = [["signal", m.range_m, m.range_m == null || m.range_m >= 2.5], ["noise", m.noise_pct, m.noise_pct < 2.5], ["shake", m.shake_px, m.shake_px < .6],
+        ["drift", m.drift_px, m.drift_px < 3], ["exposure", m.offset_pct, Math.abs(m.offset_pct) < 1.5], ["clipping", m.clip_pct || 0, (m.clip_pct || 0) < 2], ["wedge", m.wedge_px, m.wedge_px >= 4000]];
+      $("#checks").innerHTML = rows.map(([k, v, ok]) => `<li class="${ok ? "" : "bad"}"><i></i><span>${CHECK[k][0]}</span><span class="num">${CHECK[k][1](v)}</span></li>`).join("");
+    } else if (!q && $("#checks").children.length === 0) {
+      $("#checks").innerHTML = `<li><i style="background:var(--learn)"></i><span>Checks start once the background is learned</span><span></span></li>`;
+    }
+    for (const li of $("#log").children) li.classList.toggle("future", decisions[+li.dataset.k].i > i);
+  }
+
+  // ---------- clock ----------
+  function show(i) {
+    if (!run) return;
+    i = Math.max(0, Math.min(run.frames.length - 1, i));
+    if (i === frameIdx) return;
+    frameIdx = i;
+    const t = i / run.fps, dur = run.frames.length / run.fps;
+    $("#clock").textContent = `${t.toFixed(2)} / ${dur.toFixed(2)} s`;
+    $("#hudT").textContent = `t ${t.toFixed(2)} s`;
+    $("#stBox").setAttribute("aria-valuenow", t.toFixed(2));
+    $("#stBox").setAttribute("aria-valuetext", `${t.toFixed(1)} seconds`);
+    setState(i); drawOverlay(i); drawPlan(i); drawSpacetime(i); drawZ(i);
+  }
+  function syncSlaves() {
+    for (const v of [vS, vH]) if (v.readyState >= 1 && Math.abs(v.currentTime - vF.currentTime) > 0.08) v.currentTime = vF.currentTime;
+  }
+  function tick() {
+    if (!run) return;
+    show(Math.floor(vF.currentTime * run.fps + 1e-3));
+    if (playing) { syncSlaves(); requestAnimationFrame(tick); }
+  }
+  function play() {
+    if (!run) return;
+    if (vF.ended || frameIdx >= run.frames.length - 1) vF.currentTime = 0;
+    playing = true;
+    for (const v of [vF, vS, vH]) { v.playbackRate = rate; v.play().catch(() => {}); }
+    $("#playTxt").textContent = "Pause"; $("#playBtn").setAttribute("aria-label", "Pause");
+    $("#playIco").innerHTML = '<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor" stroke="none"/>';
+    requestAnimationFrame(tick);
+  }
+  function pause() {
+    playing = false;
+    for (const v of [vF, vS, vH]) v.pause();
+    $("#playTxt").textContent = frameIdx > 0 ? "Resume" : "Play run"; $("#playBtn").setAttribute("aria-label", "Play");
+    $("#playIco").innerHTML = '<path d="M7 5l12 7-12 7z" fill="currentColor" stroke="none"/>';
+  }
+  function seek(i) {
+    if (!run) return;
+    const t = (Math.max(0, Math.min(run.frames.length - 1, i)) + 0.5) / run.fps;
+    for (const v of [vF, vS, vH]) if (v.readyState >= 1) v.currentTime = t;
+    show(i);
+  }
+  vF.addEventListener("ended", () => { pause(); $("#playTxt").textContent = "Replay"; });
+  vF.addEventListener("seeked", () => { if (!playing) show(Math.floor(vF.currentTime * run.fps + 1e-3)); });
+  let rate = 1;
+
+  // ---------- controls ----------
+  $("#playBtn").onclick = () => (playing ? pause() : play());
+  $("#restartBtn").onclick = () => { seek(0); if (!playing) play(); };
+  document.querySelectorAll("[data-rate]").forEach((b) => b.onclick = () => {
+    rate = +b.dataset.rate; for (const v of [vF, vS, vH]) v.playbackRate = rate;
+    document.querySelectorAll("[data-rate]").forEach((o) => o.setAttribute("aria-pressed", o === b));
+  });
+  document.querySelectorAll("[data-view]").forEach((b) => b.onclick = () => {
+    const sh = b.dataset.view === "shadow";
+    vS.classList.toggle("off", !sh); vF.classList.toggle("off", sh);
+    document.querySelectorAll("[data-view]").forEach((o) => o.setAttribute("aria-pressed", o === b));
+  });
+  document.querySelectorAll("[data-map]").forEach((b) => b.onclick = () => {
+    const hid = b.dataset.map === "hidden";
+    vH.hidden = !hid; $("#plan").style.visibility = hid ? "hidden" : "visible";
+    $("#mapNote").textContent = hid ? "Ground-truth camera. Periscope never sees this view." : "Periscope knows the bearing, not the distance.";
+    if (hid) { vH.currentTime = vF.currentTime; if (playing) vH.play().catch(() => {}); }
+    document.querySelectorAll("[data-map]").forEach((o) => o.setAttribute("aria-pressed", o === b));
+  });
+  document.querySelectorAll("[data-ov]").forEach((b) => b.onclick = () => {
+    const on = b.getAttribute("aria-pressed") !== "true"; b.setAttribute("aria-pressed", on);
+    if (b.dataset.ov === "track") showTrack = on; else showTruth = on;
+    const i = frameIdx; frameIdx = -1; show(i);
+  });
+  const box = $("#stBox");
+  const scrubTo = (e) => { if (!stGeom || !run) return; const r = box.getBoundingClientRect();
+    const x = (e.clientX - r.left) * stGeom.dpr; const k = Math.round((x - stGeom.padL) / stGeom.iw * (run.frames.length - 1)); seek(k); };
+  let drag = false;
+  box.addEventListener("pointerdown", (e) => { drag = true; box.setPointerCapture(e.pointerId); if (playing) pause(); scrubTo(e); });
+  box.addEventListener("pointermove", (e) => drag && scrubTo(e));
+  box.addEventListener("pointerup", () => (drag = false));
+  box.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); pause(); seek(frameIdx + (e.key === "ArrowRight" ? 1 : -1) * (e.shiftKey ? run.fps : 1)); }
+    if (e.key === "Home") { e.preventDefault(); seek(0); } if (e.key === "End") { e.preventDefault(); seek(run.frames.length - 1); }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.target.closest("select, input, textarea, button, [role=slider]")) return;
+    if (e.code === "Space") { e.preventDefault(); playing ? pause() : play(); }
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); pause(); seek(frameIdx + (e.key === "ArrowRight" ? 1 : -1)); }
+  });
+  function resize() {
+    const svg = $("#plan"), w = svg.getBoundingClientRect().width;
+    if (w) svg.style.setProperty("--fs", (Math.max(11, Math.min(12, w / 40)) * 12.4 / w).toFixed(4) + "px");
+    if (!run) return; const i = frameIdx; frameIdx = -1; show(Math.max(0, i)); }
+  new ResizeObserver(resize).observe(document.body);
+  if (document.fonts) document.fonts.ready.then(resize);
+  listRuns();
+})();
+</script>
+</body>
+</html>

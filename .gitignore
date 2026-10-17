@@ -7,3 +7,8 @@ data/raw/
 *.mp4
 *.mov
 .DS_Store
+.pytest_cache/
+.impeccable/review/
+web/runs/up-*/
+results/take*/
+!web/runs/demo/*.mp4

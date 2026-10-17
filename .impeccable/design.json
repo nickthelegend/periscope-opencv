@@ -1,0 +1,571 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-17T15:50:37+00:00",
+  "title": "Design System: Periscope",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Night Console",
+        "canonical": "#0a0c10",
+        "oklch": "oklch(15.4% 0.009 264)",
+        "cssVar": "--bg",
+        "tonalRamp": [
+          "#090b0f",
+          "#23252a",
+          "#3f4247",
+          "#5f6167",
+          "#7f8288",
+          "#a2a5ab",
+          "#c6c9cf",
+          "#ebeef5"
+        ]
+      },
+      "bg-2": {
+        "role": "neutral",
+        "displayName": "Panel Floor",
+        "canonical": "#0d1015",
+        "oklch": "oklch(17.2% 0.012 261)",
+        "cssVar": "--bg-2",
+        "tonalRamp": [
+          "#080b10",
+          "#22252b",
+          "#3e4248",
+          "#5d6168",
+          "#7e8389",
+          "#a1a5ac",
+          "#c5c9d1",
+          "#eaeff6"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Graphite Panel",
+        "canonical": "#11141a",
+        "oklch": "oklch(19.1% 0.013 264)",
+        "cssVar": "--panel",
+        "tonalRamp": [
+          "#080b11",
+          "#22252c",
+          "#3e4249",
+          "#5d6169",
+          "#7e828a",
+          "#a1a5ae",
+          "#c5c9d2",
+          "#eaeff8"
+        ]
+      },
+      "panel-2": {
+        "role": "neutral",
+        "displayName": "Raised Graphite",
+        "canonical": "#161a22",
+        "oklch": "oklch(21.7% 0.017 264)",
+        "cssVar": "--panel-2",
+        "tonalRamp": [
+          "#080b12",
+          "#21252d",
+          "#3d424b",
+          "#5c616b",
+          "#7d828d",
+          "#a0a5b0",
+          "#c4c9d5",
+          "#e9effa"
+        ]
+      },
+      "well": {
+        "role": "neutral",
+        "displayName": "Instrument Well",
+        "canonical": "#07090c",
+        "oklch": "oklch(13.9% 0.008 256)",
+        "cssVar": "--well",
+        "tonalRamp": [
+          "#090b0e",
+          "#232529",
+          "#3f4246",
+          "#5e6166",
+          "#7f8387",
+          "#a2a5aa",
+          "#c6c9ce",
+          "#ebeff4"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#20252f",
+        "oklch": "oklch(26.4% 0.020 264)",
+        "cssVar": "--line",
+        "tonalRamp": [
+          "#070b14",
+          "#20252f",
+          "#3d424d",
+          "#5b616d",
+          "#7c828f",
+          "#9fa5b2",
+          "#c3c9d7",
+          "#e8effd"
+        ]
+      },
+      "line-2": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "#2c3340",
+        "oklch": "oklch(32.0% 0.025 263)",
+        "cssVar": "--line-2",
+        "tonalRamp": [
+          "#060b16",
+          "#1f2532",
+          "#3b4250",
+          "#5a6170",
+          "#7a8392",
+          "#9da5b5",
+          "#c1cada",
+          "#e6efff"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Signal White",
+        "canonical": "#eceff4",
+        "oklch": "oklch(95.1% 0.007 261)",
+        "cssVar": "--ink",
+        "tonalRamp": [
+          "#090b0e",
+          "#232529",
+          "#404246",
+          "#5f6166",
+          "#808287",
+          "#a2a5aa",
+          "#c6c9ce",
+          "#eceff4"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Instrument Grey",
+        "canonical": "#a9b1bf",
+        "oklch": "oklch(75.8% 0.022 262)",
+        "cssVar": "--ink-2",
+        "tonalRamp": [
+          "#060b14",
+          "#1f2530",
+          "#3c424e",
+          "#5a626e",
+          "#7b8390",
+          "#9ea5b3",
+          "#c1cad8",
+          "#e6effe"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Quiet Grey",
+        "canonical": "#7b8494",
+        "oklch": "oklch(61.1% 0.026 262)",
+        "cssVar": "--ink-3",
+        "tonalRamp": [
+          "#060b16",
+          "#1e2532",
+          "#3a4250",
+          "#596271",
+          "#7a8393",
+          "#9ca5b6",
+          "#c0cadb",
+          "#e6effe"
+        ],
+        "note": "Also bound to --learn: the learning state uses Quiet Grey."
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Wedge Indigo",
+        "canonical": "#9b97ff",
+        "oklch": "oklch(72.4% 0.149 284)",
+        "cssVar": "--accent",
+        "tonalRamp": [
+          "#0b002e",
+          "#240568",
+          "#3d2e8c",
+          "#5950b1",
+          "#7973d7",
+          "#9a96fe",
+          "#c2c3fe",
+          "#ecedfe"
+        ]
+      },
+      "accent-2": {
+        "role": "primary",
+        "displayName": "Bearing Lilac",
+        "canonical": "#b9b6ff",
+        "oklch": "oklch(80.5% 0.102 286)",
+        "cssVar": "--accent-2",
+        "tonalRamp": [
+          "#0c002d",
+          "#231853",
+          "#3e3775",
+          "#5d5798",
+          "#7d79bd",
+          "#9f9ce3",
+          "#c4c2fe",
+          "#ecedff"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "Indigo Ink",
+        "canonical": "#110f2b",
+        "oklch": "oklch(18.9% 0.055 283)",
+        "cssVar": "--accent-ink",
+        "tonalRamp": [
+          "#090621",
+          "#22213f",
+          "#3e3e5e",
+          "#5d5d80",
+          "#7d7fa3",
+          "#a0a1c7",
+          "#c3c5ed",
+          "#ecedfe"
+        ]
+      },
+      "clear": {
+        "role": "secondary",
+        "displayName": "Clear Green",
+        "canonical": "#3ccf8e",
+        "oklch": "oklch(76.2% 0.155 160)",
+        "cssVar": "--clear",
+        "tonalRamp": [
+          "#000f06",
+          "#012d1a",
+          "#024f31",
+          "#04744a",
+          "#079a64",
+          "#27c282",
+          "#5be7a5",
+          "#c4ffdd"
+        ]
+      },
+      "present": {
+        "role": "secondary",
+        "displayName": "Caution Amber",
+        "canonical": "#f2b53c",
+        "oklch": "oklch(81.0% 0.148 80)",
+        "cssVar": "--present",
+        "tonalRamp": [
+          "#120900",
+          "#332200",
+          "#573c00",
+          "#7f5a00",
+          "#a87907",
+          "#d59907",
+          "#fbbd47",
+          "#ffeccc"
+        ]
+      },
+      "coming": {
+        "role": "secondary",
+        "displayName": "Alarm Red",
+        "canonical": "#ff5b4f",
+        "oklch": "oklch(68.8% 0.201 28)",
+        "cssVar": "--coming",
+        "tonalRamp": [
+          "#1f0000",
+          "#4d0002",
+          "#800207",
+          "#b8040f",
+          "#e23e36",
+          "#fe7466",
+          "#feb3a9",
+          "#fee9e6"
+        ],
+        "note": "Light tint #ffb3ad sets warning text in the agent panel and decision log."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single thesis line at the top of the console; one per surface."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section statements and the alert's state line (clamp(24px, 2.4vw, 32px) there); 28px fixed on tool pages."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Panel headings, followed on the baseline by a 12px Quiet Grey caption."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose at 58-70ch; 16px for the intro lede, 13-14px for dense panel text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "dt labels, legends, captions, map notes; sentence case."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Buttons, segments, pills, run selector."
+      },
+      "readout": {
+        "displayName": "Readout",
+        "purpose": "Headline measurements in the alert and evidence panels (22-24px); unit in 13px Quiet Grey."
+      },
+      "readout-small": {
+        "displayName": "Readout Small",
+        "purpose": "HUD chips, transport clock, canvas axis ticks, coordinates, keycaps (11-13px)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel",
+        "value": "0 1px 0 rgba(255,255,255,.035) inset, 0 2px 4px rgba(0,0,0,.3)",
+        "purpose": "Every panel, and nothing else (CSS --shadow)."
+      },
+      {
+        "name": "segment-active",
+        "value": "0 1px 0 rgba(255,255,255,.05) inset, 0 1px 2px rgba(0,0,0,.4)",
+        "purpose": "The pressed option in a segmented control."
+      },
+      {
+        "name": "state-halo",
+        "value": "0 0 0 3px <state colour at 18-25% alpha>",
+        "purpose": "Ring around a status dot (clear .18, present .2, coming .25, learning .18)."
+      },
+      {
+        "name": "alarm-ring",
+        "value": "0 0 0 0 rgba(255,91,79,.55) -> 0 0 0 14px rgba(255,91,79,0)",
+        "purpose": "Plays once over 0.7s when the alert enters the coming state."
+      },
+      {
+        "name": "hud-chip",
+        "value": "backdrop-filter: blur(6px)",
+        "purpose": "HUD chips over video; 72% well-black fill, 8% white border."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Expo-out easing for every state transition (CSS --ease)."
+      },
+      {
+        "name": "duration-press",
+        "value": "150ms",
+        "purpose": "Button press scale(.97); log row hover."
+      },
+      {
+        "name": "duration-state",
+        "value": "200-350ms",
+        "purpose": "Control colour (200ms), status pill (300ms), alert card (350ms)."
+      },
+      {
+        "name": "alarm-in",
+        "value": "700ms",
+        "purpose": "One-shot alarm ring on entering the coming state."
+      },
+      {
+        "name": "ping",
+        "value": "1s infinite",
+        "purpose": "Status and alert dot pulse; loops only while someone is coming."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce -> animation/transition none",
+        "purpose": "Removes all motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "single-column",
+        "value": "1080px",
+        "purpose": "Console and lower grids collapse; floor transport moves above the camera."
+      },
+      {
+        "name": "tool-rail",
+        "value": "860px",
+        "purpose": "Calibration tool's 320px rail drops below the stage."
+      },
+      {
+        "name": "compact",
+        "value": "640px",
+        "purpose": "14px gutter, captions wrap under titles, key hints and speed control hide."
+      }
+    ],
+    "containers": [
+      {
+        "name": "console",
+        "value": "1320px",
+        "purpose": "Primary console max width."
+      },
+      {
+        "name": "tool",
+        "value": "1180px",
+        "purpose": "Secondary tool pages."
+      }
+    ],
+    "canvas": {
+      "wedgeFill": "rgba(155,151,255,.10)",
+      "wedgeStroke": "rgba(155,151,255,.9)",
+      "angleRays": "rgba(255,255,255,.22) dashed 3/3",
+      "truthTrace": "rgba(236,239,244,.55) dashed 4/4",
+      "threshold": "rgba(242,181,60,.55) dashed 3/3",
+      "cursor": "#eceff4",
+      "gridLines": "rgba(255,255,255,.06)",
+      "futureMask": "rgba(7,9,12,.78)",
+      "axisFont": "Geist Mono 10.5-11px"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one primary action per surface (Play run, Copy marks).",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M7 5l12 7-12 7z\" fill=\"currentColor\"/></svg><span>Play run</span></button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:34px;padding:0 14px;border-radius:9px;font:500 13px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);background:var(--accent, #9b97ff);border:1px solid var(--accent, #9b97ff);color:var(--accent-ink, #110f2b);} .ds-btn-primary:hover{background:var(--accent-2, #b9b6ff);border-color:var(--accent-2, #b9b6ff);} .ds-btn-primary:active{transform:scale(.97);} .ds-btn-primary:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Every other action: Undo, Choose frame.",
+      "html": "<button class=\"ds-btn\" type=\"button\">Undo</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:34px;padding:0 14px;border-radius:9px;font:500 13px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);background:var(--panel-2, #161a22);border:1px solid var(--line-2, #2c3340);color:var(--ink, #eceff4);} .ds-btn:hover{background:#1b2029;border-color:#3d4556;} .ds-btn:active{transform:scale(.97);} .ds-btn:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;} .ds-btn:disabled{opacity:.45;cursor:not-allowed;}"
+    },
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "Secondary button squared to 34px with one 16px line icon.",
+      "html": "<button class=\"ds-btn-icon\" type=\"button\" aria-label=\"Restart\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12a8 8 0 1 0 2.4-5.7\"/><path d=\"M4 4v5h5\"/></svg></button>",
+      "css": ".ds-btn-icon{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:34px;padding:0 14px;border-radius:9px;font:500 13px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);width:34px;padding:0;background:var(--panel-2, #161a22);border:1px solid var(--line-2, #2c3340);color:var(--ink, #eceff4);} .ds-btn-icon:hover{background:#1b2029;border-color:#3d4556;} .ds-btn-icon:active{transform:scale(.97);} .ds-btn-icon:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;}"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "custom",
+      "refersTo": "segmented",
+      "description": "The standard view switcher; the pressed option is raised.",
+      "html": "<div class=\"ds-seg\" role=\"group\" aria-label=\"Floor view\"><button type=\"button\" aria-pressed=\"true\">Camera</button><button type=\"button\" aria-pressed=\"false\">Shadow ×70</button></div>",
+      "css": ".ds-seg{display:inline-flex;padding:3px;gap:2px;border:1px solid var(--line, #20252f);border-radius:10px;background:var(--well, #07090c);} .ds-seg button{appearance:none;border:0;background:transparent;color:var(--ink-3, #7b8494);font:500 13px 'Geist', system-ui, sans-serif;height:26px;padding:0 10px;border-radius:7px;cursor:pointer;transition:color .2s,background .2s;} .ds-seg button:hover{color:var(--ink, #eceff4);} .ds-seg button[aria-pressed=\"true\"]{background:var(--panel-2, #161a22);color:var(--ink, #eceff4);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 1px 2px rgba(0,0,0,.4);} .ds-seg button:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;border-radius:6px;}"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "status-pill",
+      "description": "Live corner state in the header; shown here in the coming state.",
+      "html": "<span class=\"ds-status\" data-s=\"coming\" role=\"status\"><span class=\"ds-dot\"></span>Someone is coming</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 14px;border-radius:99px;border:1px solid var(--line, #20252f);background:var(--panel, #11141a);color:var(--ink, #eceff4);font:500 13px 'Geist', system-ui, sans-serif;transition:border-color .3s cubic-bezier(.16,1,.3,1),background .3s cubic-bezier(.16,1,.3,1);} .ds-dot{width:8px;height:8px;border-radius:50%;background:var(--clear, #3ccf8e);box-shadow:0 0 0 3px rgba(60,207,142,.18);} .ds-status[data-s=\"coming\"]{border-color:rgba(255,91,79,.55);background:rgba(255,91,79,.1);} .ds-status[data-s=\"coming\"] .ds-dot{background:var(--coming, #ff5b4f);animation:ds-ping 1s cubic-bezier(.16,1,.3,1) infinite;} @keyframes ds-ping{0%{box-shadow:0 0 0 0 rgba(255,91,79,.55);}100%{box-shadow:0 0 0 9px rgba(255,91,79,0);}} @media (prefers-reduced-motion: reduce){.ds-status .ds-dot{animation:none;}}"
+    },
+    {
+      "name": "Synthetic Tag",
+      "kind": "chip",
+      "refersTo": "tag-synthetic",
+      "description": "Labels synthetic data; the only tag in the system.",
+      "html": "<span class=\"ds-tag\">Synthetic scene</span>",
+      "css": ".ds-tag{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:99px;font:500 12px 'Geist', system-ui, sans-serif;color:#d9d7ff;border:1px solid rgba(155,151,255,.4);background:rgba(155,151,255,.08);white-space:nowrap;}"
+    },
+    {
+      "name": "Run Selector",
+      "kind": "input",
+      "refersTo": "run-select",
+      "description": "Pill-shaped native select for choosing a run.",
+      "html": "<label class=\"ds-runpick\"><select aria-label=\"Choose a run\"><option>Synthetic corner · red top · lit hallway</option></select></label>",
+      "css": ".ds-runpick{position:relative;display:inline-flex;align-items:center;height:34px;padding:0 12px;border:1px solid var(--line, #20252f);border-radius:99px;background:var(--panel, #11141a);font:500 13px 'Geist', system-ui, sans-serif;} .ds-runpick select{appearance:none;background:transparent;border:0;color:var(--ink, #eceff4);font:inherit;padding-right:18px;cursor:pointer;} .ds-runpick select:focus{outline:none;} .ds-runpick:focus-within{border-color:var(--accent, #9b97ff);} .ds-runpick::after{content:\"\";position:absolute;right:12px;top:13px;width:6px;height:6px;border-right:1.5px solid var(--ink-3, #7b8494);border-bottom:1.5px solid var(--ink-3, #7b8494);transform:rotate(45deg);pointer-events:none;}"
+    },
+    {
+      "name": "Panel with Instrument Well",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "The container recipe: titled panel, recessed well, mono HUD chips.",
+      "html": "<section class=\"ds-panel\"><div class=\"ds-ph\"><h2>Floor camera <small>calibrated wedge, 0° wall to 90°</small></h2></div><div class=\"ds-well\"><div class=\"ds-hud\"><span>t 7.30 s</span><span>bearing 64.4°</span></div></div></section>",
+      "css": ".ds-panel{background:linear-gradient(180deg,var(--panel, #11141a),var(--bg-2, #0d1015));border:1px solid var(--line, #20252f);border-radius:14px;box-shadow:0 1px 0 rgba(255,255,255,.035) inset,0 2px 4px rgba(0,0,0,.3);color:var(--ink, #eceff4);font:400 15px/1.55 'Geist', system-ui, sans-serif;max-width:420px;} .ds-ph{display:flex;align-items:center;min-height:46px;padding:12px 14px 0 16px;} .ds-ph h2{margin:0;font-size:15px;font-weight:600;letter-spacing:-.005em;display:flex;align-items:baseline;gap:9px;} .ds-ph small{font-size:12px;font-weight:400;color:var(--ink-3, #7b8494);} .ds-well{position:relative;margin:12px;aspect-ratio:4/3;border-radius:10px;border:1px solid var(--line, #20252f);background:var(--well, #07090c);overflow:hidden;} .ds-hud{position:absolute;left:10px;bottom:10px;display:flex;gap:6px;} .ds-hud span{font:500 12px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;font-variant-numeric:tabular-nums;color:#e6e8ee;background:rgba(7,9,12,.72);border:1px solid rgba(255,255,255,.08);padding:3px 7px;border-radius:6px;backdrop-filter:blur(6px);}"
+    },
+    {
+      "name": "Alert Card",
+      "kind": "custom",
+      "refersTo": "alert-card",
+      "description": "The console's verdict, shown in the coming state with its readout row.",
+      "html": "<section class=\"ds-alert\" data-s=\"coming\"><h3><span class=\"ds-adot\"></span>Someone is coming</h3><p>Bearing 64° and closing on the corner. Stop sent to the vehicle.</p><dl><div><dt>Bearing</dt><dd>64.4<small>°</small></dd></div><div><dt>In view in</dt><dd>2.5<small>s</small></dd></div><div><dt>Shadow strength</dt><dd>21.3<small>σ</small></dd></div></dl></section>",
+      "css": ".ds-alert{position:relative;padding:18px 18px 16px;border-radius:14px;border:1px solid var(--line, #20252f);background:var(--panel, #11141a);color:var(--ink, #eceff4);font:400 15px/1.55 'Geist', system-ui, sans-serif;max-width:420px;box-shadow:0 1px 0 rgba(255,255,255,.035) inset,0 2px 4px rgba(0,0,0,.3);} .ds-alert[data-s=\"coming\"]{border-color:rgba(255,91,79,.7);background:linear-gradient(180deg,rgba(255,91,79,.16),rgba(255,91,79,.04) 70%),var(--panel, #11141a);} .ds-alert h3{margin:2px 0 6px;font-size:28px;line-height:1.08;letter-spacing:-.025em;font-weight:600;color:#fff;} .ds-adot{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--coming, #ff5b4f);margin:0 12px 0 2px;vertical-align:.14em;} .ds-alert p{margin:0;color:var(--ink-2, #a9b1bf);font-size:14px;} .ds-alert dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:16px 0 0;border-top:1px solid var(--line, #20252f);} .ds-alert dl div{padding:12px 12px 0 0;} .ds-alert dl div+div{padding-left:14px;border-left:1px solid var(--line, #20252f);} .ds-alert dt{font-size:12px;color:var(--ink-3, #7b8494);} .ds-alert dd{margin:0;font:500 22px/1.15 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;font-variant-numeric:tabular-nums;letter-spacing:-.02em;} .ds-alert dd small{font-size:13px;color:var(--ink-3, #7b8494);margin-left:2px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Evidence Console",
+    "overview": "Periscope is the category-standard monitoring console, played straight and finished to the bar of Linear, Vercel, Grafana and Waymo-style perception views. Near-black panels carry the instruments: the floor camera with its calibrated wedge, a plan-view map, a spacetime strip, the alert, the agent's reasoning and the scores. Every view runs on the same clock, so any warning can be followed back to the shadow on the floor that caused it. The interface's job is to make a 0.3% change in floor brightness readable and believable.\n\nThe system is dense but quiet. Panels sit edge to edge on a 16px gap and are separated by hairlines. Data sits in recessed wells. Type stays small and steady, and colour carries meaning instead of decoration. The only loud thing on the page is the alarm, and it is loud only while someone is actually coming. Indigo is Periscope's own ink, for whatever the system drew or computed. Green, amber and red describe the corner and nothing else. Geist Mono, with tabular figures, appears only where a number is a measurement.\n\nThe secondary tool pages (calibration) use the same tokens with fewer parts: the panel recipe without the gradient, the same segmented control, buttons and wells. A new surface should look like another panel in the same console, not like a separate site.",
+    "keyCharacteristics": [
+      "Dark only (`color-scheme: dark`), on a cool blue-black neutral ramp.",
+      "Hairline borders (1px) do the structural work; there is almost no shadow.",
+      "Recessed wells hold every video, canvas, map and diagram.",
+      "One indigo system accent, plus a three-colour state triad reserved for corner state.",
+      "Geist for language, Geist Mono for measurements.",
+      "Motion only on state change; reduced motion turns it all off."
+    ],
+    "rules": [
+      {
+        "name": "The Reserved Triad Rule",
+        "body": "Green, amber and red mean corner state (clear, present, coming) and nothing else: no branding, no decorative tints, no category colours. If a colour has to say something that isn't corner state, it is indigo or a neutral.",
+        "section": "colors"
+      },
+      {
+        "name": "The System Ink Rule",
+        "body": "Indigo marks what Periscope itself measured or drew: the wedge, the corner, the bearing, the track. When the alarm fires, the bearing switches from indigo (or white on camera) to Alarm Red. It does not get a third colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Washes, Not Fills Rule",
+        "body": "A state colour fills an area only as a low-alpha wash (10–20% for the alert card, the plan's bearing cone and the status pill). Full-strength state colour is kept for dots, rays, borders and traces.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measurement Mono Rule",
+        "body": "If a string is a measurement (bearing, seconds, σ, metres, pixel coordinates), set it in Geist Mono with `tabular-nums` so values hold still while they update. Words stay in Geist, including words inside a mono-heavy panel.",
+        "section": "typography"
+      },
+      {
+        "name": "The Small Unit Rule",
+        "body": "A unit sits beside its number, smaller (13px) and in Quiet Grey. The number carries the weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Clock Rule",
+        "body": "Every view registers to one frame index: the floor overlay, the plan's bearing, the spacetime cursor, the shadow-strength cursor, the alert readouts and the decision log (future entries fade to 38%). Any new view of run data takes its time from the same cursor and scrubs with it.",
+        "section": "layout"
+      },
+      {
+        "name": "The Wedge-First Rule",
+        "body": "The floor camera is the largest panel and reads first, because it holds the evidence. Derived views (map, spacetime, scores) are always smaller and placed after it.",
+        "section": "layout"
+      },
+      {
+        "name": "The Wells Sink Rule",
+        "body": "Anything that shows signal (video, canvas, plan, diagram, coordinate field) sits in a well darker than its panel. Panels rise slightly and data sinks. Panels never nest inside panels.",
+        "section": "elevation"
+      },
+      {
+        "name": "The State-Only Motion Rule",
+        "body": "Motion marks state changes. Transitions run 150–350ms on `cubic-bezier(.16, 1, .3, 1)`. The 1s ping loops only while someone is coming. `prefers-reduced-motion` removes all animation and transitions.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Truth Is Dashed Rule",
+        "body": "Ground truth and thresholds draw dashed at reduced opacity (true position, truth trace, the 4.9σ line). Periscope's own estimate draws solid. A reader always knows which line is the camera and which is the referee.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do put every video, canvas, map and diagram in an Instrument Well with a 1px Hairline and a 10px radius, inset 12px inside its panel.",
+      "Do set every measurement in Geist Mono with tabular figures, with its unit smaller and in Quiet Grey beside it.",
+      "Do give each panel a Title-scale heading plus a one-line Quiet Grey caption saying what the view shows.",
+      "Do draw ground truth and thresholds dashed and Periscope's estimate solid.",
+      "Do tie every new run-data view to the shared time cursor, so scrubbing one scrubs all.",
+      "Do label synthetic runs with the synthetic tag or in the run name.",
+      "Do keep one primary (Wedge Indigo) button per surface."
+    ],
+    "donts": [
+      "Don't use green, amber or red for anything but corner state: no decorative glows, category colours or brand moments in the triad.",
+      "Don't fill large areas with full-strength state colour. State reaches surfaces only as washes at 20% or less.",
+      "Don't set measurements in proportional Geist, or set prose in Geist Mono.",
+      "Don't nest a panel inside a panel. Inner structure is wells, hairlines and dashed rows.",
+      "Don't animate anything that isn't a state change, and don't loop motion outside the coming state.",
+      "Don't introduce a light theme or a second accent hue. The console is dark-only with one system voice."
+    ]
+  }
+}

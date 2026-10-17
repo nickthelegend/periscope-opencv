@@ -1,0 +1,200 @@
+{
+ "title": "Choose the visual world for Periscope",
+ "question": "The roll assigned Grey Card & Step Wedge. Keep it, take an alternate, or re-roll.",
+ "options": [
+  {
+   "id": "assigned",
+   "label": "Grey Card & Step Wedge",
+   "kicker": "THE ROLL",
+   "lineage": "Kodak grey card, step tablets and colour-control patches",
+   "thesis": "Periscope is photometry of a grey floor, so the console is a calibration target: every reading is a measured patch.",
+   "palette": [
+    "#8b8b88",
+    "#1c1c1b",
+    "#f1f0ec",
+    "#00a0d6",
+    "#d4007a",
+    "#ffd200",
+    "#d0021b"
+   ],
+   "materials": [
+    "matte 18% grey card stock",
+    "printed step wedge",
+    "registration and crop marks"
+   ],
+   "viewport": "The live floor sits on a grey-card field like a target under test, wedge drawn in registration ink, a step-wedge rule on its edge; beside it the spacetime strip as exposed film; the alarm floods a safelight-red band.",
+   "risk": "Mid-grey can read dull or low-contrast if the patches and type are not fully committed.",
+   "raised": [
+    {
+     "from": "challenger-ikeda",
+     "raise": "The 90 angular bins show as a raw, unsmoothed bar field with tabular numbers, the data at full density."
+    },
+    {
+     "from": "challenger-crouwel",
+     "raise": "The calibration wedge and an angle grid stay visible as the page's construction armature."
+    },
+    {
+     "from": "challenger-folio",
+     "raise": "Every view registers to one time cursor and one angle scale, panels sharing a baseline."
+    },
+    {
+     "from": "challenger-metro",
+     "raise": "No card chrome: panels are printed patches on the grey field, type and colour do the work."
+    }
+   ]
+  },
+  {
+   "id": "model-pick",
+   "label": "Sonar Bearing-Time Console",
+   "kicker": "IMPECCABLE\u2019S PICK",
+   "lineage": "naval sonar waterfall and bearing-time recorders",
+   "thesis": "The spacetime image already is a sonar waterfall: bearing across, time falling down, contacts as traces.",
+   "palette": [
+    "#06110f",
+    "#0e2420",
+    "#5df2a3",
+    "#ffb23f",
+    "#e8f3ef"
+   ],
+   "materials": [
+    "phosphor glass",
+    "engraved bezel scales"
+   ],
+   "viewport": "A full-height waterfall dominates, the corner map as a quarter-circle bearing scope, contact readout in engraved mono.",
+   "risk": "Familiar: near the dark-console-with-neon default most runs land on, and close to Quiver's world."
+  },
+  {
+   "id": "challenger-airport",
+   "label": "Junction Wayfinding Band",
+   "verdict": "competitive",
+   "lineage": "airport yellow wayfinding signage",
+   "thesis": "The corner is a junction sign: one yellow band says who is coming, from which side, how soon.",
+   "palette": [
+    "#ffcc00",
+    "#111111",
+    "#ffffff",
+    "#2b2b2b"
+   ],
+   "materials": [
+    "enamelled sign panels",
+    "pictogram insets"
+   ],
+   "viewport": "A monumental yellow band across the top with the hidden person's bearing and seconds-to-corner; the evidence panels hang below like secondary signs.",
+   "case": "Operators recognise it instantly (holds audience); explains the alert, not the shadow physics (loses clarity).",
+   "risk": "Can feel like signage cosplay if the evidence below is weak."
+  },
+  {
+   "id": "challenger-ikeda",
+   "label": "Datamatics Field",
+   "verdict": "declined",
+   "lineage": "Ryoji Ikeda data-sublime installations",
+   "thesis": "Pure black and white bar fields where the signal is the spectacle.",
+   "palette": [
+    "#000000",
+    "#ffffff"
+   ],
+   "materials": [
+    "pixel-crisp bars",
+    "monospace numerics"
+   ],
+   "viewport": "Strobing barcode of angle bins with dense numbers.",
+   "case": "Judges admire it; nobody reads an alert from it; loses both axes.",
+   "kept": "Raw data density: the angular bins as an honest bar field.",
+   "risk": "Unreadable as a safety console."
+  },
+  {
+   "id": "challenger-crouwel",
+   "label": "Crouwel Grid Specimen",
+   "verdict": "declined",
+   "lineage": "Wim Crouwel gridded type specimens",
+   "thesis": "Letterforms built on a visible construction grid.",
+   "palette": [
+    "#ffffff",
+    "#1a1a1a",
+    "#2f6bff"
+   ],
+   "materials": [
+    "graph-paper hairlines"
+   ],
+   "viewport": "Grid-built display type over the console.",
+   "case": "A type poster, not a sensor; loses both axes.",
+   "kept": "The construction grid kept visible as armature.",
+   "risk": "Style over evidence."
+  },
+  {
+   "id": "challenger-folio",
+   "label": "Botanical Folio Plates",
+   "verdict": "declined",
+   "lineage": "fixed-scale botanical life-stage plates",
+   "thesis": "One subject through stages, every plate registered to the same scale.",
+   "palette": [
+    "#f3ecd9",
+    "#4d6b3c",
+    "#b0302a"
+   ],
+   "materials": [
+    "engraved plates",
+    "sepia hairlines"
+   ],
+   "viewport": "Stage plates of the walk: far, near, at the corner.",
+   "case": "Wrong world for warehouses and judges; loses both axes.",
+   "kept": "Registration: every view on one time and angle scale.",
+   "risk": "Precious and slow."
+  },
+  {
+   "id": "challenger-metro",
+   "label": "Metro Typographic Tiles",
+   "verdict": "declined",
+   "lineage": "Windows Phone Metro",
+   "thesis": "Flat colour tiles and giant lowercase, chrome deleted.",
+   "palette": [
+    "#000000",
+    "#00aba9",
+    "#ffffff"
+   ],
+   "materials": [
+    "flat tiles"
+   ],
+   "viewport": "Live tiles for angle, alert and quality.",
+   "case": "Generic once fused; loses both axes.",
+   "kept": "Chrome deletion: no card shells.",
+   "risk": "Dated."
+  }
+ ],
+ "reroll": {
+  "registers": [
+   "safer",
+   "bolder"
+  ]
+ },
+ "canon": true,
+ "canonCard": {
+  "label": "The category standard",
+  "thesis": "A dark monitoring dashboard: video tile, charts, status pills, executed impeccably.",
+  "palette": [
+   "#0d1117",
+   "#161b22",
+   "#e6edf3",
+   "#2f81f7",
+   "#f85149"
+  ],
+  "materials": [
+   "dark panels",
+   "thin charts"
+  ],
+  "viewport": "Header, video left, charts right, alert pill.",
+  "risk": "Indistinguishable from every CV demo by design."
+ },
+ "steer": true,
+ "seed": "4efc73df",
+ "resolved": {
+  "choice": "canon (category standard)",
+  "via": "structured question after the page closed",
+  "craft_bar": [
+   "Quiver page",
+   "Linear/Vercel",
+   "Grafana/Datadog",
+   "Tesla/Waymo viz"
+  ]
+ }
+}
