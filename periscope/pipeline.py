@@ -160,7 +160,9 @@ def export_run(frames, calib: Calibration, fps: float, frame_size, out_dir, *, t
         if eng.bg_frame is None:
             a = np.full_like(f, 128)
         else:
-            d = np.mean(amp_buf, axis=0) - eng.bg_frame
+            # relative change (a shadow multiplies the light), in grey levels of a 150-level floor,
+            # so floor markings with other colours don't light up
+            d = (np.mean(amp_buf, axis=0) / np.maximum(eng.bg_frame, 8.0) - 1.0) * 150.0
             d = cv2.GaussianBlur(d, (0, 0), 6)
             d -= d.reshape(-1, 3).mean(0)                       # no global flicker in the view
             a = np.clip(128 + amp_gain * d, 0, 255).astype(np.uint8)

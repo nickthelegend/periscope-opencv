@@ -28,7 +28,8 @@ def main():
     pos = approach_and_leave(a.fps, empty_s=3.0, tail_s=4.0)
     tail_start = len(pos) / a.fps - 4.0
     # Someone switches a lamp on 1.2 s after the hallway empties: the agent should re-learn.
-    scene = Scene(fps=a.fps, noise_scale=a.noise, exposure_step=0.04, exposure_at_s=tail_start + 1.2)
+    scene = Scene(fps=a.fps, noise_scale=a.noise, exposure_step=0.04, exposure_at_s=tail_start + 1.2,
+                  width=640, height=480, focal_px=480.0, floor_texture=0.05, camera_look=True)
     phi, d = truth_angles(pos)
     info = {
         "kind": "synthetic",

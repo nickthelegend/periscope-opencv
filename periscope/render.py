@@ -52,6 +52,8 @@ class Scene:
     exposure_step: float = 0.0                    # one sudden exposure jump (relative)
     exposure_at_s: float | None = None            # when it happens (default: mid-clip)
     jpeg_quality: int | None = None
+    camera_look: bool = False                     # demo dressing: concrete mottling, safety stripe,
+                                                  # tape marks, skirting, vignette, lens softness, warm WB
     seed: int = 0
     _cache: dict = field(default_factory=dict, repr=False, compare=False)
 
@@ -121,6 +123,8 @@ class Scene:
         tj = np.where(ok, np.nan_to_num(Y + 3) / 0.01, 0).astype(int) % 400
         grain = np.where(floor, tex[tj, ti], 0)
         albedo = np.asarray(self.floor_rgb)[None, None] * (1 + self.floor_texture * grain)[..., None]
+        if self.camera_look:
+            albedo = self._dress_floor(albedo, X, Y, floor, ok)
 
         # Light from the camera's side of the room: a ceiling lamp plus ambient (static).
         lamp = np.array([1.1, -1.4, 2.6])
@@ -130,9 +134,15 @@ class Scene:
 
         # Wall pixels: lit flat paint with a gentle gradient, unaffected by the hidden scene.
         wall_val = np.asarray(self.camera_wall_rgb)[None, None] * (0.55 + 0.15 * (v / H))[..., None]
+        optics = np.ones((H, W, 3))
+        if self.camera_look:
+            skirting = wall & (zw > 0) & (zw < 0.09) & (yw < 0)
+            wall_val = np.where(skirting[..., None], np.array([0.20, 0.20, 0.21])[None, None], wall_val)
+            rr2 = ((u - W / 2) ** 2 + (v - H / 2) ** 2) / ((W / 2) ** 2 + (H / 2) ** 2)
+            optics = (1 - 0.38 * rr2 ** 1.3)[..., None] * np.array([1.05, 1.0, 0.93])[None, None]
 
         st = dict(floor=floor, wall=wall, theta=theta, idx=idx, albedo=albedo, e_vis=e_vis,
-                  wall_val=wall_val, X=X, Y=Y)
+                  wall_val=wall_val, X=X, Y=Y, optics=optics)
         # Exposure: put the wedge's mean at target_dn with an empty hallway.
         cal = self.calibration()
         th, r = cal.polar_maps(W, H)
@@ -141,7 +151,7 @@ class Scene:
         self._cache["static"] = st
         L0 = self.hidden_radiance(None)
         E0 = self._irradiance(st, L0)
-        st["gain"] = self.target_dn / float((albedo * E0)[wedge].mean())
+        st["gain"] = self.target_dn / float((albedo * E0 * optics)[wedge].mean())
         return st
 
     # ---- hidden hallway -------------------------------------------------------------
@@ -215,6 +225,8 @@ class Scene:
             E = self._irradiance(st, L)
             img = st["gain"] * st["albedo"] * E
             img = np.where(st["wall"][..., None], st["gain"] * st["wall_val"] * 1.0, img) * light
+            if self.camera_look:
+                img = cv2.GaussianBlur((img * st["optics"]).astype(np.float32), (0, 0), 0.7).astype(np.float64)
             if self.shake_px:
                 dx, dy = rng.normal(0, self.shake_px, 2)
                 M = np.float32([[1, 0, dx], [0, 1, dy]])
@@ -228,6 +240,26 @@ class Scene:
                 ok, buf = cv2.imencode(".jpg", frame, [cv2.IMWRITE_JPEG_QUALITY, int(self.jpeg_quality)])
                 frame = cv2.imdecode(buf, cv2.IMREAD_COLOR)
             yield frame
+
+    @staticmethod
+    def _dress_floor(albedo, X, Y, floor, ok):
+        """Make the floor read as a real one: concrete mottling, a yellow lane stripe along the
+        wall (outside the wedge) and the five calibration tape crosses. All static, so the
+        empty-hallway background removes them exactly as it would on a real floor."""
+        rng = np.random.default_rng(77)
+        mott = cv2.GaussianBlur(rng.normal(0, 1, (300, 300)).astype(np.float32), (0, 0), 14)
+        mott /= mott.std()
+        mi = np.where(ok, np.nan_to_num(X + 1) / 0.02, 0).astype(int) % 300
+        mj = np.where(ok, np.nan_to_num(Y + 3) / 0.02, 0).astype(int) % 300
+        a = albedo * (1 + 0.07 * np.where(floor, mott[mj, mi], 0))[..., None]
+        Xn, Yn = np.nan_to_num(X), np.nan_to_num(Y)
+        stripe = floor & (Xn > 1.28) & (Xn < 1.38) & (Yn < -0.05)
+        a = np.where(stripe[..., None], np.array([0.78, 0.62, 0.10])[None, None], a)
+        tape = np.zeros_like(floor)
+        for mx, my in MARKS_M[:5]:
+            dx, dy = np.abs(Xn - mx), np.abs(Yn - my)
+            tape |= floor & (((dx < 0.035) & (dy < 0.007)) | ((dy < 0.035) & (dx < 0.007)))
+        return np.where(tape[..., None], np.array([0.15, 0.42, 0.80])[None, None], a)
 
     def with_(self, **kw) -> "Scene":
         return replace(self, _cache={}, **kw)

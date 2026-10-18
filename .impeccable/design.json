@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-17T15:50:37+00:00",
+  "generatedAt": "2026-10-18T07:36:52+00:00",
   "title": "Design System: Periscope",
   "extensions": {
     "colorMeta": {
@@ -143,37 +143,38 @@
       "ink-2": {
         "role": "neutral",
         "displayName": "Instrument Grey",
-        "canonical": "#a9b1bf",
-        "oklch": "oklch(75.8% 0.022 262)",
+        "canonical": "#b3bac7",
+        "oklch": "oklch(78.7% 0.020 263)",
         "cssVar": "--ink-2",
         "tonalRamp": [
-          "#060b14",
-          "#1f2530",
-          "#3c424e",
-          "#5a626e",
-          "#7b8390",
-          "#9ea5b3",
-          "#c1cad8",
-          "#e6effe"
-        ]
+          "#070b14",
+          "#1f242e",
+          "#3a404b",
+          "#585e69",
+          "#777d8a",
+          "#989fab",
+          "#bdc4d2",
+          "#e7effc"
+        ],
+        "note": "Lightened from #a9b1bf for legibility at distance."
       },
       "ink-3": {
         "role": "neutral",
         "displayName": "Quiet Grey",
-        "canonical": "#7b8494",
-        "oklch": "oklch(61.1% 0.026 262)",
+        "canonical": "#8a93a3",
+        "oklch": "oklch(66.1% 0.026 262)",
         "cssVar": "--ink-3",
         "tonalRamp": [
           "#060b16",
-          "#1e2532",
-          "#3a4250",
-          "#596271",
-          "#7a8393",
-          "#9ca5b6",
-          "#c0cadb",
-          "#e6effe"
+          "#1d2431",
+          "#38404e",
+          "#565e6d",
+          "#757e8d",
+          "#969faf",
+          "#bbc5d5",
+          "#e7effe"
         ],
-        "note": "Also bound to --learn: the learning state uses Quiet Grey."
+        "note": "Lightened from #7b8494. Also bound to --learn: the learning state uses Quiet Grey."
       },
       "accent": {
         "role": "primary",
@@ -258,7 +259,8 @@
           "#d59907",
           "#fbbd47",
           "#ffeccc"
-        ]
+        ],
+        "note": "Light tint #f6cf7d sets amber log text."
       },
       "coming": {
         "role": "secondary",
@@ -276,48 +278,215 @@
           "#feb3a9",
           "#fee9e6"
         ],
-        "note": "Light tint #ffb3ad sets warning text in the agent panel and decision log."
+        "note": "Lines and marks in the coming state. Light tint #ffb3ad sets warning text in the agent panel and decision log. Solid fills use the stop family."
+      },
+      "stop": {
+        "role": "tertiary",
+        "displayName": "Stop Red",
+        "canonical": "#e5352b",
+        "oklch": "oklch(60.4% 0.213 29)",
+        "cssVar": "--stop",
+        "tonalRamp": [
+          "#1f0000",
+          "#4b0101",
+          "#7d0103",
+          "#b20307",
+          "#e02f26",
+          "#ff6555",
+          "#ffab9f",
+          "#fee9e6"
+        ],
+        "note": "Solid status-pill fill in the coming state; the 'in view' zone wash (32%) and its legend key (55%)."
+      },
+      "stop-top": {
+        "role": "tertiary",
+        "displayName": "Stop Red, top",
+        "canonical": "#e8382d",
+        "oklch": "oklch(61.2% 0.214 29)",
+        "tonalRamp": [
+          "#1f0000",
+          "#4b0101",
+          "#7d0002",
+          "#b20205",
+          "#e02f25",
+          "#fe6556",
+          "#feac9f",
+          "#fee9e6"
+        ],
+        "note": "Top stop of the STOP alert card's 180deg gradient."
+      },
+      "stop-base": {
+        "role": "tertiary",
+        "displayName": "Stop Red, base",
+        "canonical": "#c42a21",
+        "oklch": "oklch(53.6% 0.191 29)",
+        "tonalRamp": [
+          "#1f0000",
+          "#4b0101",
+          "#7d0002",
+          "#b00c0a",
+          "#d73f33",
+          "#fe6655",
+          "#feac9f",
+          "#fee9e6"
+        ],
+        "note": "Base stop of the STOP alert card's gradient."
+      },
+      "alarm-tint": {
+        "role": "tertiary",
+        "displayName": "Alarm Tint",
+        "canonical": "#ff8a80",
+        "oklch": "oklch(75.9% 0.144 26)",
+        "tonalRamp": [
+          "#1f0001",
+          "#4b0004",
+          "#7a0910",
+          "#9f332f",
+          "#c4554e",
+          "#ea776e",
+          "#feaba2",
+          "#fee9e6"
+        ],
+        "note": "STOP card border; the plan's large bearing readout in the coming state."
+      },
+      "hall-floor": {
+        "role": "neutral",
+        "displayName": "Hallway Floor",
+        "canonical": "#151a24",
+        "oklch": "oklch(21.8% 0.021 264)",
+        "tonalRamp": [
+          "#070b14",
+          "#1f242f",
+          "#3a404b",
+          "#585e6a",
+          "#777d8a",
+          "#989fac",
+          "#bdc4d2",
+          "#e7effd"
+        ],
+        "note": "Walkable floor in the plan view (map well behind it is #0b0e14)."
+      },
+      "hall-wall": {
+        "role": "neutral",
+        "displayName": "Wall Block",
+        "canonical": "#262c38",
+        "oklch": "oklch(29.3% 0.024 264)",
+        "tonalRamp": [
+          "#060b15",
+          "#1e2430",
+          "#39404d",
+          "#575e6b",
+          "#767d8c",
+          "#979fae",
+          "#bcc4d4",
+          "#e7efff"
+        ],
+        "note": "Solid wall mass in the plan and the how-it-works diagram."
+      },
+      "wall-line": {
+        "role": "neutral",
+        "displayName": "Wall Edge",
+        "canonical": "#6a7387",
+        "oklch": "oklch(55.5% 0.033 266)",
+        "tonalRamp": [
+          "#050a19",
+          "#1d2434",
+          "#384052",
+          "#555e71",
+          "#747d92",
+          "#959eb4",
+          "#bac4da",
+          "#e7efff"
+        ],
+        "note": "Wall outline in the plan and diagram."
+      },
+      "tape-blue": {
+        "role": "neutral",
+        "displayName": "Tape Blue",
+        "canonical": "#2f6fd6",
+        "oklch": "oklch(55.7% 0.172 260)",
+        "tonalRamp": [
+          "#000924",
+          "#002055",
+          "#00398c",
+          "#1657bc",
+          "#3979e1",
+          "#629dfe",
+          "#a2c6ff",
+          "#e5efff"
+        ],
+        "note": "Scene material: the physical calibration tape crosses. Legend key only; not a UI accent."
       }
     },
     "typographyMeta": {
+      "stop-word": {
+        "displayName": "Stop Word",
+        "purpose": "The word STOP on the alert card in the coming state; nothing else."
+      },
       "display": {
         "displayName": "Display",
         "purpose": "The single thesis line at the top of the console; one per surface."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section statements and the alert's state line (clamp(24px, 2.4vw, 32px) there); 28px fixed on tool pages."
+        "purpose": "Section statements; the alert state line runs clamp(26px, 2.3vw, 34px), clamp(22px, 1.9vw, 28px) under STOP; 28px fixed on tool pages."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Panel headings, followed on the baseline by a 12px Quiet Grey caption."
+        "purpose": "Panel headings, the agent decision, limits headings; followed by a 13px Quiet Grey caption."
+      },
+      "body-large": {
+        "displayName": "Body Large",
+        "purpose": "Intro lede and long-form explanation at 60-62ch."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Prose at 58-70ch; 16px for the intro lede, 13-14px for dense panel text."
+        "purpose": "Alert explanation, how-it-works steps, limits text."
+      },
+      "body-dense": {
+        "displayName": "Body Dense",
+        "purpose": "Panel text in Instrument Grey: checks, log, footnotes; the run selector."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "dt labels, legends, captions, map notes; sentence case."
+        "purpose": "Captions, legends, alert dt labels, map note, footer; sentence case."
+      },
+      "label-small": {
+        "displayName": "Label Small",
+        "purpose": "The 12px floor: key hints, keycaps, wipe labels, HUD, canvas ticks."
       },
       "control": {
         "displayName": "Control",
-        "purpose": "Buttons, segments, pills, run selector."
+        "purpose": "Buttons and the status pill."
+      },
+      "segment": {
+        "displayName": "Segment",
+        "purpose": "Segmented-control options and the synthetic tag."
       },
       "readout": {
         "displayName": "Readout",
-        "purpose": "Headline measurements in the alert and evidence panels (22-24px); unit in 13px Quiet Grey."
+        "purpose": "Headline measurements in the alert and evidence panels (21-22px under 640px); unit in 14px Quiet Grey Geist."
       },
       "readout-small": {
         "displayName": "Readout Small",
-        "purpose": "HUD chips, transport clock, canvas axis ticks, coordinates, keycaps (11-13px)."
+        "purpose": "HUD chips, keycaps, axis ticks, angle labels (12px); log timestamps, check values (13px); transport clock (14px)."
       }
     },
     "shadows": [
       {
         "name": "panel",
         "value": "0 1px 0 rgba(255,255,255,.035) inset, 0 2px 4px rgba(0,0,0,.3)",
-        "purpose": "Every panel, and nothing else (CSS --shadow)."
+        "purpose": "Every panel (CSS --shadow)."
+      },
+      {
+        "name": "stop-lift",
+        "value": "0 10px 28px -12px rgba(0,0,0,.7), <panel>",
+        "purpose": "The alert card in the coming state only."
+      },
+      {
+        "name": "wipe-handle",
+        "value": "0 4px 12px rgba(0,0,0,.45)",
+        "purpose": "The white drag handle on the camera/shadow divider."
       },
       {
         "name": "segment-active",
@@ -326,18 +495,18 @@
       },
       {
         "name": "state-halo",
-        "value": "0 0 0 3px <state colour at 18-25% alpha>",
-        "purpose": "Ring around a status dot (clear .18, present .2, coming .25, learning .18)."
-      },
-      {
-        "name": "alarm-ring",
-        "value": "0 0 0 0 rgba(255,91,79,.55) -> 0 0 0 14px rgba(255,91,79,0)",
-        "purpose": "Plays once over 0.7s when the alert enters the coming state."
+        "value": "0 0 0 3px <state colour at 18-20% alpha>",
+        "purpose": "Ring around a status dot at rest (clear .18, present .2, learning .18)."
       },
       {
         "name": "hud-chip",
         "value": "backdrop-filter: blur(6px)",
-        "purpose": "HUD chips over video; 72% well-black fill, 8% white border."
+        "purpose": "HUD chips and wipe labels over video; 70-74% well-black fill, 10-12% white border."
+      },
+      {
+        "name": "page-glow",
+        "value": "radial-gradient(1100px 520px at 85% -12%, rgba(155,151,255,.07), transparent 62%)",
+        "purpose": "Faint indigo glow on the page ground; becomes rgba(255,91,79,.14) (1200px 560px at 80% -12%) while someone is coming."
       }
     ],
     "motion": [
@@ -349,30 +518,45 @@
       {
         "name": "duration-press",
         "value": "150ms",
-        "purpose": "Button press scale(.97); log row hover."
+        "purpose": "Button press scale(.97); log row hover; progress bar."
       },
       {
         "name": "duration-state",
         "value": "200-350ms",
-        "purpose": "Control colour (200ms), status pill (300ms), alert card (350ms)."
+        "purpose": "Control colour (200ms), status pill and plan zone (300ms), alert card and page glow (350ms)."
       },
       {
-        "name": "alarm-in",
-        "value": "700ms",
-        "purpose": "One-shot alarm ring on entering the coming state."
+        "name": "stop-in",
+        "value": "600ms scale .985 -> 1.012 -> 1",
+        "purpose": "One-shot settle when the alert card enters STOP."
       },
       {
         "name": "ping",
-        "value": "1s infinite",
+        "value": "1s infinite, white ring 0 -> 9px",
         "purpose": "Status and alert dot pulse; loops only while someone is coming."
       },
       {
+        "name": "rec-blink",
+        "value": "1.6s steps(2) infinite",
+        "purpose": "HUD recording dot; only while the run is playing."
+      },
+      {
+        "name": "kiosk-loop",
+        "value": "autoplay on load; restart 2500ms after end",
+        "purpose": "Off under prefers-reduced-motion and with ?autoplay=0; a user pause stops the loop."
+      },
+      {
         "name": "reduced-motion",
-        "value": "prefers-reduced-motion: reduce -> animation/transition none",
+        "value": "prefers-reduced-motion: reduce -> animation/transition none, autoplay off",
         "purpose": "Removes all motion."
       }
     ],
     "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1700px",
+        "purpose": "Spacetime strip grows from 220px to 250px."
+      },
       {
         "name": "single-column",
         "value": "1080px",
@@ -386,14 +570,14 @@
       {
         "name": "compact",
         "value": "640px",
-        "purpose": "14px gutter, captions wrap under titles, key hints and speed control hide."
+        "purpose": "14px gutter, captions wrap, key hints/speed/synthetic tag hide, map well 10.4:5.6, spacetime 180px."
       }
     ],
     "containers": [
       {
         "name": "console",
-        "value": "1320px",
-        "purpose": "Primary console max width."
+        "value": "1480px",
+        "purpose": "Primary console max width; 28px gutter."
       },
       {
         "name": "tool",
@@ -403,15 +587,52 @@
     ],
     "canvas": {
       "wedgeFill": "rgba(155,151,255,.10)",
-      "wedgeStroke": "rgba(155,151,255,.9)",
-      "angleRays": "rgba(255,255,255,.22) dashed 3/3",
+      "wedgeStroke": "rgba(155,151,255,.95)",
+      "angleRays": "rgba(255,255,255,.25) dashed 3/3",
+      "angleLabels": "600 12px Geist Mono, #eceff4 on rgba(7,9,12,.8) halo",
+      "bearingRayCamera": "#ffffff, #ff5b4f in STOP, 3px with soft dark shadow",
       "truthTrace": "rgba(236,239,244,.55) dashed 4/4",
-      "threshold": "rgba(242,181,60,.55) dashed 3/3",
+      "threshold": "rgba(242,181,60,.6) dashed 3/3, label .9",
       "cursor": "#eceff4",
       "gridLines": "rgba(255,255,255,.06)",
       "futureMask": "rgba(7,9,12,.78)",
-      "axisFont": "Geist Mono 10.5-11px"
-    }
+      "axisFont": "Geist Mono 12px #8a93a3",
+      "wipeDivider": "2px rgba(255,255,255,.85)",
+      "plan": {
+        "well": "#0b0e14",
+        "grid": "rgba(255,255,255,.045)",
+        "protractor": "rgba(155,151,255,.35)",
+        "ticks": "rgba(185,182,255,.55) every 15deg, longer at 0/45/90",
+        "wedge": "rgba(155,151,255,.2) fill, .75 stroke",
+        "bearingCone": "rgba(155,151,255,.24) / rgba(255,91,79,.3) in STOP",
+        "bearingArcAndRay": "#b9b6ff / #ff5b4f in STOP",
+        "zoneStop": "rgba(229,53,43,.32)",
+        "truthRing": "rgba(236,239,244,.55) dashed",
+        "bearingReadout": "600 mono, white, #ff8a80 in STOP, inside the wall block"
+      }
+    },
+    "typeRamp": {
+      "steps": [
+        "12px",
+        "13px",
+        "14px",
+        "15px",
+        "16px"
+      ],
+      "display": [
+        "26px readout",
+        "clamp(26px, 2.6vw, 36px) headline",
+        "clamp(34px, 4vw, 56px) display",
+        "clamp(56px, 6.2vw, 92px) stop word"
+      ],
+      "floor": "12px; judge-critical text 14-16px or larger"
+    },
+    "drift": [
+      {
+        "surface": "web/calibrate.html",
+        "note": "Still declares the earlier ink tones (#a9b1bf, #7b8494) and 34px / 9px-radius / 13px buttons; the console values in DESIGN.md are normative."
+      }
+    ]
   },
   "components": [
     {
@@ -420,7 +641,7 @@
       "refersTo": "button-primary",
       "description": "The one primary action per surface (Play run, Copy marks).",
       "html": "<button class=\"ds-btn-primary\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M7 5l12 7-12 7z\" fill=\"currentColor\"/></svg><span>Play run</span></button>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:34px;padding:0 14px;border-radius:9px;font:500 13px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);background:var(--accent, #9b97ff);border:1px solid var(--accent, #9b97ff);color:var(--accent-ink, #110f2b);} .ds-btn-primary:hover{background:var(--accent-2, #b9b6ff);border-color:var(--accent-2, #b9b6ff);} .ds-btn-primary:active{transform:scale(.97);} .ds-btn-primary:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:38px;padding:0 16px;border-radius:10px;font:600 14px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);min-width:118px;background:var(--accent, #9b97ff);border:1px solid var(--accent, #9b97ff);color:var(--accent-ink, #110f2b);} .ds-btn-primary:hover{background:var(--accent-2, #b9b6ff);border-color:var(--accent-2, #b9b6ff);} .ds-btn-primary:active{transform:scale(.97);} .ds-btn-primary:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;}"
     },
     {
       "name": "Secondary Button",
@@ -428,31 +649,31 @@
       "refersTo": "button-secondary",
       "description": "Every other action: Undo, Choose frame.",
       "html": "<button class=\"ds-btn\" type=\"button\">Undo</button>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:34px;padding:0 14px;border-radius:9px;font:500 13px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);background:var(--panel-2, #161a22);border:1px solid var(--line-2, #2c3340);color:var(--ink, #eceff4);} .ds-btn:hover{background:#1b2029;border-color:#3d4556;} .ds-btn:active{transform:scale(.97);} .ds-btn:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;} .ds-btn:disabled{opacity:.45;cursor:not-allowed;}"
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:38px;padding:0 16px;border-radius:10px;font:600 14px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);background:var(--panel-2, #161a22);border:1px solid var(--line-2, #2c3340);color:var(--ink, #eceff4);} .ds-btn:hover{background:#1b2029;border-color:#3d4556;} .ds-btn:active{transform:scale(.97);} .ds-btn:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;} .ds-btn:disabled{opacity:.45;cursor:not-allowed;}"
     },
     {
       "name": "Icon Button",
       "kind": "button",
       "refersTo": "button-icon",
-      "description": "Secondary button squared to 34px with one 16px line icon.",
+      "description": "Secondary button squared to 38px with one 16px line icon.",
       "html": "<button class=\"ds-btn-icon\" type=\"button\" aria-label=\"Restart\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12a8 8 0 1 0 2.4-5.7\"/><path d=\"M4 4v5h5\"/></svg></button>",
-      "css": ".ds-btn-icon{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:34px;padding:0 14px;border-radius:9px;font:500 13px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);width:34px;padding:0;background:var(--panel-2, #161a22);border:1px solid var(--line-2, #2c3340);color:var(--ink, #eceff4);} .ds-btn-icon:hover{background:#1b2029;border-color:#3d4556;} .ds-btn-icon:active{transform:scale(.97);} .ds-btn-icon:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;}"
+      "css": ".ds-btn-icon{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:38px;padding:0 16px;border-radius:10px;font:600 14px 'Geist', system-ui, sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .15s cubic-bezier(.16,1,.3,1);width:38px;padding:0;background:var(--panel-2, #161a22);border:1px solid var(--line-2, #2c3340);color:var(--ink, #eceff4);} .ds-btn-icon:hover{background:#1b2029;border-color:#3d4556;} .ds-btn-icon:active{transform:scale(.97);} .ds-btn-icon:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;}"
     },
     {
       "name": "Segmented Control",
       "kind": "custom",
       "refersTo": "segmented",
       "description": "The standard view switcher; the pressed option is raised.",
-      "html": "<div class=\"ds-seg\" role=\"group\" aria-label=\"Floor view\"><button type=\"button\" aria-pressed=\"true\">Camera</button><button type=\"button\" aria-pressed=\"false\">Shadow ×70</button></div>",
-      "css": ".ds-seg{display:inline-flex;padding:3px;gap:2px;border:1px solid var(--line, #20252f);border-radius:10px;background:var(--well, #07090c);} .ds-seg button{appearance:none;border:0;background:transparent;color:var(--ink-3, #7b8494);font:500 13px 'Geist', system-ui, sans-serif;height:26px;padding:0 10px;border-radius:7px;cursor:pointer;transition:color .2s,background .2s;} .ds-seg button:hover{color:var(--ink, #eceff4);} .ds-seg button[aria-pressed=\"true\"]{background:var(--panel-2, #161a22);color:var(--ink, #eceff4);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 1px 2px rgba(0,0,0,.4);} .ds-seg button:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;border-radius:6px;}"
+      "html": "<div class=\"ds-seg\" role=\"group\" aria-label=\"Floor view\"><button type=\"button\" aria-pressed=\"true\">Split</button><button type=\"button\" aria-pressed=\"false\">Camera</button><button type=\"button\" aria-pressed=\"false\">Shadow ×70</button></div>",
+      "css": ".ds-seg{display:inline-flex;padding:3px;gap:2px;border:1px solid var(--line, #20252f);border-radius:10px;background:var(--well, #07090c);} .ds-seg button{appearance:none;border:0;background:transparent;color:var(--ink-3, #8a93a3);font:500 13px 'Geist', system-ui, sans-serif;height:28px;padding:0 11px;border-radius:7px;cursor:pointer;transition:color .2s,background .2s;} .ds-seg button:hover{color:var(--ink, #eceff4);} .ds-seg button[aria-pressed=\"true\"]{background:var(--panel-2, #161a22);color:var(--ink, #eceff4);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 1px 2px rgba(0,0,0,.4);} .ds-seg button:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;border-radius:6px;}"
     },
     {
-      "name": "Status Pill",
+      "name": "Status Pill (STOP)",
       "kind": "chip",
-      "refersTo": "status-pill",
-      "description": "Live corner state in the header; shown here in the coming state.",
+      "refersTo": "status-pill-stop",
+      "description": "Live corner state in the header, shown in the coming state: the solid STOP fill.",
       "html": "<span class=\"ds-status\" data-s=\"coming\" role=\"status\"><span class=\"ds-dot\"></span>Someone is coming</span>",
-      "css": ".ds-status{display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 14px;border-radius:99px;border:1px solid var(--line, #20252f);background:var(--panel, #11141a);color:var(--ink, #eceff4);font:500 13px 'Geist', system-ui, sans-serif;transition:border-color .3s cubic-bezier(.16,1,.3,1),background .3s cubic-bezier(.16,1,.3,1);} .ds-dot{width:8px;height:8px;border-radius:50%;background:var(--clear, #3ccf8e);box-shadow:0 0 0 3px rgba(60,207,142,.18);} .ds-status[data-s=\"coming\"]{border-color:rgba(255,91,79,.55);background:rgba(255,91,79,.1);} .ds-status[data-s=\"coming\"] .ds-dot{background:var(--coming, #ff5b4f);animation:ds-ping 1s cubic-bezier(.16,1,.3,1) infinite;} @keyframes ds-ping{0%{box-shadow:0 0 0 0 rgba(255,91,79,.55);}100%{box-shadow:0 0 0 9px rgba(255,91,79,0);}} @media (prefers-reduced-motion: reduce){.ds-status .ds-dot{animation:none;}}"
+      "css": ".ds-status{display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 16px;border-radius:99px;border:1px solid var(--line, #20252f);background:var(--panel, #11141a);color:var(--ink, #eceff4);font:600 14px 'Geist', system-ui, sans-serif;transition:border-color .3s cubic-bezier(.16,1,.3,1),background .3s cubic-bezier(.16,1,.3,1),color .3s;} .ds-dot{width:9px;height:9px;border-radius:50%;background:var(--clear, #3ccf8e);box-shadow:0 0 0 3px rgba(60,207,142,.18);} .ds-status[data-s=\"coming\"]{border-color:var(--stop, #e5352b);background:var(--stop, #e5352b);color:#fff;letter-spacing:.04em;} .ds-status[data-s=\"coming\"] .ds-dot{background:#fff;box-shadow:none;animation:ds-ping 1s cubic-bezier(.16,1,.3,1) infinite;} @keyframes ds-ping{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7);}100%{box-shadow:0 0 0 9px rgba(255,255,255,0);}} @media (prefers-reduced-motion: reduce){.ds-status .ds-dot{animation:none;}}"
     },
     {
       "name": "Synthetic Tag",
@@ -460,7 +681,7 @@
       "refersTo": "tag-synthetic",
       "description": "Labels synthetic data; the only tag in the system.",
       "html": "<span class=\"ds-tag\">Synthetic scene</span>",
-      "css": ".ds-tag{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:99px;font:500 12px 'Geist', system-ui, sans-serif;color:#d9d7ff;border:1px solid rgba(155,151,255,.4);background:rgba(155,151,255,.08);white-space:nowrap;}"
+      "css": ".ds-tag{display:inline-flex;align-items:center;height:28px;padding:0 11px;border-radius:99px;font:500 13px 'Geist', system-ui, sans-serif;color:#dcdaff;border:1px solid rgba(155,151,255,.4);background:rgba(155,151,255,.08);white-space:nowrap;}"
     },
     {
       "name": "Run Selector",
@@ -468,35 +689,44 @@
       "refersTo": "run-select",
       "description": "Pill-shaped native select for choosing a run.",
       "html": "<label class=\"ds-runpick\"><select aria-label=\"Choose a run\"><option>Synthetic corner · red top · lit hallway</option></select></label>",
-      "css": ".ds-runpick{position:relative;display:inline-flex;align-items:center;height:34px;padding:0 12px;border:1px solid var(--line, #20252f);border-radius:99px;background:var(--panel, #11141a);font:500 13px 'Geist', system-ui, sans-serif;} .ds-runpick select{appearance:none;background:transparent;border:0;color:var(--ink, #eceff4);font:inherit;padding-right:18px;cursor:pointer;} .ds-runpick select:focus{outline:none;} .ds-runpick:focus-within{border-color:var(--accent, #9b97ff);} .ds-runpick::after{content:\"\";position:absolute;right:12px;top:13px;width:6px;height:6px;border-right:1.5px solid var(--ink-3, #7b8494);border-bottom:1.5px solid var(--ink-3, #7b8494);transform:rotate(45deg);pointer-events:none;}"
+      "css": ".ds-runpick{position:relative;display:inline-flex;align-items:center;height:36px;padding:0 14px;border:1px solid var(--line, #20252f);border-radius:99px;background:var(--panel, #11141a);font:400 14px 'Geist', system-ui, sans-serif;} .ds-runpick select{appearance:none;background:transparent;border:0;color:var(--ink, #eceff4);font:inherit;padding-right:18px;cursor:pointer;} .ds-runpick select:focus{outline:none;} .ds-runpick:focus-within{border-color:var(--accent, #9b97ff);} .ds-runpick::after{content:\"\";position:absolute;right:14px;top:14px;width:6px;height:6px;border-right:1.5px solid var(--ink-3, #8a93a3);border-bottom:1.5px solid var(--ink-3, #8a93a3);transform:rotate(45deg);pointer-events:none;}"
     },
     {
       "name": "Panel with Instrument Well",
       "kind": "card",
       "refersTo": "panel",
-      "description": "The container recipe: titled panel, recessed well, mono HUD chips.",
-      "html": "<section class=\"ds-panel\"><div class=\"ds-ph\"><h2>Floor camera <small>calibrated wedge, 0° wall to 90°</small></h2></div><div class=\"ds-well\"><div class=\"ds-hud\"><span>t 7.30 s</span><span>bearing 64.4°</span></div></div></section>",
-      "css": ".ds-panel{background:linear-gradient(180deg,var(--panel, #11141a),var(--bg-2, #0d1015));border:1px solid var(--line, #20252f);border-radius:14px;box-shadow:0 1px 0 rgba(255,255,255,.035) inset,0 2px 4px rgba(0,0,0,.3);color:var(--ink, #eceff4);font:400 15px/1.55 'Geist', system-ui, sans-serif;max-width:420px;} .ds-ph{display:flex;align-items:center;min-height:46px;padding:12px 14px 0 16px;} .ds-ph h2{margin:0;font-size:15px;font-weight:600;letter-spacing:-.005em;display:flex;align-items:baseline;gap:9px;} .ds-ph small{font-size:12px;font-weight:400;color:var(--ink-3, #7b8494);} .ds-well{position:relative;margin:12px;aspect-ratio:4/3;border-radius:10px;border:1px solid var(--line, #20252f);background:var(--well, #07090c);overflow:hidden;} .ds-hud{position:absolute;left:10px;bottom:10px;display:flex;gap:6px;} .ds-hud span{font:500 12px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;font-variant-numeric:tabular-nums;color:#e6e8ee;background:rgba(7,9,12,.72);border:1px solid rgba(255,255,255,.08);padding:3px 7px;border-radius:6px;backdrop-filter:blur(6px);}"
+      "description": "The container recipe: titled panel, recessed well, mono HUD chips, legend.",
+      "html": "<section class=\"ds-panel\"><div class=\"ds-ph\"><h2>Corner map <small>plan view, bearing from the corner</small></h2></div><div class=\"ds-well\"><div class=\"ds-hud\"><span>t 7.30 s</span><span>bearing 64.4°</span></div></div><div class=\"ds-legend\"><span><i style=\"background:#b9b6ff\"></i>Bearing Periscope measured</span><span><i class=\"ring\"></i>True position</span><span><i class=\"zone\"></i>Where they step into view</span></div></section>",
+      "css": ".ds-panel{background:linear-gradient(180deg,var(--panel, #11141a),var(--bg-2, #0d1015));border:1px solid var(--line, #20252f);border-radius:14px;box-shadow:0 1px 0 rgba(255,255,255,.035) inset,0 2px 4px rgba(0,0,0,.3);color:var(--ink, #eceff4);font:400 15px/1.55 'Geist', system-ui, sans-serif;max-width:460px;} .ds-ph{display:flex;align-items:center;min-height:48px;padding:12px 14px 0 18px;} .ds-ph h2{margin:0;font-size:16px;font-weight:600;letter-spacing:-.005em;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;} .ds-ph small{font-size:13px;font-weight:400;color:var(--ink-3, #8a93a3);} .ds-well{position:relative;margin:12px;aspect-ratio:10.4/4.9;border-radius:10px;border:1px solid var(--line, #20252f);background:var(--well, #07090c);overflow:hidden;} .ds-hud{position:absolute;left:10px;bottom:10px;display:flex;gap:6px;} .ds-hud span{font:500 12px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;font-variant-numeric:tabular-nums;color:#eef0f5;background:rgba(7,9,12,.74);border:1px solid rgba(255,255,255,.1);padding:4px 8px;border-radius:6px;backdrop-filter:blur(6px);} .ds-legend{display:flex;gap:18px;flex-wrap:wrap;padding:0 18px 16px;font-size:13px;color:var(--ink-3, #8a93a3);} .ds-legend i{display:inline-block;width:16px;height:2px;vertical-align:middle;margin-right:7px;border-radius:2px;} .ds-legend i.ring{width:12px;height:12px;border-radius:50%;border:1.5px dashed rgba(236,239,244,.7);} .ds-legend i.zone{width:14px;height:10px;background:rgba(229,53,43,.55);}"
     },
     {
-      "name": "Alert Card",
+      "name": "Alert Card (STOP)",
       "kind": "custom",
-      "refersTo": "alert-card",
-      "description": "The console's verdict, shown in the coming state with its readout row.",
-      "html": "<section class=\"ds-alert\" data-s=\"coming\"><h3><span class=\"ds-adot\"></span>Someone is coming</h3><p>Bearing 64° and closing on the corner. Stop sent to the vehicle.</p><dl><div><dt>Bearing</dt><dd>64.4<small>°</small></dd></div><div><dt>In view in</dt><dd>2.5<small>s</small></dd></div><div><dt>Shadow strength</dt><dd>21.3<small>σ</small></dd></div></dl></section>",
-      "css": ".ds-alert{position:relative;padding:18px 18px 16px;border-radius:14px;border:1px solid var(--line, #20252f);background:var(--panel, #11141a);color:var(--ink, #eceff4);font:400 15px/1.55 'Geist', system-ui, sans-serif;max-width:420px;box-shadow:0 1px 0 rgba(255,255,255,.035) inset,0 2px 4px rgba(0,0,0,.3);} .ds-alert[data-s=\"coming\"]{border-color:rgba(255,91,79,.7);background:linear-gradient(180deg,rgba(255,91,79,.16),rgba(255,91,79,.04) 70%),var(--panel, #11141a);} .ds-alert h3{margin:2px 0 6px;font-size:28px;line-height:1.08;letter-spacing:-.025em;font-weight:600;color:#fff;} .ds-adot{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--coming, #ff5b4f);margin:0 12px 0 2px;vertical-align:.14em;} .ds-alert p{margin:0;color:var(--ink-2, #a9b1bf);font-size:14px;} .ds-alert dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:16px 0 0;border-top:1px solid var(--line, #20252f);} .ds-alert dl div{padding:12px 12px 0 0;} .ds-alert dl div+div{padding-left:14px;border-left:1px solid var(--line, #20252f);} .ds-alert dt{font-size:12px;color:var(--ink-3, #7b8494);} .ds-alert dd{margin:0;font:500 22px/1.15 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;font-variant-numeric:tabular-nums;letter-spacing:-.02em;} .ds-alert dd small{font-size:13px;color:var(--ink-3, #7b8494);margin-left:2px;}"
+      "refersTo": "alert-card-stop",
+      "description": "The console's verdict in the coming state: the single sanctioned solid state fill.",
+      "html": "<section class=\"ds-alert\" data-s=\"coming\"><div class=\"ds-big\" aria-hidden=\"true\">STOP</div><h3><span class=\"ds-adot\"></span>Someone is coming</h3><p>Bearing 64° and closing. Stop sent to the forklift before they step into view.</p><dl><div><dt>Bearing</dt><dd>64.4<small>°</small></dd></div><div><dt>In view in</dt><dd>2.5<small>s</small></dd></div><div><dt>Shadow strength</dt><dd>21.3<small>σ</small></dd></div></dl></section>",
+      "css": ".ds-alert{position:relative;padding:18px 20px;border-radius:14px;border:1px solid var(--line, #20252f);background:var(--panel, #11141a);color:var(--ink, #eceff4);font:400 15px/1.55 'Geist', system-ui, sans-serif;max-width:460px;box-shadow:0 1px 0 rgba(255,255,255,.035) inset,0 2px 4px rgba(0,0,0,.3);} .ds-big{display:none;} .ds-alert h3{margin:0;display:flex;align-items:center;gap:12px;font-size:30px;line-height:1.05;letter-spacing:-.025em;font-weight:600;} .ds-adot{width:12px;height:12px;border-radius:50%;background:var(--ink-3, #8a93a3);flex:none;} .ds-alert p{margin:8px 0 0;color:var(--ink-2, #b3bac7);font-size:15px;} .ds-alert dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:16px 0 0;border-top:1px solid var(--line, #20252f);} .ds-alert dl div{padding:12px 12px 0 0;} .ds-alert dl div+div{padding-left:16px;border-left:1px solid var(--line, #20252f);} .ds-alert dt{font-size:13px;color:var(--ink-3, #8a93a3);} .ds-alert dd{margin:0;font:500 26px/1.15 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;font-variant-numeric:tabular-nums;letter-spacing:-.02em;} .ds-alert dd small{font:400 14px 'Geist', system-ui, sans-serif;color:var(--ink-3, #8a93a3);margin-left:3px;} .ds-alert[data-s=\"coming\"]{border-color:#ff8a80;background:linear-gradient(180deg,#e8382d,#c42a21);box-shadow:0 10px 28px -12px rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.035) inset,0 2px 4px rgba(0,0,0,.3);animation:ds-stop-in .6s cubic-bezier(.16,1,.3,1) both;} .ds-alert[data-s=\"coming\"] .ds-big{display:block;margin:0 0 2px;font:800 72px/.9 'Geist', system-ui, sans-serif;letter-spacing:-.035em;color:#fff;} .ds-alert[data-s=\"coming\"] h3{color:#fff;font-size:24px;} .ds-alert[data-s=\"coming\"] .ds-adot{background:#fff;} .ds-alert[data-s=\"coming\"] p{color:rgba(255,255,255,.92);} .ds-alert[data-s=\"coming\"] dl, .ds-alert[data-s=\"coming\"] dl div+div{border-color:rgba(255,255,255,.3);} .ds-alert[data-s=\"coming\"] dt, .ds-alert[data-s=\"coming\"] dd small{color:rgba(255,255,255,.82);} .ds-alert[data-s=\"coming\"] dd{color:#fff;} @keyframes ds-stop-in{0%{transform:scale(.985);}40%{transform:scale(1.012);}100%{transform:scale(1);}} @media (prefers-reduced-motion: reduce){.ds-alert{animation:none !important;}}"
+    },
+    {
+      "name": "Camera / Shadow Wipe",
+      "kind": "custom",
+      "refersTo": "wipe-handle",
+      "description": "Split view over two synced videos: a draggable divider with corner labels.",
+      "html": "<div class=\"ds-stage\" style=\"--split:50%\"><div class=\"ds-a\"></div><div class=\"ds-b\"></div><span class=\"ds-wlab l\">Camera</span><span class=\"ds-wlab r\">Shadow ×70</span><div class=\"ds-wipe\"><button type=\"button\" role=\"slider\" aria-label=\"Split between camera and amplified shadow\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"50\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 6l-6 6 6 6M15 6l6 6-6 6\"/></svg></button></div></div>",
+      "css": ".ds-stage{position:relative;max-width:460px;aspect-ratio:4/3;border-radius:10px;border:1px solid var(--line, #20252f);background:var(--well, #07090c);overflow:hidden;} .ds-a,.ds-b{position:absolute;inset:0;} .ds-a{background:linear-gradient(160deg,#3b3a36,#24231f);} .ds-b{background:linear-gradient(160deg,#1a1d2a,#0b0d14);clip-path:inset(0 0 0 var(--split));} .ds-wipe{position:absolute;top:0;bottom:0;left:var(--split);width:0;z-index:3;} .ds-wipe::before{content:\"\";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:rgba(255,255,255,.85);box-shadow:0 0 0 1px rgba(0,0,0,.25);} .ds-wipe button{position:absolute;top:50%;left:0;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;border:0;background:#fff;color:#11141a;cursor:ew-resize;box-shadow:0 4px 12px rgba(0,0,0,.45);display:grid;place-items:center;} .ds-wipe button:focus-visible{outline:2px solid var(--accent, #9b97ff);outline-offset:2px;} .ds-wipe svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;} .ds-wlab{position:absolute;top:10px;z-index:2;font:600 12px 'Geist', system-ui, sans-serif;letter-spacing:.02em;color:#fff;background:rgba(7,9,12,.7);border:1px solid rgba(255,255,255,.12);padding:4px 9px;border-radius:99px;backdrop-filter:blur(6px);} .ds-wlab.l{left:10px;} .ds-wlab.r{right:10px;}"
     }
   ],
   "narrative": {
     "northStar": "The Evidence Console",
-    "overview": "Periscope is the category-standard monitoring console, played straight and finished to the bar of Linear, Vercel, Grafana and Waymo-style perception views. Near-black panels carry the instruments: the floor camera with its calibrated wedge, a plan-view map, a spacetime strip, the alert, the agent's reasoning and the scores. Every view runs on the same clock, so any warning can be followed back to the shadow on the floor that caused it. The interface's job is to make a 0.3% change in floor brightness readable and believable.\n\nThe system is dense but quiet. Panels sit edge to edge on a 16px gap and are separated by hairlines. Data sits in recessed wells. Type stays small and steady, and colour carries meaning instead of decoration. The only loud thing on the page is the alarm, and it is loud only while someone is actually coming. Indigo is Periscope's own ink, for whatever the system drew or computed. Green, amber and red describe the corner and nothing else. Geist Mono, with tabular figures, appears only where a number is a measurement.\n\nThe secondary tool pages (calibration) use the same tokens with fewer parts: the panel recipe without the gradient, the same segmented control, buttons and wells. A new surface should look like another panel in the same console, not like a separate site.",
+    "overview": "Periscope is the category-standard monitoring console, played straight and finished to the bar of Linear, Vercel, Grafana and Waymo-style perception views. Near-black panels carry the instruments: the floor camera with its calibrated wedge and a camera/shadow wipe, a plan-view corner map with a protractor, a spacetime strip, the alert, the agent's reasoning and the scores. Every view runs on the same clock, so any warning can be followed back to the shadow on the floor that caused it. The interface's job is to make a 0.3% change in floor brightness readable and believable, from a judge's distance, without anyone touching it: the run starts on its own and loops.\n\nThe system is dense but quiet. Panels sit edge to edge on a 16px gap and are separated by hairlines. Data sits in recessed wells. Type is steady and never smaller than 12px, and colour carries meaning instead of decoration. The only loud thing on the page is STOP. When someone is coming, the alert card and the header status pill go solid red and the word STOP appears at poster size. It is the single moment the console raises its voice. Indigo is Periscope's own ink, for whatever the system drew or computed. Green, amber and red describe the corner and nothing else. Geist Mono, with tabular figures, appears only where a number is a measurement.\n\nThe secondary tool pages (calibration) use the same tokens with fewer parts: the panel recipe without the gradient, the same segmented control, buttons and wells. A new surface should look like another panel in the same console, not like a separate site.",
     "keyCharacteristics": [
       "Dark only (`color-scheme: dark`), on a cool blue-black neutral ramp.",
       "Hairline borders (1px) do the structural work; there is almost no shadow.",
       "Recessed wells hold every video, canvas, map and diagram.",
       "One indigo system accent, plus a three-colour state triad reserved for corner state.",
-      "Geist for language, Geist Mono for measurements.",
-      "Motion only on state change; reduced motion turns it all off."
+      "One sanctioned solid fill: STOP red, on the alert card and the status pill, only while someone is coming.",
+      "Geist for language, Geist Mono for measurements; a 12px legibility floor.",
+      "Motion only on state change and playback; reduced motion turns it all off, including autoplay."
     ],
     "rules": [
       {
@@ -506,12 +736,12 @@
       },
       {
         "name": "The System Ink Rule",
-        "body": "Indigo marks what Periscope itself measured or drew: the wedge, the corner, the bearing, the track. When the alarm fires, the bearing switches from indigo (or white on camera) to Alarm Red. It does not get a third colour.",
+        "body": "Indigo marks what Periscope itself measured or drew: the wedge, the corner, the protractor, the bearing, the track. When the alarm fires, the bearing switches from lilac (or white on camera) to Alarm Red. It does not get a third colour.",
         "section": "colors"
       },
       {
         "name": "The Washes, Not Fills Rule",
-        "body": "A state colour fills an area only as a low-alpha wash (10–20% for the alert card, the plan's bearing cone and the status pill). Full-strength state colour is kept for dots, rays, borders and traces.",
+        "body": "A state colour fills an area only as a low-alpha wash (10–32%: the present alert card, the plan's bearing cone, the \"in view\" zone). Full-strength state colour is kept for dots, rays, arcs, borders and traces. STOP is the single sanctioned exception: in the coming state, and only then, the alert card and the header status pill fill solid Stop Red with white text. No other surface, state or component takes a solid state fill.",
         "section": "colors"
       },
       {
@@ -521,17 +751,27 @@
       },
       {
         "name": "The Small Unit Rule",
-        "body": "A unit sits beside its number, smaller (13px) and in Quiet Grey. The number carries the weight.",
+        "body": "A unit sits beside its number, smaller (14px next to a 26px readout) and in Quiet Grey. The number carries the weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The Legibility Floor Rule",
+        "body": "No text is set below 12px, in HTML or canvas. Anything a judge must read from a distance (alert text, readouts, panel titles, the status) sits at 14–16px or larger. Labels at 12–13px use Quiet Grey or brighter, never a dimmer tone.",
         "section": "typography"
       },
       {
         "name": "The One Clock Rule",
-        "body": "Every view registers to one frame index: the floor overlay, the plan's bearing, the spacetime cursor, the shadow-strength cursor, the alert readouts and the decision log (future entries fade to 38%). Any new view of run data takes its time from the same cursor and scrubs with it.",
+        "body": "Every view registers to one frame index: both floor videos and the overlay, the plan's bearing and protractor, the spacetime cursor, the shadow-strength cursor, the alert readouts and the decision log (future entries fade to 42%). Any new view of run data takes its time from the same cursor and scrubs with it.",
         "section": "layout"
       },
       {
         "name": "The Wedge-First Rule",
         "body": "The floor camera is the largest panel and reads first, because it holds the evidence. Derived views (map, spacetime, scores) are always smaller and placed after it.",
+        "section": "layout"
+      },
+      {
+        "name": "The Kiosk Rule",
+        "body": "The console plays itself. A run autoplays on load and loops 2.5s after it ends, until someone pauses it. Autoplay is off under `prefers-reduced-motion` and with `?autoplay=0`; a user pause always wins.",
         "section": "layout"
       },
       {
@@ -541,31 +781,35 @@
       },
       {
         "name": "The State-Only Motion Rule",
-        "body": "Motion marks state changes. Transitions run 150–350ms on `cubic-bezier(.16, 1, .3, 1)`. The 1s ping loops only while someone is coming. `prefers-reduced-motion` removes all animation and transitions.",
+        "body": "Motion marks state changes and playback. Transitions run 150–350ms on `cubic-bezier(.16, 1, .3, 1)`. Entering STOP plays a 0.6s scale settle (0.985 → 1.012 → 1) once. The 1s white ping loops only while someone is coming, and the HUD recording dot blinks only while the run is playing. `prefers-reduced-motion` removes all animation and transitions.",
         "section": "elevation"
       },
       {
         "name": "The Truth Is Dashed Rule",
-        "body": "Ground truth and thresholds draw dashed at reduced opacity (true position, truth trace, the 4.9σ line). Periscope's own estimate draws solid. A reader always knows which line is the camera and which is the referee.",
+        "body": "Ground truth and thresholds draw dashed at reduced opacity (the true-position ring on the plan, the truth trace, the 4.9σ line, the calibrated angle rays). Periscope's own estimate draws solid. A reader always knows which line is the camera and which is the referee.",
         "section": "shapes"
       }
     ],
     "dos": [
-      "Do put every video, canvas, map and diagram in an Instrument Well with a 1px Hairline and a 10px radius, inset 12px inside its panel.",
+      "Do put every video, canvas, map and diagram in a well with a 1px border and a 10px radius, inset 12px inside its panel.",
       "Do set every measurement in Geist Mono with tabular figures, with its unit smaller and in Quiet Grey beside it.",
       "Do give each panel a Title-scale heading plus a one-line Quiet Grey caption saying what the view shows.",
+      "Do keep text at 12px or larger, and judge-critical text (alert, readouts, titles, status) at 14–16px or larger.",
       "Do draw ground truth and thresholds dashed and Periscope's estimate solid.",
       "Do tie every new run-data view to the shared time cursor, so scrubbing one scrubs all.",
+      "Do put a legend under any panel that draws keyed marks, with a swatch for each.",
       "Do label synthetic runs with the synthetic tag or in the run name.",
-      "Do keep one primary (Wedge Indigo) button per surface."
+      "Do keep one primary (Wedge Indigo) button per surface.",
+      "Do keep autoplay off under reduced motion and when `?autoplay=0` is set."
     ],
     "donts": [
       "Don't use green, amber or red for anything but corner state: no decorative glows, category colours or brand moments in the triad.",
-      "Don't fill large areas with full-strength state colour. State reaches surfaces only as washes at 20% or less.",
+      "Don't fill a surface with solid state colour anywhere except the STOP alert card and the STOP status pill. Every other state surface is a wash at 32% or less.",
+      "Don't put text on the STOP fill in anything but white or near-white, and don't set it below 14px.",
       "Don't set measurements in proportional Geist, or set prose in Geist Mono.",
       "Don't nest a panel inside a panel. Inner structure is wells, hairlines and dashed rows.",
-      "Don't animate anything that isn't a state change, and don't loop motion outside the coming state.",
-      "Don't introduce a light theme or a second accent hue. The console is dark-only with one system voice."
+      "Don't animate anything that isn't a state change or playback, and don't loop motion outside the coming state and a playing run.",
+      "Don't introduce a light theme or a second accent hue. The console is dark-only with one system voice; Tape Blue keys a physical material, not a UI accent."
     ]
   }
 }
