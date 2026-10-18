@@ -64,8 +64,12 @@ def main():
     ap.add_argument("--min-confidence", type=float, default=MIN_AUTO_CONFIDENCE,
                     help="with --auto: refuse (and ask for --marks) below this detection confidence")
     ap.add_argument("--frame-only", action="store_true", help="just write first_frame.png")
-    ap.add_argument("--r-min", type=float, default=0.12, help="wedge inner radius, metres")
-    ap.add_argument("--r-max", type=float, default=1.0, help="wedge outer radius, metres")
+    ap.add_argument("--r-min", type=float, default=None,
+                    help="wedge inner radius: metres with --marks (default 0.12); with --auto there is no "
+                         "metric floor, so a fraction of the frame's short side (default 0.054)")
+    ap.add_argument("--r-max", type=float, default=None,
+                    help="wedge outer radius: metres with --marks (default 1.0); fraction of the short side "
+                         "with --auto (default 0.45)")
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
     out = Path(a.out or Path(a.video).with_suffix("")).resolve()
@@ -78,9 +82,13 @@ def main():
     h, w = f.shape[:2]
     if a.marks:
         marks = [tuple(map(float, p.split(","))) for p in a.marks.split()]
-        cal = Calibration.from_marks(marks, (w, h), a.r_min, a.r_max)
+        cal = Calibration.from_marks(marks, (w, h), 0.12 if a.r_min is None else a.r_min,
+                                     1.0 if a.r_max is None else a.r_max)
     elif a.auto:
-        det = detect_corner(f, min_confidence=a.min_confidence)
+        radii = {k: v for k, v in (("r_min_frac", a.r_min), ("r_max_frac", a.r_max)) if v is not None}
+        if any(v > 1 for v in radii.values()):
+            raise SystemExit("with --auto, --r-min/--r-max are fractions of the frame's short side (0-1)")
+        det = detect_corner(f, min_confidence=a.min_confidence, **radii)
         if not det.ok:
             raise SystemExit(f"auto calibration refused ({det.reason}); click the tape marks and use --marks")
         marks = None

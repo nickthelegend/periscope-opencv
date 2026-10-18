@@ -113,6 +113,15 @@ def test_cli_auto_writes_calibration_or_refuses(scene, tmp_path):
     assert cal.source == "auto"
     assert np.hypot(*(np.asarray(cal.corner_px) - scene.marks_px()[0])) <= 6.0
 
+    # --r-min/--r-max reach the auto wedge (as fractions of the short side)
+    r = subprocess.run([sys.executable, str(ROOT / "tools" / "calibrate.py"), str(good), "--auto",
+                        "--r-min", "0.1", "--r-max", "0.3", "--out", str(tmp_path / "radii")],
+                       capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    cal2 = Calibration.from_json((tmp_path / "radii" / "calib.json").read_text())
+    short = min(scene.width, scene.height)
+    assert cal2.r_min == pytest.approx(0.1 * short) and cal2.r_max == pytest.approx(0.3 * short)
+
     bad = tmp_path / "flat.mp4"
     _write_clip(bad, np.full((360, 480, 3), 128, np.uint8))
     r = subprocess.run([sys.executable, str(ROOT / "tools" / "calibrate.py"), str(bad), "--auto",
