@@ -146,6 +146,11 @@ class Calibration:
         return (B @ ab.T).T + c
 
 
+CANNY_LEVELS = ((60, 180), (40, 120), (25, 75))
+MIN_AUTO_CONFIDENCE = 0.5
+STEP_FULL = 2.0          # brightness step (in units of strip noise) that counts as a sure wall edge
+
+
 def auto_calibrate(frame_bgr: np.ndarray) -> dict:
     """Suggest the corner and wall ray from one frame (the agent checks it; a human confirms).
 
@@ -154,25 +159,103 @@ def auto_calibrate(frame_bgr: np.ndarray) -> dict:
     Hough segments. The vertical edge is the one that rises in the image; the floor, and so the
     wedge's 90-degree ray, is on the other side of the wall base. Angles from this are only
     approximate (no metric floor plane); the tape marks give exact ones.
+
+    Confidence is how long the two edges are (relative to the frame) times how clean a
+    brightness step each one is: wall against floor is a step on both edges, while floor grain,
+    tape or cables give thin lines with the same brightness on either side.
     """
     gray = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2GRAY) if frame_bgr.ndim == 3 else frame_bgr
     h, w = gray.shape
     blur = cv2.GaussianBlur(gray, (5, 5), 1.5)
     # Several edge strengths: floor grain makes many short, weak edges; the wall's are strong.
-    cands = [_corner_pair(cv2.Canny(blur, lo, hi), h, w) for lo, hi in ((60, 180), (40, 120), (25, 75))]
-    cands = [c for c in cands if c is not None]
-    best = max(cands, key=lambda c: c[0]) if cands else None
-    if best is None:
+    cands = [_corner_pair(cv2.Canny(blur, lo, hi), h, w) for lo, hi in CANNY_LEVELS]
+    found = [c for c in cands if c is not None]
+    if not found:
         return {"corner_px": None, "confidence": 0.0, "reason": "no pair of straight edges meets at a corner"}
-    _, P, vert, base = best
+    score, P, vert, base = max(found, key=lambda c: c[0])
+    length = float(np.clip(score / (0.6 * min(h, w)), 0, 1))
+    g = gray.astype(np.float32)
+    step = min(_step_contrast(g, P, base), _step_contrast(g, P, vert))
+    contrast = float(np.clip(step / STEP_FULL, 0, 1))
+    conf = length * contrast
     wall_dir = (base - P) / np.linalg.norm(base - P)
     perp = np.array([-wall_dir[1], wall_dir[0]])
     up = vert - P
     open_dir = perp if perp @ up < 0 else -perp
-    conf = float(np.clip(best[0] / (0.6 * min(h, w)), 0, 1))
     return {"corner_px": P.tolist(), "wall_px": (P + wall_dir * 100).tolist(),
-            "open_px": (P + open_dir * 100).tolist(), "vertical_px": vert.tolist(), "confidence": conf,
+            "open_px": (P + open_dir * 100).tolist(), "vertical_px": vert.tolist(), "base_px": base.tolist(),
+            "confidence": conf, "edge_length": length, "edge_step": step,
             "reason": "wall base and vertical wall edge meet at the corner"}
+
+
+def _step_contrast(gray, P, far, n=48, near=3, depth=8):
+    """How much of a brightness step the segment P -> far is: |mean left - mean right| / noise.
+
+    Strips `near`..`near+depth` px either side of the segment, skipping the ends (the other
+    edge meets this one at the corner).
+    """
+    h, w = gray.shape
+    d = far - P
+    L = np.linalg.norm(d)
+    if L < 1:
+        return 0.0
+    t = d / L
+    nrm = np.array([-t[1], t[0]])
+    along = P + np.outer(np.linspace(0.15, 0.9, n) * L, t)                       # (n, 2)
+    offs = np.arange(near, near + depth, dtype=np.float64)
+    sides = []
+    for sgn in (1, -1):
+        pts = along[:, None, :] + sgn * offs[None, :, None] * nrm                  # (n, depth, 2)
+        x = np.clip(np.round(pts[..., 0]).astype(int), 0, w - 1)
+        y = np.clip(np.round(pts[..., 1]).astype(int), 0, h - 1)
+        sides.append(gray[y, x])
+    a, b = sides
+    noise = np.sqrt(0.5 * (a.var() + b.var())) + 1.0
+    return float(abs(a.mean() - b.mean()) / noise)
+
+
+@dataclass
+class CornerDetection:
+    """Result of detect_corner: a ready Calibration, or None and the reason it was refused."""
+
+    calibration: Calibration | None
+    confidence: float
+    reason: str
+    suggestion: dict = field(default_factory=dict)   # auto_calibrate's raw output, for overlays
+
+    @property
+    def ok(self) -> bool:
+        return self.calibration is not None
+
+
+def detect_corner(frame_bgr: np.ndarray, min_confidence: float = MIN_AUTO_CONFIDENCE,
+                  r_min_frac: float = 0.054, r_max_frac: float = 0.45) -> CornerDetection:
+    """Corner and floor-wedge edges from one floor frame, as a ray Calibration (no tape marks).
+
+    The wedge's two edges are the wall base (theta = 0) and the image-perpendicular to it on the
+    floor side (theta = 90, approximate without a homography). Radii are fractions of the
+    frame's short side. Below min_confidence it refuses rather than guess: the caller should
+    fall back to the tape marks.
+    """
+    s = auto_calibrate(frame_bgr)
+    conf = float(s["confidence"])
+    if s["corner_px"] is None:
+        return CornerDetection(None, conf, s["reason"], s)
+    if conf < min_confidence:
+        why = []
+        if s["edge_step"] < STEP_FULL:
+            why.append(f"edges are not a clear wall/floor brightness step ({s['edge_step']:.1f} x noise)")
+        if s["edge_length"] < 1:
+            why.append(f"edges are short ({s['edge_length']:.2f} of the expected length)")
+        return CornerDetection(None, conf, f"low confidence {conf:.2f} < {min_confidence:.2f}: "
+                               + ("; ".join(why) or "weak corner"), s)
+    h, w = frame_bgr.shape[:2]
+    rr = min(w, h)
+    cal = Calibration.from_rays(s["corner_px"], s["wall_px"], s["open_px"], (w, h),
+                                r_min=r_min_frac * rr, r_max=r_max_frac * rr)
+    cal.source = "auto"
+    cal.notes.append(f"auto, confidence {conf:.2f}: angles are approximate without tape marks")
+    return CornerDetection(cal, conf, s["reason"], s)
 
 
 def _corner_pair(edges, h, w):

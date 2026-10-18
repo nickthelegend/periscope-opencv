@@ -7,7 +7,8 @@
 
 Mark order (see FILMING.md): corner, wall 50 cm, wall 100 cm, 90-degree line 50 cm,
 90-degree line 100 cm, and optionally the diagonal mark at (1 m, 1 m).
-Without marks, --auto suggests a corner and wall ray from the image (approximate angles).
+Without marks, --auto detects the corner and wall ray from the image (approximate angles); it
+refuses with a reason below --min-confidence, and then you need the marks.
 """
 
 from __future__ import annotations
@@ -23,7 +24,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from periscope.geometry import Calibration, auto_calibrate  # noqa: E402
+from periscope.geometry import MIN_AUTO_CONFIDENCE, Calibration, detect_corner  # noqa: E402
 
 
 def first_frame(path: str, skip_s: float = 0.5):
@@ -60,6 +61,8 @@ def main():
     ap.add_argument("video")
     ap.add_argument("--marks", help='"x,y x,y ..." in protocol order (5 or 6 marks)')
     ap.add_argument("--auto", action="store_true", help="suggest a corner and wall ray from the image")
+    ap.add_argument("--min-confidence", type=float, default=MIN_AUTO_CONFIDENCE,
+                    help="with --auto: refuse (and ask for --marks) below this detection confidence")
     ap.add_argument("--frame-only", action="store_true", help="just write first_frame.png")
     ap.add_argument("--r-min", type=float, default=0.12, help="wedge inner radius, metres")
     ap.add_argument("--r-max", type=float, default=1.0, help="wedge outer radius, metres")
@@ -77,13 +80,12 @@ def main():
         marks = [tuple(map(float, p.split(","))) for p in a.marks.split()]
         cal = Calibration.from_marks(marks, (w, h), a.r_min, a.r_max)
     elif a.auto:
-        s = auto_calibrate(f)
-        if s["corner_px"] is None:
-            raise SystemExit("auto calibration failed: " + s["reason"])
+        det = detect_corner(f, min_confidence=a.min_confidence)
+        if not det.ok:
+            raise SystemExit(f"auto calibration refused ({det.reason}); click the tape marks and use --marks")
         marks = None
-        rr = 0.45 * min(w, h)
-        cal = Calibration.from_rays(s["corner_px"], s["wall_px"], s["open_px"], (w, h), r_min=0.12 * rr, r_max=rr)
-        cal.notes.append(f"auto, confidence {s['confidence']:.2f}: angles are approximate without tape marks")
+        cal = det.calibration
+        print(json.dumps({"auto_confidence": round(det.confidence, 3), "corner_px": list(cal.corner_px)}))
     else:
         raise SystemExit("give --marks or --auto")
     (out / "calib.json").write_text(cal.to_json())

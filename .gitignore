@@ -12,3 +12,5 @@ data/raw/
 web/runs/up-*/
 results/take*/
 !web/runs/demo/*.mp4
+# Loom's local state (event log, attachments, machine config)
+.loom/
