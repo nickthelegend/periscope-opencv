@@ -38,7 +38,7 @@ hidden bearing; a person is a moving dip in their own colour.
 
 ```bash
 uv venv .venv -p 3.12 && uv pip install -p .venv/bin/python -r requirements.txt
-.venv/bin/python -m pytest -q                 # 72 tests, ~55 s
+.venv/bin/python -m pytest -q                 # 75 tests, ~55 s
 .venv/bin/python tools/make_demo.py           # render + run the synthetic corner → web/runs/demo
 .venv/bin/python -m uvicorn server:app --port 8740   # console at http://localhost:8740
 .venv/bin/python tools/snr_sweep.py           # the signal-floor sweep (~10 min)
