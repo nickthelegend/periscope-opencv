@@ -7,6 +7,7 @@ which lets them pretend to be a remote client.
 
 import asyncio
 import json
+import os
 from pathlib import Path
 import shutil
 import socket
@@ -27,7 +28,7 @@ TIMEOUT = httpx.Timeout(3.0)
 @pytest.fixture(scope="module")
 def base():
     with socket.socket() as s:
-        s.bind(("127.0.0.1", 0))
+        s.bind(("127.0.0.1", int(os.getenv("PERISCOPE_TEST_PORT", "0"))))
         port = s.getsockname()[1]
     srv = uvicorn.Server(uvicorn.Config(server.app, host="127.0.0.1", port=port, log_level="warning", lifespan="on"))
     th = threading.Thread(target=srv.run, daemon=True)
@@ -153,7 +154,8 @@ def test_heartbeat_carries_liveness(base):
             t0 = time.monotonic()
             ev, hb2 = s.next()
             assert ev == "heartbeat" and isinstance(hb2["t"], float)
-            assert time.monotonic() - t0 < 2 * 0.2 + 0.3
+            assert hb2["t"] - hb["t"] <= server.HEARTBEAT_S
+            assert time.monotonic() - t0 <= server.HEARTBEAT_S
         finally:
             cm.__exit__(None, None, None)
 
@@ -193,7 +195,7 @@ def test_pause_marks_alert_stale(base, reason):
             alert(c, base, t=1.0)
             s.until("alert")
             status(c, base, "A", live=False, reason=reason)
-            assert s.until("stale") == {"run": "A", "reason": reason, "t": pytest.approx(time.time(), abs=5)}
+            assert s.until("stale") == {"run": "A", "reason": reason, "live": False, "t": pytest.approx(time.time(), abs=5)}
             ev, hb = s.next()
             assert ev == "heartbeat" and hb["live"] is False
         finally:
@@ -215,7 +217,8 @@ def test_keepalive_timeout_marks_stale(base, monkeypatch):
             assert alert(c, base, t=1.0).status_code == 200
             s.until("alert")
             t0 = time.monotonic()
-            assert s.until("stale")["reason"] == "timeout"
+            stale = s.until("stale")
+            assert stale["reason"] == "timeout" and stale["live"] is False
             assert time.monotonic() - t0 < 1.0
         finally:
             cm.__exit__(None, None, None)
@@ -229,7 +232,7 @@ def test_run_switch_while_learning(base):
             alert(c, base, run="A", t=5.0)
             s.until("alert")
             status(c, base, "B")                                       # B is still learning: it publishes nothing
-            assert s.until("stale") == {"run": "A", "reason": "switched", "t": pytest.approx(time.time(), abs=5)}
+            assert s.until("stale") == {"run": "A", "reason": "switched", "live": False, "t": pytest.approx(time.time(), abs=5)}
         finally:
             cm.__exit__(None, None, None)
         cm, late, hb = subscribe(c, base)
@@ -298,6 +301,23 @@ def test_non_loopback_publisher_forbidden():
                 (await c.post("/api/alerts", json={"run": "A", "state": "clear", "confidence": 0, "t": 1})).status_code]
     assert asgi(fn) == [403, 403]
     assert server.bus.live is False
+
+
+@pytest.mark.parametrize("fields", [{"state": "someone"}, {"state": "clear", "level": "stop"}])
+def test_alert_level_error_has_exact_detail(fields):
+    async def fn(c):
+        return await c.post("/api/alerts", json={"run": "A", "confidence": 0.9, "t": 1, **fields})
+    response = asgi(fn, client=("127.0.0.1", 1234))
+    assert response.status_code == 422
+    assert response.json() == {"detail": "level is required for someone and must be null for clear"}
+
+
+def test_other_alert_validation_keeps_field_details():
+    async def fn(c):
+        return await c.post("/api/alerts", json={"run": "A", "state": "clear", "confidence": 2, "t": 1})
+    response = asgi(fn, client=("127.0.0.1", 1234))
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["loc"] == ["body", "confidence"]
 
 
 def test_token_required_when_set(monkeypatch):

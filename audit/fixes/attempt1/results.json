@@ -1,0 +1,33 @@
+{
+  "favicon-console-health": {
+    "check": "passed"
+  },
+  "synthetic-375px": {
+    "check": "passed"
+  },
+  "missing-run-recovery": {
+    "check": "passed"
+  },
+  "heartbeat-and-timeout": {
+    "received_gaps_s": [
+      4.00229999999702,
+      4.001,
+      4.002700000002981
+    ],
+    "server_gaps_s": [
+      4.001942157745361,
+      4.001500844955444,
+      4.002460956573486
+    ],
+    "stale": {
+      "event": "stale",
+      "data": {
+        "run": "demo",
+        "reason": "timeout",
+        "live": false,
+        "t": 1792956790.016225
+      },
+      "received": 15463
+    }
+  }
+}
