@@ -1,0 +1,26 @@
+argv: .venv/bin/python tools/calibrate.py --help
+exit_code: 0
+----- stdout -----
+usage: calibrate.py [-h] [--marks MARKS] [--auto]
+                    [--min-confidence MIN_CONFIDENCE] [--frame-only]
+                    [--r-min R_MIN] [--r-max R_MAX] [--out OUT]
+                    video
+
+positional arguments:
+  video
+
+options:
+  -h, --help            show this help message and exit
+  --marks MARKS         "x,y x,y ..." in protocol order (5 or 6 marks)
+  --auto                suggest a corner and wall ray from the image
+  --min-confidence MIN_CONFIDENCE
+                        with --auto: refuse (and ask for --marks) below this
+                        detection confidence
+  --frame-only          just write first_frame.png
+  --r-min R_MIN         wedge inner radius: metres with --marks (default
+                        0.12); with --auto there is no metric floor, so a
+                        fraction of the frame's short side (default 0.054)
+  --r-max R_MAX         wedge outer radius: metres with --marks (default 1.0);
+                        fraction of the short side with --auto (default 0.45)
+  --out OUT
+----- stderr -----

@@ -1,0 +1,15 @@
+argv: .venv/bin/python tools/bench.py
+exit_code: 0
+----- stdout -----
+{
+ "machine": "arm64",
+ "python": "3.12.12",
+ "opencv": "5.0.0",
+ "threads": 10,
+ "ms_640x360_stabilised": 3.63,
+ "ms_640x360_no_stab": 0.38,
+ "ms_1080p_in_stabilised": 4.0,
+ "ms_phase_correlate_640x360": 2.59,
+ "ms_binning_640x360": 0.22
+}
+----- stderr -----
