@@ -1,0 +1,12 @@
+{
+  "slot": "periscope-audit-runlist",
+  "servers": [
+    {
+      "stage": "empty-and-missing-catalog",
+      "pid": 56363,
+      "killed": true,
+      "exit_code": -15
+    }
+  ],
+  "slot_released": true
+}

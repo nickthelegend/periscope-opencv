@@ -1,0 +1,25 @@
+{
+  "slot": "periscope-audit-runlist",
+  "servers": [
+    {
+      "stage": "empty-and-missing-catalog",
+      "pid": 60546,
+      "killed": true,
+      "exit_code": -15
+    },
+    {
+      "stage": "normal-catalog",
+      "pid": 60914,
+      "killed": true,
+      "exit_code": -15
+    },
+    {
+      "stage": "missing-run",
+      "pid": 61194,
+      "killed": true,
+      "exit_code": -15
+    }
+  ],
+  "slot_released": true,
+  "pytest_exit_code": 0
+}
