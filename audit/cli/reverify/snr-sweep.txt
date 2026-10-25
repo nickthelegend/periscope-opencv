@@ -1,0 +1,11 @@
+argv: .venv/bin/python tools/snr_sweep.py --quick --seeds 1 --out audit/cli/reverify/sweep-quick
+exit_code: 0
+----- stdout -----
+noise x1    SNR3=0.206  recall3m=1.00  mae3m=2.621786014141075  first=4.195548049829665  lead=2.3333333333333335  FA=0.000  pass=True
+noise x3    SNR3=0.069  recall3m=0.97  mae3m=3.09690124885626  first=2.7827387123525376  lead=1.0666666666666667  FA=0.000  pass=True
+noise x8    SNR3=0.026  recall3m=0.72  mae3m=5.26686229307208  first=1.6568589075776106  lead=0.2  FA=0.000  pass=False
+red top (baseline)               SNR3=0.206 recall3m=1.00 mae3m=2.621786014141075 first=4.195548049829665 FA=0.000 pass=True
+navy top                         SNR3=0.234 recall3m=1.00 mae3m=2.6030974895509114 first=4.195548049829665 FA=0.000 pass=True
+mid-grey top                     SNR3=0.095 recall3m=1.00 mae3m=2.8431515959358964 first=3.273291590222638 FA=0.000 pass=True
+signal floor (per-pixel SNR at 3 m): 0.06875657502570781
+----- stderr -----

@@ -1,0 +1,5 @@
+argv: .venv/bin/python tools/calibrate.py audit/cli/reverify/frame.png --frame-only --out audit/cli/reverify/calib/frame-only
+exit_code: 0
+----- stdout -----
+wrote /Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t9/audit/cli/reverify/calib/frame-only/first_frame.png
+----- stderr -----

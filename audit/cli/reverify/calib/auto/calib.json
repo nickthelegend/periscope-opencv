@@ -1,0 +1,26 @@
+{
+  "corner_px": [
+    213.06190622126877,
+    123.92859331903159
+  ],
+  "H": null,
+  "wall_px": [
+    147.55650741013233,
+    199.48680085860974
+  ],
+  "open_px": [
+    288.62011376084695,
+    189.433992130168
+  ],
+  "r_min": 19.44,
+  "r_max": 162.0,
+  "theta_max": 90.0,
+  "image_size": [
+    480,
+    360
+  ],
+  "source": "auto",
+  "notes": [
+    "auto, confidence 1.00: angles are approximate without tape marks"
+  ]
+}

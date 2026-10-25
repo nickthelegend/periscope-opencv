@@ -1,0 +1,29 @@
+argv: rg --files -g '*.py' -g '*.html' -g '*.js' -g '*.toml' -g '*.yml' -g '*.yaml' --glob '!.venv/**' --glob '!audit/**' --glob '!AUDIT.md'
+----- files -----
+periscope/__init__.py
+periscope/engine.py
+periscope/geometry.py
+periscope/groundtruth.py
+periscope/pipeline.py
+periscope/quality.py
+periscope/recon.py
+periscope/render.py
+periscope/track.py
+server.py
+tests/conftest.py
+tests/test_agent.py
+tests/test_alerts.py
+tests/test_autocalib.py
+tests/test_geometry.py
+tests/test_groundtruth.py
+tests/test_nuisance.py
+tests/test_recon.py
+tests/test_run_api.py
+tests/test_snr.py
+tools/bench.py
+tools/calibrate.py
+tools/make_demo.py
+tools/score_footage.py
+tools/snr_sweep.py
+web/calibrate.html
+web/index.html
