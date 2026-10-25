@@ -1,0 +1,18 @@
+{
+  "id": "UI-CALIBRATE-UNDO",
+  "status": "PASS",
+  "expected": "Clicking #undo removes the last clicked point from canvas, marks corresponding list row as uncompleted, and updates #out textarea value",
+  "observed": {
+    "image_dimensions": [
+      480,
+      360
+    ]
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:28Z"
+}

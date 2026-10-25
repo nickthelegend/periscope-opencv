@@ -1,0 +1,46 @@
+{
+  "id": "UI-DECISION-LOG",
+  "status": "PASS",
+  "expected": "Clicking a row in #log pauses playback and seeks all videos to that event timestamp (e.g. clicking row at 16.8 s seeks video currentTime to 16.8 s)",
+  "observed": {
+    "videos": [
+      {
+        "time": 16.774999,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 16.774999,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 16.774999,
+        "paused": true,
+        "rate": 1
+      }
+    ],
+    "screen": {
+      "alertH": "Corner clear",
+      "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+      "statusTxt": "Clear",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "2.6σ",
+      "decA": "Re-learn the background",
+      "decW": "Light changed since the background was learned.",
+      "clock": "16.75 / 19.00 s",
+      "hudT": "t 16.75 s",
+      "playTxt": "Play run",
+      "state": "clear",
+      "action": "relearn_background"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:23Z"
+}

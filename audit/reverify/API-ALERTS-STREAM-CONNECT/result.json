@@ -1,0 +1,28 @@
+{
+  "id": "API-ALERTS-STREAM-CONNECT",
+  "status": "PASS",
+  "expected": "HTTP status 200 with headers Content-Type text/event-stream, Cache-Control no-cache, X-Accel-Buffering no; emits initial event: heartbeat followed by event: alert if an active alert exists",
+  "observed": {
+    "events": [
+      {
+        "event": "alert",
+        "data": {
+          "run": "demo",
+          "state": "someone",
+          "level": "watch",
+          "bearing_deg": 75,
+          "confidence": 0.9,
+          "t": 1
+        },
+        "received": 377.6000000014901
+      }
+    ]
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:44Z"
+}

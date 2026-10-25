@@ -1,0 +1,28 @@
+{
+  "id": "API-ALERTS-PUBLISH-STOP",
+  "status": "PASS",
+  "expected": "HTTP status 200 and JSON response {\"sent\": true, \"subscribers\": <int>}; SSE stream receives event: alert with data {\"run\": \"demo\", \"state\": \"someone\", \"level\": \"stop\", \"bearing_deg\": 73.4}",
+  "observed": {
+    "events": [
+      {
+        "event": "alert",
+        "data": {
+          "run": "demo",
+          "state": "someone",
+          "level": "stop",
+          "bearing_deg": 73.4,
+          "confidence": 0.9,
+          "t": 1
+        },
+        "received": 459.3999999985099
+      }
+    ]
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:43Z"
+}

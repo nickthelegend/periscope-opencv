@@ -1,0 +1,29 @@
+{
+  "id": "ENG-DEMO-FRAME-335-RELEARN",
+  "status": "PASS",
+  "expected": "#decision has data-a=\"relearn_background\"; #decA text is \"Re-learn the background\"; #decW text is \"Light changed since the background was learned.\"; #log contains row with time \"16.8 s\", bold text \"Re-learn the background\", and detail \"lighting or exposure changed; the empty-hallway reference is stale\"",
+  "observed": {
+    "screen": {
+      "alertH": "Corner clear",
+      "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+      "statusTxt": "Clear",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "2.6σ",
+      "decA": "Re-learn the background",
+      "decW": "Light changed since the background was learned.",
+      "clock": "16.75 / 19.00 s",
+      "hudT": "t 16.75 s",
+      "playTxt": "Resume",
+      "state": "clear",
+      "action": "relearn_background"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:06Z"
+}

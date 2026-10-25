@@ -1,0 +1,13 @@
+{
+  "id": "API-ALERTS-AUTH-ORIGIN",
+  "status": "PASS",
+  "expected": "Request with Origin header not matching {scheme}://{host} returns HTTP status 403 Forbidden with detail \"cross-origin publisher refused\"",
+  "observed": {},
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:59Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "ENG-DEMO-FRAME-116-PRESENT",
+  "status": "PASS",
+  "expected": "#alert has data-s=\"present\"; #alertH text is \"Someone in the hidden hallway\"; #statusTxt text is \"Someone hidden\"; #alertP text is \"Bearing 75°. Watching which way they move.\"; #aPhi is \"75.0\" with unit \"°\", #aEta is \"–\", #aZ is \"6.2\" with unit \"σ\"; #decision has data-a=\"watch\", #decA is \"Watching\", #decW is \"Shadow at 75° is 6.2σ above noise; not closing on the corner.\"",
+  "observed": {
+    "screen": {
+      "alertH": "Someone in the hidden hallway",
+      "alertP": "Bearing 75°. Watching which way they move.",
+      "statusTxt": "Someone hidden",
+      "aPhi": "75.0°",
+      "aEta": "–",
+      "aZ": "6.2σ",
+      "decA": "Watching",
+      "decW": "Shadow at 75° is 6.2σ above noise; not closing on the corner.",
+      "clock": "5.80 / 19.00 s",
+      "hudT": "t 5.80 s",
+      "playTxt": "Resume",
+      "state": "present",
+      "action": "watch"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:02Z"
+}

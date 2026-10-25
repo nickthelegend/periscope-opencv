@@ -1,0 +1,14 @@
+INFO:     Started server process [19296]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8740 (Press CTRL+C to quit)
+INFO:     127.0.0.1:61764 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61766 - "GET /calibrate.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61766 - "GET /favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61769 - "POST /api/alerts/status HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:61770 - "POST /api/alerts/status HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:61771 - "POST /api/alerts/status HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [19296]

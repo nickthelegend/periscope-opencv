@@ -1,0 +1,162 @@
+/tmp/grokbot-heavy-slots/slot1
+UI-SERVE-LOCAL: PASS
+UI-RUN-SELECT: PASS
+UI-SYNTH-TAG: PASS
+UI-AUTOPLAY: PASS
+UI-PLAY-PAUSE: PASS
+UI-RESTART: PASS
+UI-REPLAY-LOOP: PASS
+UI-KEY-SHORTCUTS: PASS
+UI-SPEED-CONTROL: PASS
+UI-FLOOR-VIEW: PASS
+UI-WIPE-DIVIDER: PASS
+UI-SPACETIME-SCRUB: PASS
+UI-OVERLAY-TOGGLE: PASS
+UI-MAP-VIEW: PASS
+UI-DECISION-LOG: PASS
+UI-CALIBRATE-PAGE: PASS
+UI-CALIBRATE-LOAD: PASS
+UI-CALIBRATE-MODE: PASS
+UI-CALIBRATE-CLICK: PASS
+UI-CALIBRATE-UNDO: PASS
+UI-CALIBRATE-COPY: FAIL
+API-HEALTH: PASS
+API-RUNS: PASS
+[ WARN:0@7.225] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.225] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.226] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.226] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.226] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.226] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.227] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.227] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.227] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.227] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.228] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.228] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.228] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.229] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.229] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.229] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.229] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.230] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.230] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.230] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.230] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.230] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.231] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.231] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.231] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.232] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.232] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.232] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.232] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.232] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.233] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.233] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.233] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.233] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.233] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.234] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.234] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.235] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.235] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.235] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.235] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.235] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.235] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.236] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.236] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.236] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.236] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.237] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.237] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.237] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.238] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.238] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.238] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.238] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.239] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.239] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.239] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.239] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.239] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.240] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.240] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.240] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.240] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.241] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.241] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.241] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.241] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.241] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.242] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.242] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.242] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.242] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.242] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.243] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.243] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.243] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.243] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.243] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.244] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+[ WARN:0@7.244] global cap_ffmpeg.cpp:219 write FFmpeg: Failed to write frame
+API-ANALYZE-SUCCESS: FAIL
+API-ANALYZE-BAD-CALIB: PASS
+API-ANALYZE-UNREADABLE: PASS
+API-ANALYZE-TOO-LARGE: PASS
+API-ALERTS-STATUS-LIVE: PASS
+API-ALERTS-STATUS-STALE: PASS
+API-ALERTS-PUBLISH-CLEAR: PASS
+API-ALERTS-PUBLISH-SOMEONE: PASS
+API-ALERTS-PUBLISH-STOP: PASS
+API-ALERTS-DEDUP: PASS
+API-ALERTS-STREAM-CONNECT: PASS
+API-ALERTS-STREAM-HEARTBEAT: PASS
+API-ALERTS-AUTH-LOOPBACK: PASS
+API-ALERTS-AUTH-ORIGIN: PASS
+ENG-DEMO-FRAME-0-LEARNING: PASS
+ENG-DEMO-FRAME-40-CLEAR: PASS
+ENG-DEMO-FRAME-116-PRESENT: PASS
+ENG-DEMO-FRAME-127-COMING: FAIL
+ENG-DEMO-FRAME-194-WALKING-AWAY: FAIL
+ENG-DEMO-FRAME-335-RELEARN: PASS
+ENG-CHECKS-ASSESSMENT: PASS
+ENG-GROUND-TRUTH-SCORES: FAIL
+EDGE-375PX-SYNTHETIC-LABEL: PASS
+EDGE-375PX-CONSOLE-LAYOUT: PASS
+EDGE-375PX-CALIBRATE-LAYOUT: PASS
+EDGE-CALIB-EMPTY-STATE: PASS
+EDGE-CALIB-INVALID-FILE: PASS
+EDGE-CALIB-COPY-INCOMPLETE: PASS
+EDGE-INTERRUPT-PAUSE: PASS
+EDGE-INTERRUPT-SEEK: PASS
+EDGE-INTERRUPT-TAB-CLOSE: PASS
+EDGE-INTERRUPT-RUN-SWITCH: PASS
+EDGE-INTERRUPT-REDUCED-MOTION: PASS
+EDGE-ALERT-NOT-LIVE: PASS
+EDGE-ALERT-BACKWARD-T: PASS
+EDGE-ALERT-MALFORMED-BODY: PASS
+/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py:127: RuntimeWarning: coroutine 'overflow.<locals>.flood' was never awaited
+  except Exception as e:c.issues.append(f'{type(e).__name__}: {e}');(c.dir/'traceback.txt').write_text(traceback.format_exc())
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+EDGE-ALERT-SUBSCRIBER-OVERFLOW: FAIL
+EDGE-ALERT-KEEPALIVE-TIMEOUT: PASS
+EDGE-RUNS-EMPTY-FALLBACK: FAIL
+Traceback (most recent call last):
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 457, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 449, in main
+    special_empty(browser,tmp);special_missing(browser,tmp);special_token(browser);special_multi(browser)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 397, in special_missing
+    with serve(runs,'missing'):
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jaibajrang/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 47, in serve
+    s.bind(('127.0.0.1',8740))
+OSError: [Errno 48] Address already in use

@@ -1,0 +1,16 @@
+{
+  "id": "API-ANALYZE-SUCCESS",
+  "status": "PASS",
+  "expected": "HTTP status 200 and JSON response {\"id\": \"up-<hex>\"}; web/runs/up-<hex>/ directory contains run.json, floor.mp4, shadow.mp4, spacetime.png; GET /api/runs subsequently lists the new run id",
+  "observed": {
+    "created_run": "up-a504e161",
+    "new_up_directories_after_cleanup": []
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:55Z"
+}

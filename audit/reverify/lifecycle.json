@@ -1,0 +1,47 @@
+{
+  "servers": [
+    {
+      "stage": "normal",
+      "pid": 71504,
+      "killed": true,
+      "exit_code": -15
+    },
+    {
+      "stage": "empty",
+      "pid": 1406,
+      "killed": true,
+      "exit_code": -15
+    },
+    {
+      "stage": "retry",
+      "pid": 14517,
+      "killed": true,
+      "exit_code": -15
+    },
+    {
+      "stage": "missing",
+      "pid": 19104,
+      "killed": true,
+      "exit_code": -15
+    },
+    {
+      "stage": "token",
+      "pid": 19296,
+      "killed": true,
+      "exit_code": -15
+    },
+    {
+      "stage": "multi-worker-refusal",
+      "pid": 19390,
+      "killed": true,
+      "exit_code": 3
+    },
+    {
+      "stage": "single-worker",
+      "pid": 19401,
+      "killed": true,
+      "exit_code": -15
+    }
+  ],
+  "slot_released": true
+}

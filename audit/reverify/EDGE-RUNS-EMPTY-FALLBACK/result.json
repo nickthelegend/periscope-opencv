@@ -1,0 +1,19 @@
+{
+  "id": "EDGE-RUNS-EMPTY-FALLBACK",
+  "status": "FAIL",
+  "expected": "A failed or empty /api/runs response does not present that hardcoded option as if the server had listed a run; zero console errors",
+  "observed": {
+    "empty_case": "HTTP 200 [], no fabricated option",
+    "failed_case": "Real missing runs directory caused HTTP 500; unavailable panel and zero options"
+  },
+  "issues": [
+    "console error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+    "unexpected HTTP: {'event': 'response', 'url': 'http://127.0.0.1:8740/api/runs', 'status': 500, 'method': 'GET', 'post_data': None}"
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:28Z"
+}

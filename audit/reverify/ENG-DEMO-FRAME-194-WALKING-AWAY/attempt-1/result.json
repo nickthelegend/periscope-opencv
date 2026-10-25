@@ -1,0 +1,31 @@
+{
+  "id": "ENG-DEMO-FRAME-194-WALKING-AWAY",
+  "status": "FAIL",
+  "expected": "#alert has data-s=\"present\"; #alertH text is \"Someone in the hidden hallway\"; #statusTxt text is \"Someone hidden\"; #alertP text is \"Bearing 37° and rising: they are walking away from the corner.\"; #aPhi is \"37.4°\", #aEta is \"–\"; .big text STOP has computed display \"none\"",
+  "observed": {
+    "screen": {
+      "alertH": "Someone in the hidden hallway",
+      "alertP": "Bearing 37° and rising: they are walking away from the corner.",
+      "statusTxt": "Someone hidden",
+      "aPhi": "37.4°",
+      "aEta": "–",
+      "aZ": "106.6σ",
+      "decA": "Stop the vehicle",
+      "decW": "Bearing 37° and falling 3°/s: the walker is heading for the corner line.",
+      "clock": "9.70 / 19.00 s",
+      "hudT": "t 9.70 s",
+      "playTxt": "Resume",
+      "state": "present",
+      "action": "stop_vehicle"
+    }
+  },
+  "issues": [
+    "Error: Locator.evaluate: Error: strict mode violation: locator(\".big\") resolved to 2 elements:\n    1) <div class=\"big\" aria-hidden=\"true\">STOP</div> aka get_by_text(\"STOP\", exact=True)\n    2) <text y=\"1.72\" x=\"-7.55\" class=\"lbl big\" text-anchor=\"start\">37°</text> aka get_by_text(\"37°\", exact=True)\n\nCall log:\n  - waiting for locator(\".big\")\n"
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:05Z"
+}

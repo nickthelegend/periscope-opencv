@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 126, in run
+    try:fn(c)
+        ^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 265, in engine
+    if n in (127,194):c.eq(p.locator('.big').evaluate('(e)=>getComputedStyle(e).display'),'block' if n==127 else 'none','STOP display');c.eq(c.text('.big'),'STOP','STOP text')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 11491, in evaluate
+    self._sync(
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 204, in evaluate
+    return await self._with_element(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 123, in _with_element
+    handle = await self.element_handle(timeout=timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 334, in element_handle
+    handle = await self._frame.wait_for_selector(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Locator.evaluate: Error: strict mode violation: locator(".big") resolved to 2 elements:
+    1) <div class="big" aria-hidden="true">STOP</div> aka locator("#alert").get_by_text("STOP", exact=True)
+    2) <text y="1.72" x="-7.55" class="lbl big" text-anchor="start">73°</text> aka get_by_text("73°", exact=True)
+
+Call log:
+  - waiting for locator(".big")
+

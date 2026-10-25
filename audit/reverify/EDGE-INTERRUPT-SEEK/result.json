@@ -1,0 +1,47 @@
+{
+  "id": "EDGE-INTERRUPT-SEEK",
+  "status": "PASS",
+  "expected": "Scrubbing #stBox or pressing arrow keys pauses video; sends POST /api/alerts/status with live=false and reason \"seek\"; displays alert and HUD values for target frame; zero console errors",
+  "observed": {
+    "target_t": 0.2,
+    "videos": [
+      {
+        "time": 0.225,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 0.225,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 0.225,
+        "paused": true,
+        "rate": 1
+      }
+    ],
+    "screen": {
+      "alertH": "Learning the empty hallway",
+      "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+      "statusTxt": "Learning",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "–",
+      "decA": "Learning the background",
+      "decW": "Measuring the empty floor and its noise before trusting any change.",
+      "clock": "0.20 / 19.00 s",
+      "hudT": "t 0.20 s",
+      "playTxt": "Resume",
+      "state": "learning",
+      "action": "learning"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:15Z"
+}

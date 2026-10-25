@@ -1,0 +1,66 @@
+{
+  "id": "API-ALERTS-STREAM-HEARTBEAT",
+  "status": "PASS",
+  "expected": "SSE stream receives event: heartbeat containing {\"t\": <float>, \"live\": <bool>, \"run\": <string or null>, \"age_s\": <float or null>} at least once every HEARTBEAT_S (5.0 s)",
+  "observed": {
+    "received_gaps_s": [
+      4.00219999999553,
+      4.00170000000298,
+      4.00220000000298
+    ],
+    "server_gaps_s": [
+      4.002319097518921,
+      4.001550912857056,
+      4.0022971630096436
+    ],
+    "heartbeats": [
+      {
+        "event": "heartbeat",
+        "data": {
+          "t": 1792959105.5702798,
+          "live": false,
+          "run": "demo",
+          "age_s": 0.806
+        },
+        "received": 414.3999999985099
+      },
+      {
+        "event": "heartbeat",
+        "data": {
+          "t": 1792959109.572599,
+          "live": false,
+          "run": "demo",
+          "age_s": 4.809
+        },
+        "received": 4416.5999999940395
+      },
+      {
+        "event": "heartbeat",
+        "data": {
+          "t": 1792959113.5741498,
+          "live": false,
+          "run": "demo",
+          "age_s": 8.81
+        },
+        "received": 8418.29999999702
+      },
+      {
+        "event": "heartbeat",
+        "data": {
+          "t": 1792959117.576447,
+          "live": false,
+          "run": "demo",
+          "age_s": 12.812
+        },
+        "received": 12420.5
+      }
+    ]
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:57Z"
+}

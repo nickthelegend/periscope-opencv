@@ -1,0 +1,29 @@
+{
+  "id": "ENG-DEMO-FRAME-127-COMING",
+  "status": "PASS",
+  "expected": "#alert has data-s=\"coming\" and red gradient background; .big text is \"STOP\" with computed display \"block\"; #alertH text is \"Someone at the corner\"; #statusTxt text is \"STOP\"; #alertP text is \"Bearing 73° and closing. Stop sent to the forklift before they step into view.\"; #aPhi is \"73.4°\", #aEta is \"6.3\" with unit \"s\", #aZ is \"10.4\" with unit \"σ\"; #decision has data-a=\"stop_vehicle\", #decA is \"Stop the vehicle\", #decW is \"Bearing 73° and falling 2°/s: the walker is heading for the corner line.\"",
+  "observed": {
+    "screen": {
+      "alertH": "Someone at the corner",
+      "alertP": "Bearing 73° and closing. Stop sent to the forklift before they step into view.",
+      "statusTxt": "STOP",
+      "aPhi": "73.4°",
+      "aEta": "6.3s",
+      "aZ": "10.4σ",
+      "decA": "Stop the vehicle",
+      "decW": "Bearing 73° and falling 2°/s: the walker is heading for the corner line.",
+      "clock": "6.35 / 19.00 s",
+      "hudT": "t 6.35 s",
+      "playTxt": "Resume",
+      "state": "coming",
+      "action": "stop_vehicle"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:56Z"
+}

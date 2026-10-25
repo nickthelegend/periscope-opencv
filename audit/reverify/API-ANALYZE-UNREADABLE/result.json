@@ -1,0 +1,15 @@
+{
+  "id": "API-ANALYZE-UNREADABLE",
+  "status": "PASS",
+  "expected": "HTTP status 422 Unprocessable Entity with detail starting with \"cannot open video:\"; temporary up-* directory is deleted",
+  "observed": {
+    "new_up_directories_after_cleanup": []
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:34Z"
+}

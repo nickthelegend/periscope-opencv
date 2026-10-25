@@ -1,0 +1,13 @@
+{
+  "id": "EDGE-CALIB-EMPTY-STATE",
+  "status": "PASS",
+  "expected": "#drop is visible with text \"No frame loaded yet. Choose an image, or drop one here.\"; canvas #cv has hidden attribute; #copy button has disabled attribute; #out textarea value is empty string",
+  "observed": {},
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:11Z"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "EDGE-ALERT-NOT-LIVE",
+  "status": "PASS",
+  "expected": "HTTP status 409 Conflict with detail \"that run is not playing; post /api/alerts/status first\"",
+  "observed": {},
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:19Z"
+}
