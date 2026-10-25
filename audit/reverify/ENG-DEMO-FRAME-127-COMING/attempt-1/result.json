@@ -1,0 +1,31 @@
+{
+  "id": "ENG-DEMO-FRAME-127-COMING",
+  "status": "FAIL",
+  "expected": "#alert has data-s=\"coming\" and red gradient background; .big text is \"STOP\" with computed display \"block\"; #alertH text is \"Someone at the corner\"; #statusTxt text is \"STOP\"; #alertP text is \"Bearing 73° and closing. Stop sent to the forklift before they step into view.\"; #aPhi is \"73.4°\", #aEta is \"6.3\" with unit \"s\", #aZ is \"10.4\" with unit \"σ\"; #decision has data-a=\"stop_vehicle\", #decA is \"Stop the vehicle\", #decW is \"Bearing 73° and falling 2°/s: the walker is heading for the corner line.\"",
+  "observed": {
+    "screen": {
+      "alertH": "Someone at the corner",
+      "alertP": "Bearing 73° and closing. Stop sent to the forklift before they step into view.",
+      "statusTxt": "STOP",
+      "aPhi": "73.4°",
+      "aEta": "6.3s",
+      "aZ": "10.4σ",
+      "decA": "Stop the vehicle",
+      "decW": "Bearing 73° and falling 2°/s: the walker is heading for the corner line.",
+      "clock": "6.35 / 19.00 s",
+      "hudT": "t 6.35 s",
+      "playTxt": "Resume",
+      "state": "coming",
+      "action": "stop_vehicle"
+    }
+  },
+  "issues": [
+    "Error: Locator.evaluate: Error: strict mode violation: locator(\".big\") resolved to 2 elements:\n    1) <div class=\"big\" aria-hidden=\"true\">STOP</div> aka locator(\"#alert\").get_by_text(\"STOP\", exact=True)\n    2) <text y=\"1.72\" x=\"-7.55\" class=\"lbl big\" text-anchor=\"start\">73°</text> aka get_by_text(\"73°\", exact=True)\n\nCall log:\n  - waiting for locator(\".big\")\n"
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:03Z"
+}

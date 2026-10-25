@@ -1,0 +1,95 @@
+{
+  "requests": [
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:8740/calibrate.html",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:8740/favicon.svg",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "http",
+      "method": "POST",
+      "url": "http://127.0.0.1:8740/api/alerts/status",
+      "status": 200,
+      "body": {
+        "t": 1792959103.7531579,
+        "live": false,
+        "run": "demo",
+        "age_s": 0.674
+      },
+      "request_bytes": 45
+    },
+    {
+      "event": "http",
+      "method": "POST",
+      "url": "http://127.0.0.1:8740/api/alerts/status",
+      "status": 200,
+      "body": {
+        "t": 1792959103.756881,
+        "live": true,
+        "run": "demo",
+        "age_s": 0.0
+      },
+      "request_bytes": 26
+    },
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:8740/api/alerts/stream",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "http",
+      "method": "POST",
+      "url": "http://127.0.0.1:8740/api/alerts",
+      "status": 200,
+      "body": {
+        "sent": true,
+        "subscribers": 1
+      },
+      "request_bytes": 85
+    },
+    {
+      "event": "http",
+      "method": "POST",
+      "url": "http://127.0.0.1:8740/api/alerts",
+      "status": 200,
+      "body": {
+        "sent": false,
+        "subscribers": 1
+      },
+      "request_bytes": 85
+    }
+  ],
+  "failed": []
+}

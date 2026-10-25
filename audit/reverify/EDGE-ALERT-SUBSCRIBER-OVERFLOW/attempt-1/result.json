@@ -1,0 +1,15 @@
+{
+  "id": "EDGE-ALERT-SUBSCRIBER-OVERFLOW",
+  "status": "FAIL",
+  "expected": "Stream emits \"event: resync\" with data {\"reason\": \"subscriber too slow; reconnect\"} and closes connection",
+  "observed": {},
+  "issues": [
+    "RuntimeError: asyncio.run() cannot be called from a running event loop"
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:22Z"
+}

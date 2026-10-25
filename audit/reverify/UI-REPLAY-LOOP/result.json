@@ -1,0 +1,30 @@
+{
+  "id": "UI-REPLAY-LOOP",
+  "status": "PASS",
+  "expected": "When #vFloor reaches duration end, #playTxt becomes \"Replay\"; after 2500 ms kiosk loop timer seeks to frame 0 and restarts playback",
+  "observed": {
+    "restart_delay_s": 2.4993151249946095,
+    "screen": {
+      "alertH": "Learning the empty hallway",
+      "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+      "statusTxt": "Learning",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "–",
+      "decA": "Learning the background",
+      "decW": "Measuring the empty floor and its noise before trusting any change.",
+      "clock": "0.15 / 19.00 s",
+      "hudT": "t 0.15 s",
+      "playTxt": "Pause",
+      "state": "learning",
+      "action": "learning"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:15Z"
+}

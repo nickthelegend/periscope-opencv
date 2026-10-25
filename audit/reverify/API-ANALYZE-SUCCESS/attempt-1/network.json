@@ -1,0 +1,50 @@
+{
+  "requests": [
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:8740/calibrate.html",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:8740/favicon.svg",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "http",
+      "method": "POST",
+      "url": "http://127.0.0.1:8740/api/analyze",
+      "status": 422,
+      "body": {
+        "detail": "cannot open video: /Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/web/runs/up-74ca0242/input.mp4"
+      },
+      "request_bytes": 936
+    }
+  ],
+  "failed": []
+}

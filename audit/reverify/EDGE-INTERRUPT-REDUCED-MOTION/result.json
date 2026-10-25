@@ -1,0 +1,29 @@
+{
+  "id": "EDGE-INTERRUPT-REDUCED-MOTION",
+  "status": "PASS",
+  "expected": "Console does not autoplay on load; #vFloor stays paused; #playTxt displays \"Play run\"; #playBtn aria-label displays \"Play\"",
+  "observed": {
+    "screen": {
+      "alertH": "Learning the empty hallway",
+      "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+      "statusTxt": "Learning",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "–",
+      "decA": "Learning the background",
+      "decW": "Measuring the empty floor and its noise before trusting any change.",
+      "clock": "0.00 / 19.00 s",
+      "hudT": "t 0.00 s",
+      "playTxt": "Play run",
+      "state": "learning",
+      "action": "learning"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:19Z"
+}

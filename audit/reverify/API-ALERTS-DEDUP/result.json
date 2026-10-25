@@ -1,0 +1,28 @@
+{
+  "id": "API-ALERTS-DEDUP",
+  "status": "PASS",
+  "expected": "HTTP status 200 and JSON response {\"sent\": false, \"subscribers\": <int>}; no duplicate alert event is emitted over SSE stream",
+  "observed": {
+    "events": [
+      {
+        "event": "alert",
+        "data": {
+          "run": "demo",
+          "state": "clear",
+          "level": null,
+          "bearing_deg": null,
+          "confidence": 0.9,
+          "t": 1
+        },
+        "received": 381.3999999985099
+      }
+    ]
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:44Z"
+}

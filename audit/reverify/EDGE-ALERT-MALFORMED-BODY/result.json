@@ -1,0 +1,13 @@
+{
+  "id": "EDGE-ALERT-MALFORMED-BODY",
+  "status": "PASS",
+  "expected": "HTTP status 422 Unprocessable Entity with detail \"level is required for someone and must be null for clear\"",
+  "observed": {},
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:21Z"
+}

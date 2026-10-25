@@ -1,0 +1,41 @@
+{
+  "id": "EDGE-INTERRUPT-RUN-SWITCH",
+  "status": "PASS",
+  "expected": "Selecting a new run in #runSel sends POST /api/alerts/status with live=false and reason \"switched\"; server broadcasts SSE stale event with reason \"switched\"; new run loads from frame 0",
+  "observed": {
+    "events": [
+      {
+        "event": "stale",
+        "data": {
+          "run": "demo",
+          "reason": "switched",
+          "live": false,
+          "t": 1792959137.565842
+        },
+        "received": 527.2000000029802
+      }
+    ],
+    "screen": {
+      "alertH": "Learning the empty hallway",
+      "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+      "statusTxt": "Learning",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "–",
+      "decA": "Learning the background",
+      "decW": "Measuring the empty floor and its noise before trusting any change.",
+      "clock": "0.10 / 19.00 s",
+      "hudT": "t 0.10 s",
+      "playTxt": "Pause",
+      "state": "learning",
+      "action": "learning"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:17Z"
+}

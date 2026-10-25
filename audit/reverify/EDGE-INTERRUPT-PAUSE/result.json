@@ -1,0 +1,41 @@
+{
+  "id": "EDGE-INTERRUPT-PAUSE",
+  "status": "PASS",
+  "expected": "Clicking #playBtn or pressing Space pauses #vFloor; #playTxt becomes \"Resume\"; #playBtn aria-label becomes \"Play\"; sends POST /api/alerts/status with live=false and reason \"paused\"",
+  "observed": {
+    "events": [
+      {
+        "event": "stale",
+        "data": {
+          "run": "demo",
+          "reason": "paused",
+          "live": false,
+          "t": 1792959134.0450618
+        },
+        "received": 555.5
+      }
+    ],
+    "screen": {
+      "alertH": "Learning the empty hallway",
+      "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+      "statusTxt": "Learning",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "–",
+      "decA": "Learning the background",
+      "decW": "Measuring the empty floor and its noise before trusting any change.",
+      "clock": "0.20 / 19.00 s",
+      "hudT": "t 0.20 s",
+      "playTxt": "Resume",
+      "state": "learning",
+      "action": "learning"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:14Z"
+}

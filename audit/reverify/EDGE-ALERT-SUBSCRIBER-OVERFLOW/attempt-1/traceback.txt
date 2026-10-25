@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 126, in run
+    try:fn(c)
+        ^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 318, in api
+    elif id=='EDGE-ALERT-SUBSCRIBER-OVERFLOW':overflow(c)
+                                              ^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 379, in overflow
+    lines,closed=asyncio.run(flood());c.observed.update(stream_lines=lines,stream_closed=closed);c.ok('event: resync' in lines,'stream resync event');c.ok(any('subscriber too slow; reconnect' in x for x in lines),'overflow reason');c.ok(closed,'overflow stream closes')
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jaibajrang/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/runners.py", line 191, in run
+    raise RuntimeError(
+RuntimeError: asyncio.run() cannot be called from a running event loop

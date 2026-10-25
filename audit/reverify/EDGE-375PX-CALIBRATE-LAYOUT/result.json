@@ -1,0 +1,19 @@
+{
+  "id": "EDGE-375PX-CALIBRATE-LAYOUT",
+  "status": "PASS",
+  "expected": "At 375px-wide viewport, web/calibrate.html renders without horizontal scroll; canvas stage and control panel stack into a single column; zero console errors",
+  "observed": {
+    "dimensions": {
+      "viewport": 375,
+      "width": 375,
+      "body": 375
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 375,
+    "height": 812
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:10Z"
+}
