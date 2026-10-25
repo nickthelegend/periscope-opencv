@@ -1,0 +1,58 @@
+{
+  "id": "UI-SERVE-LOCAL",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "alertH": "Learning the empty hallway",
+    "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+    "statusTxt": "Learning",
+    "aPhi": "\u2013",
+    "aEta": "\u2013",
+    "aZ": "\u2013",
+    "decA": "Learning the background",
+    "decW": "Measuring the empty floor and its noise before trusting any change.",
+    "clock": "0.60 / 19.00 s",
+    "hudT": "t 0.60 s",
+    "playTxt": "Pause",
+    "state": "learning",
+    "action": "learning",
+    "STOPdisplay": "none",
+    "background": "linear-gradient(rgb(17, 20, 26), rgb(13, 16, 21))",
+    "videos": [
+      {
+        "time": 0.6266,
+        "paused": false,
+        "rate": 1
+      },
+      {
+        "time": 0.6266,
+        "paused": false,
+        "rate": 1
+      },
+      {
+        "time": 0.6265,
+        "paused": false,
+        "rate": 1
+      }
+    ]
+  },
+  "status": "FAIL",
+  "observation": "HTTP 200; exact title and H1. Google Fonts stylesheet status recorded in network.json.; console/page/network errors: [{\"type\": \"error\", \"text\": \"Failed to load resource: the server responded with a status of 404 (Not Found)\"}]"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "UI-DECISION-LOG",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "alertH": "Corner clear",
+    "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+    "statusTxt": "Clear",
+    "aPhi": "\u2013",
+    "aEta": "\u2013",
+    "aZ": "2.6\u03c3",
+    "decA": "Re-learn the background",
+    "decW": "Light changed since the background was learned.",
+    "clock": "16.75 / 19.00 s",
+    "hudT": "t 16.75 s",
+    "playTxt": "Resume",
+    "state": "clear",
+    "action": "relearn_background",
+    "STOPdisplay": "none",
+    "background": "linear-gradient(rgb(17, 20, 26), rgb(13, 16, 21))",
+    "videos": [
+      {
+        "time": 16.774999,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 16.774999,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 16.774999,
+        "paused": true,
+        "rate": 1
+      }
+    ]
+  },
+  "status": "PASS",
+  "observation": "Clicked 16.8s row; paused and all video times [16.774999, 16.774999, 16.774999]."
+}

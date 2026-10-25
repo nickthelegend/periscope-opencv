@@ -1,0 +1,15 @@
+{
+  "server_pids_started_or_owned": [
+    79425,
+    98411,
+    98418,
+    98440
+  ],
+  "all_servers_stopped": true,
+  "heavy_slot_release_exit": 0,
+  "heavy_slot_released": true,
+  "multi_worker_children_exited": [
+    98532,
+    98533
+  ]
+}

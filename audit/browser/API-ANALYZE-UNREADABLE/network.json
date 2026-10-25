@@ -1,0 +1,123 @@
+[
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/calibrate.html",
+    "method": "GET",
+    "resource_type": "document",
+    "body": null
+  },
+  {
+    "event": "cdp-request",
+    "url": "http://127.0.0.1:8740/calibrate.html",
+    "method": "GET",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/calibrate.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    }
+  },
+  {
+    "event": "cdp-response",
+    "url": "http://127.0.0.1:8740/calibrate.html",
+    "status": 200
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    "method": "GET",
+    "resource_type": "stylesheet",
+    "body": null
+  },
+  {
+    "event": "cdp-request",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    "method": "GET",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    "status": 200,
+    "headers": {
+      "content-type": "text/css; charset=utf-8",
+      "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+    }
+  },
+  {
+    "event": "cdp-response",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    "status": 200
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "cdp-request",
+    "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+    "method": "GET",
+    "body": null
+  },
+  {
+    "event": "cdp-request",
+    "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+    "method": "GET",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+    "status": 200,
+    "headers": {
+      "content-type": "font/woff2",
+      "cache-control": "public, max-age=31536000"
+    }
+  },
+  {
+    "event": "cdp-response",
+    "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+    "status": 200
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+    "status": 200,
+    "headers": {
+      "content-type": "font/woff2",
+      "cache-control": "public, max-age=31536000"
+    }
+  },
+  {
+    "event": "cdp-response",
+    "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+    "status": 200
+  },
+  {
+    "via": "Playwright APIRequestContext",
+    "time": 1792955963.976195,
+    "url": "http://127.0.0.1:8740/api/analyze",
+    "method": "POST",
+    "status": 422,
+    "response": {
+      "detail": "cannot open video: /Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4/web/runs/up-97910b5f/input.mp4"
+    },
+    "request_json": null,
+    "headers": {
+      "content-type": "application/json"
+    }
+  }
+]

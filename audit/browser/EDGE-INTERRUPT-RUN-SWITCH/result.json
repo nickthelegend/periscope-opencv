@@ -1,0 +1,79 @@
+{
+  "id": "EDGE-INTERRUPT-RUN-SWITCH",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "sse": [
+    {
+      "event": "heartbeat",
+      "data": {
+        "t": 1792955986.8763819,
+        "live": true,
+        "run": "demo",
+        "age_s": 0.293
+      },
+      "received": 548.0999999940395
+    },
+    {
+      "event": "stale",
+      "data": {
+        "run": "demo",
+        "reason": "switched",
+        "t": 1792955987.61345
+      },
+      "received": 1285.0999999940395
+    }
+  ],
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "alertH": "Learning the empty hallway",
+    "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+    "statusTxt": "Learning",
+    "aPhi": "\u2013",
+    "aEta": "\u2013",
+    "aZ": "\u2013",
+    "decA": "Learning the background",
+    "decW": "Measuring the empty floor and its noise before trusting any change.",
+    "clock": "0.50 / 3.00 s",
+    "hudT": "t 0.50 s",
+    "playTxt": "Pause",
+    "state": "learning",
+    "action": "learning",
+    "STOPdisplay": "none",
+    "background": "linear-gradient(rgb(17, 20, 26), rgb(13, 16, 21))",
+    "videos": [
+      {
+        "time": 0.5392,
+        "paused": false,
+        "rate": 1
+      },
+      {
+        "time": 0.5392,
+        "paused": false,
+        "rate": 1
+      },
+      {
+        "time": 0.5392,
+        "paused": false,
+        "rate": 1
+      }
+    ]
+  },
+  "status": "PASS",
+  "observation": "Observed all expected results."
+}

@@ -1,0 +1,54 @@
+{
+  "id": "EDGE-ALERT-KEEPALIVE-TIMEOUT",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "sse": [
+    {
+      "event": "heartbeat",
+      "data": {
+        "t": 1792955982.327557,
+        "live": true,
+        "run": "demo",
+        "age_s": 0.002
+      },
+      "received": 301.20000000298023
+    },
+    {
+      "event": "stale",
+      "data": {
+        "run": "demo",
+        "reason": "timeout",
+        "t": 1792955985.546016
+      },
+      "received": 3520.10000000149
+    }
+  ],
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "canvasHidden": true,
+    "width": 300,
+    "height": 150,
+    "dropVisible": true,
+    "points": "",
+    "copyDisabled": true,
+    "list": "1\ncorner\n2\nwall, 50 cm\n3\nwall, 100 cm\n4\n90\u00b0 line, 50 cm\n5\n90\u00b0 line, 100 cm\n6\ndiagonal (optional)"
+  },
+  "status": "FAIL",
+  "observation": "stale event live field: observed None; expected False"
+}

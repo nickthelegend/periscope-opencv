@@ -1,0 +1,33 @@
+{
+  "id": "UI-CALIBRATE-COPY",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "canvasHidden": false,
+    "width": 640,
+    "height": 360,
+    "dropVisible": false,
+    "points": "128.0,197.9 192.0,197.9 256.0,197.9 320.0,197.9",
+    "copyDisabled": false,
+    "list": "A\nx \u22121, y 0.4\n128, 198\nB\nx \u22121, y 1.6\n192, 198\nC\nx \u22125, y 0.4\n256, 198\nD\nx \u22125, y 1.6\n320, 198"
+  },
+  "status": "PASS",
+  "observation": "Observed all expected results."
+}

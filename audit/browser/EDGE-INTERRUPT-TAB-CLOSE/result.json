@@ -1,0 +1,61 @@
+{
+  "id": "EDGE-INTERRUPT-TAB-CLOSE",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "monitor_sse": [
+    {
+      "event": "heartbeat",
+      "data": {
+        "t": 1792956155.637694,
+        "live": true,
+        "run": "demo",
+        "age_s": 0.591
+      }
+    },
+    {
+      "event": "stale",
+      "data": {
+        "run": "demo",
+        "reason": "closed",
+        "t": 1792956155.954182
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "canvasHidden": true,
+    "width": 300,
+    "height": 150,
+    "dropVisible": true,
+    "points": "",
+    "copyDisabled": true,
+    "list": "1\ncorner\n2\nwall, 50 cm\n3\nwall, 100 cm\n4\n90\u00b0 line, 50 cm\n5\n90\u00b0 line, 100 cm\n6\ndiagonal (optional)"
+  },
+  "status": "PASS",
+  "observation": "Navigation while playing emitted real server SSE stale reason=closed and bus live=false. Chrome pagehide keepalive itself is omitted by Playwright request events; server receipt is proven by its closed event."
+}

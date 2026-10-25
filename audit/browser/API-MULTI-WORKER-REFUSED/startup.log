@@ -1,0 +1,39 @@
+INFO:     Uvicorn running on http://127.0.0.1:8742 (Press CTRL+C to quit)
+INFO:     Started parent process [98440]
+INFO:     Started server process [98532]
+INFO:     Waiting for application startup.
+INFO:     Started server process [98533]
+INFO:     Waiting for application startup.
+ERROR:    Traceback (most recent call last):
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4/.venv/lib/python3.12/site-packages/starlette/routing.py", line 661, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jaibajrang/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4/server.py", line 181, in lifespan
+    check_single_worker()
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4/server.py", line 170, in check_single_worker
+    raise RuntimeError("the alert feed is process-local: run a single worker (unset WEB_CONCURRENCY / --workers 1)")
+RuntimeError: the alert feed is process-local: run a single worker (unset WEB_CONCURRENCY / --workers 1)
+
+ERROR:    Traceback (most recent call last):
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4/.venv/lib/python3.12/site-packages/starlette/routing.py", line 661, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jaibajrang/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4/server.py", line 181, in lifespan
+    check_single_worker()
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4/server.py", line 170, in check_single_worker
+    raise RuntimeError("the alert feed is process-local: run a single worker (unset WEB_CONCURRENCY / --workers 1)")
+RuntimeError: the alert feed is process-local: run a single worker (unset WEB_CONCURRENCY / --workers 1)
+
+ERROR:    Application startup failed. Exiting.
+ERROR:    Application startup failed. Exiting.
+INFO:     Waiting for child process [98532]
+ERROR:    Child process [98532] failed to start, stopping the parent process.
+INFO:     Waiting for child process [98532]
+INFO:     Waiting for child process [98533]
+INFO:     Stopping parent process [98440]
