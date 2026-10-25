@@ -70,6 +70,8 @@ class Status(BaseModel):
     def _live_needs_run(self):
         if self.live and not self.run:
             raise ValueError("live status needs a run")
+        if not self.live and self.reason == "playing":
+            raise ValueError("a non-live status needs a stale reason")
         return self
 
 
@@ -269,6 +271,7 @@ async def _events(b: AlertBus, disconnected, sub: Subscriber | None = None):
     sub = sub or b.subscribe()
     try:
         b.expire()
+        next_heartbeat = time.monotonic() + HEARTBEAT_S
         yield _sse("heartbeat", b.heartbeat())
         if (a := b.current()) is not None:
             yield _sse("alert", a.model_dump())
@@ -276,10 +279,16 @@ async def _events(b: AlertBus, disconnected, sub: Subscriber | None = None):
             if sub.overflow:
                 yield _sse("resync", {"t": time.time(), "reason": "subscriber too slow; reconnect"})
                 return
+            remaining = next_heartbeat - time.monotonic()
+            if remaining <= 0:
+                next_heartbeat = time.monotonic() + HEARTBEAT_S
+                yield _sse("heartbeat", b.heartbeat())
+                continue
             try:
-                event, data = await asyncio.wait_for(sub.q.get(), HEARTBEAT_S)
+                event, data = await asyncio.wait_for(sub.q.get(), remaining)
             except asyncio.TimeoutError:
                 event, data = "heartbeat", b.heartbeat()
+                next_heartbeat = time.monotonic() + HEARTBEAT_S
             yield _sse(event, data)
             if await disconnected():
                 return

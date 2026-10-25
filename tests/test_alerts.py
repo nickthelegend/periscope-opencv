@@ -7,9 +7,13 @@ which lets them pretend to be a remote client.
 
 import asyncio
 import json
+from pathlib import Path
+import shutil
 import socket
+import subprocess
 import threading
 import time
+from types import SimpleNamespace
 
 import httpx
 import pytest
@@ -345,3 +349,126 @@ def test_multi_worker_refused(monkeypatch):
         server.check_single_worker()
     monkeypatch.setenv("WEB_CONCURRENCY", "1")
     server.check_single_worker()
+
+
+def test_heartbeats_not_starved_by_alerts(monkeypatch):
+    clock = [0.0]
+    monkeypatch.setattr(server, "time", SimpleNamespace(monotonic=lambda: clock[0], time=time.time))
+
+    async def go():
+        b = server.AlertBus()
+        b.set_status(server.Status(run="A", live=True))
+
+        async def connected():
+            return False
+
+        stream = server._events(b, connected)
+        try:
+            assert (await anext(stream)).startswith("event: heartbeat")
+            events = []
+            for i in range(1, 7):
+                clock[0] = i * 0.05
+                b.publish(server.Alert(run="A", state="someone", level="watch" if i % 2 else "stop",
+                                       confidence=0.5, t=i))
+                events.append(await anext(stream))
+            assert any(event.startswith("event: heartbeat") for event in events)
+        finally:
+            await stream.aclose()
+
+    asyncio.run(go())
+
+
+def test_stale_cannot_have_playing_reason():
+    async def fn(c):
+        return (await c.post("/api/alerts/status", json={"run": "A", "live": False,
+                                                        "reason": "playing"})).status_code
+    assert asgi(fn, client=("127.0.0.1", 1234)) == 422
+
+
+def test_console_publishes_only_advancing_playback():
+    """Run the console's actual feed/clock code with fake media and fetch; no browser or server needed."""
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("node is required for the console media regression")
+    html = (Path(__file__).resolve().parents[1] / "web/index.html").read_text()
+    feed = html.split("  // ---------- live alert feed:", 1)[1].split("  // ---------- loading", 1)[0]
+    feed = "  // ---------- live alert feed:" + feed
+    clock = html.split("  // ---------- clock ----------", 1)[1].split("  // ---------- controls", 1)[0]
+    harness = r"""
+const assert = require('node:assert/strict');
+let interval, playing = false, frameIdx = -1;
+let lastQ, loopTimer, userPaused = false;
+const autoplay = false, posts = [], pageEvents = {};
+const location = {hash: '#alert_token=test-token', pathname: '/', search: '?autoplay=0'};
+const stored = new Map();
+const sessionStorage = {setItem: (k, v) => stored.set(k, v), getItem: k => stored.get(k)};
+const history = {replaceState: (_, __, url) => { assert.equal(url, '/?autoplay=0'); location.hash = ''; }};
+const setInterval = fn => { interval = fn; return 1; }, clearInterval = () => { interval = null; };
+const clearTimeout = () => {}, requestAnimationFrame = () => {};
+const addEventListener = (name, fn) => { pageEvents[name] = fn; };
+const fetch = async (path, options) => {
+  posts.push({path, body: JSON.parse(options.body), headers: options.headers});
+  return {ok: true};
+};
+function media() {
+  return {paused: true, ended: false, seeking: false, readyState: 4, currentTime: 0, events: {},
+    addEventListener(name, fn) { this.events[name] = fn; },
+    play() { this.paused = false; return Promise.resolve(); }, pause() { this.paused = true; }};
+}
+const vF = media(), vS = media(), vH = media();
+const $ = () => ({style: {}, setAttribute() {}, classList: {toggle() {}}});
+const setState = () => {}, drawOverlay = () => {}, drawPlan = () => {}, drawSpacetime = () => {}, drawZ = () => {};
+const STATE_TXT = {learning: [], clear: [], present: [], coming: []};
+const run = {fps: 10, frames: Array.from({length: 100}, (_, i) => ({s: 'present', z: 400, phi: 30, t: i / 10}))};
+"""
+    scenarios = r"""
+(async () => {
+  assert.equal(location.hash, '');
+  assert.equal(stored.get('alert_token'), 'test-token');
+  assert.equal(conf(-1), 0); assert.equal(conf(0), 0); assert.equal(conf(400), 1); assert.equal(conf(800), 1);
+  assert.equal(conf(20), Math.log10(21) / Math.log10(401));
+  runId = 'A';
+  play();
+  vF.events.playing();
+  await postQ;
+  assert.equal(posts.length, 0, 'playing without clock progress is not live');
+  vF.currentTime = 0.2; vF.events.timeupdate(); await postQ;
+  assert.deepEqual(posts.map(p => p.path), ['api/alerts/status', 'api/alerts']);
+  assert.equal(posts[0].body.live, true);
+  assert.equal(posts[1].body.level, 'watch');
+  assert.equal(posts[1].headers.Authorization, 'Bearer test-token');
+  let start = posts.length;
+  show(50); await postQ;
+  assert.equal(posts.length, start, 'redraws cannot publish');
+  vF.seeking = true;
+  seek(60); await postQ;
+  assert.deepEqual(posts.slice(start).map(p => p.body.reason), ['seek'], 'seek must stay stale');
+  vF.events.timeupdate(); await postQ;
+  assert.equal(posts.length, start + 1, 'seeking timeupdate cannot publish');
+  vF.seeking = false; vF.events.seeked();
+  await postQ; start = posts.length;
+  tick(); await postQ;
+  assert.equal(posts.length, start, 'seeked without progress cannot publish');
+  vF.currentTime += 0.1; tick(); await postQ;
+  assert.deepEqual(posts.slice(start).map(p => p.path), ['api/alerts/status', 'api/alerts']);
+  assert.equal(posts.at(-1).body.level, 'watch', 'same state is resent after a seek');
+  interval(); await postQ; start = posts.length;
+  for (let i = 0; i < 4; i++) { interval(); await postQ; }
+  assert.equal(posts.length, start, 'a frozen clock cannot keep the feed live');
+  vF.currentTime += 0.1; tick(); await postQ;
+  assert.deepEqual(posts.slice(start).map(p => p.path), ['api/alerts/status', 'api/alerts'], 'resume resends unchanged state');
+  run.frames[64].s = 'coming'; vF.currentTime = 6.4; tick(); await postQ;
+  assert.equal(posts.at(-1).body.level, 'stop');
+  start = posts.length;
+  run.frames[65].s = 'learning'; vF.currentTime = 6.5; tick(); await postQ;
+  assert.equal(posts.length, start, 'learning emits no alert');
+  run.frames[66].s = 'clear'; vF.currentTime = 6.6; tick(); await postQ;
+  assert.equal(posts.at(-1).body.state, 'clear'); assert.equal(posts.at(-1).body.level, null);
+  pause(); await postQ; start = posts.length;
+  vF.currentTime = 6.7; tick(); await postQ;
+  assert.equal(posts.length, start, 'paused redraws cannot publish');
+})().catch(error => { console.error(error); process.exitCode = 1; });
+"""
+    result = subprocess.run([node, "-"], input=harness + feed + clock + scenarios, text=True,
+                            capture_output=True, timeout=10)
+    assert result.returncode == 0, result.stdout + result.stderr

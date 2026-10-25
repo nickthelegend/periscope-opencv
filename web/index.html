@@ -517,6 +517,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     return tok || null;
   })();
   let runId = null, lastSent = null, keepTimer = null, postQ = Promise.resolve();
+  let feedTime = null, keepTime = null, feedActive = false;
   function feedInit(keepalive) {
     const headers = { "Content-Type": "application/json" };
     if (alertToken) headers.Authorization = "Bearer " + alertToken;
@@ -527,17 +528,35 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     postQ = postQ.then(() => fetch(path, { ...feedInit(false), body: JSON.stringify(body) })).catch(() => {});
   }
   // live only while the floor video is really advancing; a blocked autoplay or a stall lets the keepalive lapse
-  const mediaRunning = () => playing && !vF.paused && !vF.ended && vF.readyState >= 3;
+  const mediaRunning = () => playing && !vF.paused && !vF.ended && !vF.seeking && vF.readyState >= 3;
   function feedLive() {
     if (!runId || !mediaRunning()) return;
     lastSent = null;
-    pub("api/alerts/status", { run: runId, live: true, reason: "playing" });
+    feedTime = keepTime = vF.currentTime; feedActive = false;
     clearInterval(keepTimer);
-    keepTimer = setInterval(() => { if (mediaRunning()) pub("api/alerts/status", { run: runId, live: true, reason: "playing" }); }, KEEPALIVE_MS);
+    keepTimer = setInterval(() => {
+      if (mediaRunning() && vF.currentTime > keepTime) {
+        keepTime = vF.currentTime;
+        pub("api/alerts/status", { run: runId, live: true, reason: "playing" });
+      } else {
+        feedActive = false;   // resume must re-establish live status before publishing, even after a timeout
+      }
+      lastSent = null;   // resend the current state after a lost request or a server-side timeout
+    }, KEEPALIVE_MS);
   }
   function feedStop(reason) {
     clearInterval(keepTimer); keepTimer = null; lastSent = null;
+    feedTime = keepTime = null; feedActive = false;
     if (runId) pub("api/alerts/status", { run: runId, live: false, reason });
+  }
+  function feedAdvance(i) {
+    if (!runId || !mediaRunning() || feedTime === null || vF.currentTime <= feedTime) return;
+    feedTime = vF.currentTime;
+    if (!feedActive) {
+      pub("api/alerts/status", { run: runId, live: true, reason: "playing" });
+      feedActive = true;
+    }
+    maybeAlert(Math.max(0, Math.min(run.frames.length - 1, i)));
   }
   function maybeAlert(i) {
     const f = run.frames[i], s = f.s;
@@ -890,7 +909,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     if (!run) return;
     i = Math.max(0, Math.min(run.frames.length - 1, i));
     if (i === frameIdx) return;
-    const prev = frameIdx;
     frameIdx = i;
     const t = i / run.fps, dur = run.frames.length / run.fps;
     $("#clock").textContent = `${t.toFixed(2)} / ${dur.toFixed(2)} s`;
@@ -898,14 +916,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     $("#stBox").setAttribute("aria-valuenow", t.toFixed(2));
     $("#stBox").setAttribute("aria-valuetext", `${t.toFixed(1)} seconds`);
     setState(i); drawOverlay(i); drawPlan(i); drawSpacetime(i); drawZ(i);
-    if (playing && i > prev) maybeAlert(i);   // only live forward playback publishes; seeks and redraws never do
   }
   function syncSlaves() {
     for (const v of [vS, vH]) if (v.readyState >= 1 && Math.abs(v.currentTime - vF.currentTime) > 0.08) v.currentTime = vF.currentTime;
   }
   function tick() {
     if (!run) return;
-    show(Math.floor(vF.currentTime * run.fps + 1e-3));
+    const i = Math.floor(vF.currentTime * run.fps + 1e-3);
+    show(i); feedAdvance(i);
     if (playing) { syncSlaves(); requestAnimationFrame(tick); }
   }
   let rate = 1;
@@ -940,7 +958,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     const t = (Math.max(0, Math.min(run.frames.length - 1, i)) + 0.5) / run.fps;
     for (const v of [vF, vS, vH]) if (v.readyState >= 1) v.currentTime = t;
     feedStop("seek");
-    if (playing) feedLive();   // a new live span: the server forgets the old clock, and the current state is sent again
     show(i);
   }
   vF.addEventListener("playing", () => { if (playing) feedLive(); });
@@ -952,8 +969,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     if (autoplay && !userPaused) loopTimer = setTimeout(() => { seek(0); play(); }, 2500);   // kiosk loop for judges
   });
   // rAF stops in background tabs; timeupdate keeps the panels moving there (at ~4 Hz)
-  vF.addEventListener("timeupdate", () => { if (run) { syncSlaves(); show(Math.floor(vF.currentTime * run.fps + 1e-3)); } });
-  vF.addEventListener("seeked", () => { if (!run) return; syncSlaves(); if (!playing) show(Math.floor(vF.currentTime * run.fps + 1e-3)); });
+  vF.addEventListener("timeupdate", () => { if (run) {
+    syncSlaves(); const i = Math.floor(vF.currentTime * run.fps + 1e-3); show(i); feedAdvance(i);
+  } });
+  vF.addEventListener("seeked", () => {
+    if (!run) return;
+    syncSlaves();
+    if (playing) feedLive(); else show(Math.floor(vF.currentTime * run.fps + 1e-3));
+  });
 
   // ---------- controls ----------
   $("#playBtn").onclick = () => { if (playing) { userPaused = true; pause(); } else { userPaused = false; play(); } };
