@@ -1,0 +1,150 @@
+{
+  "EDGE-RUNS-EMPTY-FALLBACK": [
+    {
+      "row": "EDGE-RUNS-EMPTY-FALLBACK",
+      "case": "case-A-empty",
+      "status": "PASS",
+      "observed": {
+        "catalog_status": 200,
+        "catalog": [],
+        "options": [],
+        "panel": "No recorded runs yet.\nAnalyze a calibrated clip to add a run, then reload."
+      },
+      "issues": [],
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "browser": "Chrome for Testing",
+      "browser_version": "156.0.8078.4",
+      "timestamp_utc": "2026-10-25T20:23:36.975826+00:00"
+    },
+    {
+      "row": "EDGE-RUNS-EMPTY-FALLBACK",
+      "case": "case-B-removed-after-startup",
+      "status": "PASS",
+      "observed": {
+        "catalog_status": 200,
+        "catalog": [],
+        "options": [],
+        "panel": "No recorded runs yet.\nAnalyze a calibrated clip to add a run, then reload."
+      },
+      "issues": [],
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "browser": "Chrome for Testing",
+      "browser_version": "156.0.8078.4",
+      "timestamp_utc": "2026-10-25T20:23:38.548165+00:00"
+    }
+  ],
+  "API-RUNS": [
+    {
+      "row": "API-RUNS",
+      "case": "normal-catalog",
+      "status": "PASS",
+      "observed": {
+        "catalog_status": 200,
+        "catalog": [
+          {
+            "id": "demo",
+            "title": "Synthetic corner · red top · lit hallway",
+            "kind": "synthetic",
+            "frames": 380
+          }
+        ],
+        "options": [
+          {
+            "value": "demo",
+            "text": "Synthetic corner · red top · lit hallway"
+          }
+        ],
+        "selected_value": "demo",
+        "selected_text": "Synthetic corner · red top · lit hallway"
+      },
+      "issues": [],
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "browser": "Chrome for Testing",
+      "browser_version": "156.0.8078.4",
+      "timestamp_utc": "2026-10-25T20:23:40.687572+00:00"
+    }
+  ],
+  "UI-RUN-SELECT": [
+    {
+      "row": "UI-RUN-SELECT",
+      "case": "normal-catalog",
+      "status": "PASS",
+      "observed": {
+        "catalog_status": 200,
+        "catalog": [
+          {
+            "id": "demo",
+            "title": "Synthetic corner · red top · lit hallway",
+            "kind": "synthetic",
+            "frames": 380
+          }
+        ],
+        "options": [
+          {
+            "value": "demo",
+            "text": "Synthetic corner · red top · lit hallway"
+          }
+        ],
+        "selected_value": "demo",
+        "selected_text": "Synthetic corner · red top · lit hallway"
+      },
+      "issues": [],
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "browser": "Chrome for Testing",
+      "browser_version": "156.0.8078.4",
+      "timestamp_utc": "2026-10-25T20:23:42.304129+00:00"
+    }
+  ],
+  "EDGE-RUN-LOAD-NOT-FOUND": [
+    {
+      "row": "EDGE-RUN-LOAD-NOT-FOUND",
+      "case": "deleted-metadata",
+      "status": "PASS",
+      "observed": {
+        "metadata_deleted_before_resolve": true,
+        "catalog_status": 200,
+        "catalog": [
+          {
+            "id": "demo",
+            "title": "Synthetic corner · red top · lit hallway",
+            "kind": "synthetic",
+            "frames": 380
+          },
+          {
+            "id": "vanishing",
+            "title": "Synthetic corner · red top · lit hallway",
+            "kind": "synthetic",
+            "frames": 380
+          }
+        ],
+        "resolve_status": 200,
+        "resolve_body": {
+          "run": null
+        },
+        "heading": "That run could not be loaded.",
+        "panel_html": "<div class=\"panel empty\" role=\"status\" style=\"grid-column: 1 / -1;\"><b>That run could not be loaded.</b>Check that runs/vanishing/run.json exists, or pick another run.</div>",
+        "panel": "That run could not be loaded.\nCheck that runs/vanishing/run.json exists, or pick another run."
+      },
+      "issues": [],
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "browser": "Chrome for Testing",
+      "browser_version": "156.0.8078.4",
+      "timestamp_utc": "2026-10-25T20:23:44.435457+00:00"
+    }
+  ]
+}
