@@ -1,0 +1,6 @@
+argv: .venv/bin/python tools/calibrate.py audit/cli/calib-out/frame.png --auto --out audit/cli/calib-out/auto
+exit_code: 0
+----- stdout -----
+{"auto_confidence": 1.0, "corner_px": [213.06190622126877, 123.92859331903159]}
+{"calib": "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4b/audit/cli/calib-out/auto/calib.json", "preview": "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t4b/audit/cli/calib-out/auto/calib_preview.png"}
+----- stderr -----

@@ -1,0 +1,11 @@
+argv: filesystem check for the FILMING.md corner clip and hidden-hallway clip (no score_footage.py run on a video)
+exit_code: 0
+----- stdout -----
+data/raw exists: False
+data/raw/take1_corner.mov: exists=False
+data/raw/take1_corner.mp4: exists=False
+data/raw/take1_hidden.mov: exists=False
+data/raw/take1_hidden.mp4: exists=False
+other videos outside .venv and web/runs/demo, before make_demo: none
+----- stderr -----
+observed: real corner clip and hidden-hallway clip described in FILMING.md are absent. No video was invented.
