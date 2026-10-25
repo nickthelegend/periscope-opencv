@@ -6,6 +6,7 @@
 <title>Periscope · see who's coming around the corner</title>
 <meta name="description" content="An ordinary camera reads the faint floor shadow a hidden person casts at a wall corner and warns before they step into view.">
 <meta name="theme-color" content="#0a0c10">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -55,6 +56,7 @@
   .runpick::after { content: ""; position: absolute; right: 14px; top: 14px; width: 6px; height: 6px; border-right: 1.5px solid var(--ink-3); border-bottom: 1.5px solid var(--ink-3); transform: rotate(45deg); pointer-events: none; }
   .tag { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 11px; border-radius: 99px; font-size: 13px; font-weight: 500; color: var(--ink-2); border: 1px solid var(--line-2); white-space: nowrap; }
   .tag.synth { color: #dcdaff; border-color: rgba(155,151,255,.4); background: rgba(155,151,255,.08); }
+  .tag[hidden] { display: none; }
   .status { display: inline-flex; align-items: center; gap: 9px; height: 36px; padding: 0 16px; border-radius: 99px; border: 1px solid var(--line); background: var(--panel); font-size: 14px; font-weight: 600; transition: border-color .3s var(--ease), background .3s var(--ease), color .3s; }
   .status .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--learn); box-shadow: 0 0 0 3px rgba(138,147,163,.18); }
   .status[data-s="clear"] .dot { background: var(--clear); box-shadow: 0 0 0 3px rgba(60,207,142,.18); }
@@ -182,6 +184,7 @@
 
   /* agent + evidence */
   .lower { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 16px; margin-top: 16px; }
+  .lower[hidden] { display: none; }
   .agent .decision { margin: 6px 18px 0; padding: 12px 0 14px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: center; }
   .agent .decision svg { grid-row: span 2; width: 22px; height: 22px; color: var(--accent-2); }
   .agent .decision b { font-size: 16px; font-weight: 600; }
@@ -247,7 +250,7 @@
     .status { order: 1; margin-left: auto; }
     .runpick { order: 2; flex: 1 1 auto; min-width: 0; }
     .runpick select { max-width: none; width: 100%; }
-    .tag.synth { display: none; }
+    .tag.synth { order: 3; }
     .ph h2 small { flex-basis: 100%; }
     .alert .row dd { font-size: 21px; }
     .alert .row dt { white-space: normal; }
@@ -574,12 +577,45 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   });
 
   // ---------- loading ----------
+  let consoleContents = null, loadVersion = 0;
+  function runMessage(title, detail) {
+    run = null;
+    const console = $("#console");
+    if (!consoleContents) {
+      consoleContents = document.createDocumentFragment();
+      consoleContents.append(...console.childNodes);
+    }
+    const panel = document.createElement("div"), heading = document.createElement("b");
+    panel.className = "panel empty"; panel.style.gridColumn = "1/-1"; panel.setAttribute("role", "status");
+    heading.textContent = title; panel.append(heading, detail); console.replaceChildren(panel);
+    $(".lower").hidden = true;
+    $("#kindTag").hidden = true;
+    $("#status").dataset.s = "learning"; $("#statusTxt").textContent = "Unavailable";
+    document.body.classList.remove("alarm");
+  }
+  function restoreConsole() {
+    if (consoleContents) { $("#console").replaceChildren(consoleContents); consoleContents = null; }
+    $(".lower").hidden = false;
+  }
   async function listRuns() {
     const sel = $("#runSel");
-    let runs = [];
-    try { const r = await fetch("api/runs"); if (r.ok) runs = await r.json(); } catch (_) {}
-    if (!runs.length) runs = [{ id: "demo", title: "Synthetic corner · red top · lit hallway" }];
-    sel.innerHTML = runs.map((r) => `<option value="${r.id}">${r.title.replace(/</g, "&lt;")}</option>`).join("");
+    sel.disabled = true; sel.replaceChildren();
+    let runs;
+    try {
+      const r = await fetch("api/runs");
+      if (!r.ok) throw new Error("run list unavailable");
+      runs = await r.json();
+      if (!Array.isArray(runs)) throw new Error("invalid run list");
+    } catch (_) {
+      runMessage("Runs could not be listed.", "Check the server connection, then reload to try again.");
+      return;
+    }
+    if (!runs.length) {
+      runMessage("No recorded runs yet.", "Analyze a calibrated clip to add a run, then reload.");
+      return;
+    }
+    sel.replaceChildren(...runs.map((r) => new Option(r.title, r.id)));
+    sel.disabled = false;
     const want = new URLSearchParams(location.search).get("run");
     if (want && runs.some((r) => r.id === want)) sel.value = want;
     sel.onchange = () => { const q = new URLSearchParams(location.search); q.set("run", sel.value); history.replaceState(null, "", "?" + q); load(sel.value); };
@@ -596,12 +632,20 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   }
 
   async function load(id) {
+    const version = ++loadVersion;
+    restoreConsole();
     pause("switched"); clearTimeout(loopTimer);
+    run = null;
     runId = id;
-    base = `runs/${id}/`;
-    const res = await fetch(base + "run.json").catch(() => null);
-    if (!res || !res.ok) { $("#console").innerHTML = `<div class="panel empty" style="grid-column:1/-1"><b>That run could not be loaded.</b>Check that runs/${id}/run.json exists, or pick another run.</div>`; return; }
-    run = await res.json();
+    base = `runs/${encodeURIComponent(id)}/`;
+    let loaded = null;
+    try {
+      const res = await fetch(`api/runs/${encodeURIComponent(id)}`);
+      if (res.ok) loaded = (await res.json()).run;
+    } catch (_) {}
+    if (version !== loadVersion) return;
+    if (!loaded) { runMessage("That run could not be loaded.", `Check that runs/${id}/run.json exists, or pick another run.`); return; }
+    run = loaded;
     const synth = run.scene && run.scene.kind === "synthetic";
     $("#kindTag").hidden = !synth;
     setSrc(vF, "floor"); setSrc(vS, "shadow");
@@ -609,7 +653,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     $("#hiddenBtn").hidden = !hasHidden;
     if (hasHidden) setSrc(vH, "hidden");
     $("#truthBtn").hidden = !run.truth;
-    stImg = await spacetimePixels(base + run.assets.spacetime);
+    const pixels = await spacetimePixels(base + run.assets.spacetime);
+    if (version !== loadVersion) return;
+    stImg = pixels;
     decisions = buildLog();
     renderLog();
     renderScores();
@@ -928,6 +974,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   }
   let rate = 1;
   function setPlayUi(on) {
+    if (!$("#playBtn")) return;
     $("#playTxt").textContent = on ? "Pause" : (frameIdx > 0 ? "Resume" : "Play run");
     $("#playBtn").setAttribute("aria-label", on ? "Pause" : "Play");
     $("#playIco").innerHTML = on ? '<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor" stroke="none"/>' : '<path d="M7 5l12 7-12 7z" fill="currentColor" stroke="none"/>';
@@ -1024,14 +1071,15 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     if (e.key === "Home") { e.preventDefault(); seek(0); } if (e.key === "End") { e.preventDefault(); seek(run.frames.length - 1); }
   });
   document.addEventListener("keydown", (e) => {
+    if (!run) return;
     if (e.target.closest("select, input, textarea, button, [role=slider]")) return;
     if (e.code === "Space") { e.preventDefault(); $("#playBtn").click(); }
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); userPaused = true; pause(); seek(frameIdx + (e.key === "ArrowRight" ? 1 : -1)); }
   });
   function resize() {
+    if (!run) return;
     const svg = $("#plan"), w = svg.getBoundingClientRect().width;
     if (w) svg.style.setProperty("--fs", (Math.max(12, Math.min(14, w / 42)) * 10.4 / w).toFixed(4) + "px");
-    if (!run) return;
     const i = frameIdx; frameIdx = -1; show(Math.max(0, i));
   }
   new ResizeObserver(resize).observe(document.body);

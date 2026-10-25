@@ -1,0 +1,46 @@
+INFO:     Started server process [15736]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8740 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59279 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59281 - "GET /?autoplay=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59281 - "GET /api/runs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59281 - "GET /api/runs/demo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59281 - "GET /runs/demo/spacetime.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59281 - "GET /runs/demo/floor.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59284 - "GET /runs/demo/hidden.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59283 - "GET /runs/demo/shadow.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59283 - "GET /favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59289 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59289 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59289 - "GET /favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59283 - "GET /calibrate.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59291 - "GET /?run=demo&autoplay=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59291 - "GET /api/runs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59291 - "GET /api/runs/demo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59291 - "GET /runs/demo/spacetime.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59295 - "GET /runs/demo/shadow.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59296 - "GET /runs/demo/hidden.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59294 - "GET /runs/demo/floor.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59295 - "GET /favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59297 - "GET /?run=demo&autoplay=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59297 - "GET /api/runs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59297 - "GET /api/runs/demo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59297 - "GET /runs/demo/spacetime.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59300 - "GET /runs/demo/floor.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59301 - "GET /runs/demo/shadow.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59302 - "GET /runs/demo/hidden.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59301 - "GET /favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59301 - "GET /api/runs/vanishing HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59301 - "GET /api/runs/demo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59301 - "POST /api/alerts/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59301 - "POST /api/alerts/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59303 - "GET /calibrate.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59303 - "GET /favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59308 - "GET /api/alerts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59313 - "POST /api/alerts/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59313 - "POST /api/alerts HTTP/1.1" 422 Unprocessable Entity
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15736]

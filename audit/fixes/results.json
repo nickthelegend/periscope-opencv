@@ -1,0 +1,41 @@
+{
+  "favicon-console-health": {
+    "check": "passed"
+  },
+  "synthetic-375px": {
+    "check": "passed"
+  },
+  "missing-run-recovery": {
+    "check": "passed"
+  },
+  "heartbeat-and-timeout": {
+    "check": "passed",
+    "received_gaps_s": [
+      4.0004000000059605,
+      4.0025,
+      4.0035
+    ],
+    "server_gaps_s": [
+      4.000427007675171,
+      4.002368927001953,
+      4.0034708976745605
+    ],
+    "stale": {
+      "event": "stale",
+      "data": {
+        "run": "demo",
+        "reason": "timeout",
+        "live": false,
+        "t": 1792956833.5266418
+      },
+      "received": 15461.79999999702
+    }
+  },
+  "empty-run-list": {
+    "check": "passed"
+  },
+  "corrupt-run-list": {
+    "check": "passed"
+  },
+  "browser": "156.0.8078.4"
+}
