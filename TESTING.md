@@ -2,30 +2,22 @@
 
 Date: 2026-10-26
 
-Counts are from the 77 data rows in `AUDIT.md` after the CLI re-verify statuses were copied in. Expected-result cells were not changed.
+Counts are from the 77 data rows in `AUDIT.md` after the run-list re-check. Expected-result cells were not changed.
 
 | Status | Count |
 |---|---|
-| PASS | 75 |
-| FAIL | 1 |
+| PASS | 76 |
+| FAIL | 0 |
 | UNTESTED | 1 |
 | TODO | 0 |
 
 ## Pytest
 
-This worktree has no `.venv`. A fresh run used the project virtualenv at `/Volumes/Extreme SSD/Projects/wave1/periscope-opencv/.venv/bin/python -m pytest -q`. Exit code 0.
+Fresh run in this worktree: `uv venv .venv -p 3.12`, `uv pip install -p .venv/bin/python -r requirements.txt`, then `.venv/bin/python -m pytest -q`. Exit code 0.
 
 ```
-81 passed in 52.45s
+82 passed in 55.68s
 ```
-
-`audit/reverify/pytest.txt` is present. Its summary is:
-
-```
-81 passed in 58.79s
-```
-
-CLI re-verify note (`audit/cli/reverify/ROW-STATUS.md`, log `audit/cli/reverify/pytest.txt`): `.venv/bin/python -m pytest -q` exited 0 with 81 passed in 56.67s.
 
 ## UNTESTED
 
@@ -33,6 +25,4 @@ CLI re-verify note (`audit/cli/reverify/ROW-STATUS.md`, log `audit/cli/reverify/
 
 ## Mocks, stubs, console and network errors
 
-No FAIL row names a remaining mock or stub.
-
-One console/network error remains on the tested surface, from **EDGE-RUNS-EMPTY-FALLBACK**: console error `Failed to load resource: the server responded with a status of 500 (Internal Server Error)`; unexpected HTTP `GET http://127.0.0.1:8740/api/runs` status 500. Evidence: `audit/reverify/EDGE-RUNS-EMPTY-FALLBACK/`.
+No mock, stub, or console/network error remains. No row is FAIL. Browser and HTTP evidence cells record zero console/page errors and no unexpected HTTP failures. The only open item is CLI-SCORE-FOOTAGE-REAL, which is UNTESTED because those two clips are absent.
