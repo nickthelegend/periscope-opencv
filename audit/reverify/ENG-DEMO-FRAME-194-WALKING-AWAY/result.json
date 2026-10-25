@@ -1,0 +1,29 @@
+{
+  "id": "ENG-DEMO-FRAME-194-WALKING-AWAY",
+  "status": "PASS",
+  "expected": "#alert has data-s=\"present\"; #alertH text is \"Someone in the hidden hallway\"; #statusTxt text is \"Someone hidden\"; #alertP text is \"Bearing 37° and rising: they are walking away from the corner.\"; #aPhi is \"37.4°\", #aEta is \"–\"; .big text STOP has computed display \"none\"",
+  "observed": {
+    "screen": {
+      "alertH": "Someone in the hidden hallway",
+      "alertP": "Bearing 37° and rising: they are walking away from the corner.",
+      "statusTxt": "Someone hidden",
+      "aPhi": "37.4°",
+      "aEta": "–",
+      "aZ": "106.6σ",
+      "decA": "Stop the vehicle",
+      "decW": "Bearing 37° and falling 3°/s: the walker is heading for the corner line.",
+      "clock": "9.70 / 19.00 s",
+      "hudT": "t 9.70 s",
+      "playTxt": "Resume",
+      "state": "present",
+      "action": "stop_vehicle"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:58Z"
+}

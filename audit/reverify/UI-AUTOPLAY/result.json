@@ -1,0 +1,29 @@
+{
+  "id": "UI-AUTOPLAY",
+  "status": "PASS",
+  "expected": "Default load with prefers-reduced-motion not set to reduce autoplays video (#vFloor.paused is false, #vFloor.playbackRate is 1); #playTxt text is \"Pause\", #playBtn aria-label is \"Pause\"",
+  "observed": {
+    "screen": {
+      "alertH": "Learning the empty hallway",
+      "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+      "statusTxt": "Learning",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "–",
+      "decA": "Learning the background",
+      "decW": "Measuring the empty floor and its noise before trusting any change.",
+      "clock": "0.30 / 19.00 s",
+      "hudT": "t 0.30 s",
+      "playTxt": "Pause",
+      "state": "learning",
+      "action": "learning"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:09Z"
+}

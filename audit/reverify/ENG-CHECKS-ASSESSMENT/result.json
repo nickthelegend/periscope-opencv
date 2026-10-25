@@ -1,0 +1,30 @@
+{
+  "id": "ENG-CHECKS-ASSESSMENT",
+  "status": "PASS",
+  "expected": "#checks displays 7 check rows with labels Predicted range (\"5.2 m\"), Pixel noise (\"1.58 %\"), Camera shake (\"0.01 px\"), View drift (\"0.0 px\"), Light change (\"-0.02 %\"), Clipped pixels (\"0.00 %\"), Wedge pixels (\"29,623\"); zero rows have class \"bad\"",
+  "observed": {
+    "checks": "Predicted range\n5.2 m\nPixel noise\n1.58 %\nCamera shake\n0.01 px\nView drift\n0.0 px\nLight change\n-0.02 %\nClipped pixels\n0.00 %\nWedge pixels\n29,623",
+    "screen": {
+      "alertH": "Corner clear",
+      "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+      "statusTxt": "Clear",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "2.8σ",
+      "decA": "Watching",
+      "decW": "Noise, shake and light are inside limits; nothing above the noise floor.",
+      "clock": "2.00 / 19.00 s",
+      "hudT": "t 2.00 s",
+      "playTxt": "Resume",
+      "state": "clear",
+      "action": "watch"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:07Z"
+}

@@ -1,0 +1,24 @@
+argv: .venv/bin/python - <<'PY'
+import cv2
+from periscope.render import Scene, empty_hallway
+scene = Scene()
+frame = next(scene.render(empty_hallway(scene.fps, 0.1)))
+path = "audit/cli/calib-out/frame.png"
+ok = cv2.imwrite(path, frame)
+print("imwrite", ok, "shape", frame.shape, "dtype", frame.dtype, "path", path)
+cap = cv2.VideoCapture(path)
+fps = cap.get(cv2.CAP_PROP_FPS)
+n = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+print("capture_opened", cap.isOpened(), "fps", fps, "frame_count", n)
+seek = int(0.5 * (fps or 30))
+cap.set(cv2.CAP_PROP_POS_FRAMES, seek)
+ok2, f = cap.read()
+print("seek_to", seek, "read_ok", ok2, "frame_is_none", f is None)
+cap.release()
+PY
+exit_code: 0
+----- stdout -----
+imwrite True shape (360, 480, 3) dtype uint8 path audit/cli/calib-out/frame.png
+capture_opened True fps 25.0 frame_count -9.223372036854776e+18
+seek_to 12 read_ok True frame_is_none False
+----- stderr -----

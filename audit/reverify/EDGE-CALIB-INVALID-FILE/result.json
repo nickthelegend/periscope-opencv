@@ -1,0 +1,13 @@
+{
+  "id": "EDGE-CALIB-INVALID-FILE",
+  "status": "PASS",
+  "expected": "Selecting or dropping a non-image file (e.g. text or pdf) is ignored; #drop remains visible; #cv remains hidden; points list remains empty; zero console errors",
+  "observed": {},
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:12Z"
+}

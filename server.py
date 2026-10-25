@@ -22,7 +22,9 @@ from typing import Literal
 
 from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.concurrency import run_in_threadpool
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.exception_handlers import request_validation_exception_handler
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, model_validator
 
@@ -42,6 +44,7 @@ STALE_S = 3.0       # no keepalive or alert from the playing console for this lo
 WATCH_S = 0.25      # how often the watchdog checks STALE_S
 QUEUE_MAX = 64      # events buffered per subscriber before it is told to resync
 LOOPBACK = {"127.0.0.1", "::1"}
+ALERT_LEVEL_DETAIL = "level is required for someone and must be null for clear"
 
 
 class Alert(BaseModel):
@@ -55,7 +58,7 @@ class Alert(BaseModel):
     @model_validator(mode="after")
     def _level_matches_state(self):
         if (self.state == "someone") != (self.level is not None):
-            raise ValueError("level is required for someone and must be null for clear")
+            raise ValueError(ALERT_LEVEL_DETAIL)
         if self.state == "clear":
             self.bearing_deg = None
         return self
@@ -70,6 +73,8 @@ class Status(BaseModel):
     def _live_needs_run(self):
         if self.live and not self.run:
             raise ValueError("live status needs a run")
+        if not self.live and self.reason == "playing":
+            raise ValueError("a non-live status needs a stale reason")
         return self
 
 
@@ -116,7 +121,7 @@ class AlertBus:
             return
         self.live = False
         self._forget(self.live_run)
-        self._broadcast("stale", {"run": self.live_run, "reason": reason, "t": time.time()})
+        self._broadcast("stale", {"run": self.live_run, "reason": reason, "live": False, "t": time.time()})
 
     def set_status(self, s: Status):
         if not s.live:
@@ -189,25 +194,57 @@ async def lifespan(_app):
 app = FastAPI(title="Periscope", lifespan=lifespan)
 
 
+@app.exception_handler(RequestValidationError)
+async def validation_error(request: Request, exc: RequestValidationError):
+    if request.url.path == "/api/alerts" and any(
+        e["type"] == "value_error" and e["loc"] == ("body",) and e["msg"] == f"Value error, {ALERT_LEVEL_DETAIL}"
+        for e in exc.errors()
+    ):
+        return JSONResponse(status_code=422, content={"detail": ALERT_LEVEL_DETAIL})
+    return await request_validation_exception_handler(request, exc)
+
+
 @app.get("/api/health")
 def health():
     return {"ok": True}
 
 
+def read_run(run_id: str) -> dict | None:
+    """Read persisted metadata; an absent or invalid run is unavailable, never a demo substitute."""
+    d = (RUNS / run_id).resolve()
+    if d.parent != RUNS.resolve():
+        return None
+    try:
+        r = json.loads((d / "run.json").read_text())
+    except (OSError, ValueError):
+        return None
+    if not isinstance(r, dict) or not isinstance(r.get("scene", {}), dict) or not isinstance(r.get("frames", []), list):
+        return None
+    if not isinstance(r.get("title", run_id), str):
+        return None
+    return r
+
+
 @app.get("/api/runs")
 def runs():
+    RUNS.mkdir(parents=True, exist_ok=True)
     out = []
     for d in sorted(RUNS.iterdir()):
-        f = d / "run.json"
-        if f.exists():
-            r = json.loads(f.read_text())
+        if (r := read_run(d.name)) is not None:
             out.append({"id": d.name, "title": r.get("title", d.name), "kind": r.get("scene", {}).get("kind", "footage"),
                         "frames": len(r.get("frames", []))})
     return out
 
 
+@app.get("/api/runs/{run_id}")
+def resolve_run(run_id: str):
+    """Resolve a selection against disk, including a normal unavailable result if it disappeared."""
+    return {"run": read_run(run_id)}
+
+
 @app.post("/api/analyze")
 async def analyze(video: UploadFile = File(...), calib: str = Form(...), title: str = Form("Uploaded clip")):
+    RUNS.mkdir(parents=True, exist_ok=True)
     try:
         cal = Calibration.from_json(calib)
     except Exception as e:  # noqa: BLE001 - report any malformed calibration to the client
@@ -269,6 +306,9 @@ async def _events(b: AlertBus, disconnected, sub: Subscriber | None = None):
     sub = sub or b.subscribe()
     try:
         b.expire()
+        # HEARTBEAT_S is a maximum gap, not a sleep duration. Reserve 20% for event-loop and network delay.
+        heartbeat_interval = HEARTBEAT_S * 0.8
+        next_heartbeat = time.monotonic() + heartbeat_interval
         yield _sse("heartbeat", b.heartbeat())
         if (a := b.current()) is not None:
             yield _sse("alert", a.model_dump())
@@ -276,10 +316,16 @@ async def _events(b: AlertBus, disconnected, sub: Subscriber | None = None):
             if sub.overflow:
                 yield _sse("resync", {"t": time.time(), "reason": "subscriber too slow; reconnect"})
                 return
+            remaining = next_heartbeat - time.monotonic()
+            if remaining <= 0:
+                next_heartbeat = time.monotonic() + heartbeat_interval
+                yield _sse("heartbeat", b.heartbeat())
+                continue
             try:
-                event, data = await asyncio.wait_for(sub.q.get(), HEARTBEAT_S)
+                event, data = await asyncio.wait_for(sub.q.get(), remaining)
             except asyncio.TimeoutError:
                 event, data = "heartbeat", b.heartbeat()
+                next_heartbeat = time.monotonic() + heartbeat_interval
             yield _sse(event, data)
             if await disconnected():
                 return
@@ -296,6 +342,11 @@ async def alert_stream(request: Request):
 @app.get("/")
 def index():
     return FileResponse(WEB / "index.html")
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return FileResponse(WEB / "favicon.svg", media_type="image/svg+xml")
 
 
 app.mount("/", StaticFiles(directory=WEB), name="web")

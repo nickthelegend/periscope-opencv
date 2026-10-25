@@ -1,0 +1,10 @@
+argv: rg -n -i -g '*.py' -g '*.html' -g '*.js' -g '*.toml' -g '*.yml' -g '*.yaml' -g '!.venv/**' -g '!audit/**' 'mcp|FastMCP|fastmcp'
+exit_code: 1
+----- product-extension matches (AUDIT.md and audit/ excluded) -----
+(no matches)
+
+No FastMCP import, MCP server, or MCP config file in product code. Filename search for mcp outside audit/ and .venv is empty.
+
+----- words outside that scope, not counted -----
+AUDIT.md and audit/surface-engine.md contain the word mcp in audit notes. Those matches are excluded.
+RESEARCH.md:183 is prose ("an MCP or HTTP tool the vehicle calls") about a submission gap. It is not a server, FastMCP app, or MCP config.

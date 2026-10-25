@@ -1,0 +1,49 @@
+{
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8740/?run=demo&autoplay=0",
+      "status": 200
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8740/api/runs",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8740/api/runs/demo",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8740/runs/demo/spacetime.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8740/runs/demo/shadow.mp4",
+      "status": 206
+    },
+    {
+      "url": "http://127.0.0.1:8740/runs/demo/hidden.mp4",
+      "status": 206
+    },
+    {
+      "url": "http://127.0.0.1:8740/runs/demo/floor.mp4",
+      "status": 206
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+      "status": 200
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8740/favicon.svg",
+      "status": 200
+    }
+  ],
+  "failed": []
+}

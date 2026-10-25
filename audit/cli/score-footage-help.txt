@@ -1,0 +1,18 @@
+argv: .venv/bin/python tools/score_footage.py --help
+exit_code: 0
+----- stdout -----
+usage: score_footage.py [-h] --corner CORNER --calib CALIB --gt GT --gt-marks
+                        GT_MARKS [--gt-floor GT_FLOOR] [--offset OFFSET]
+                        [--out OUT] [--d-max D_MAX]
+
+options:
+  -h, --help           show this help message and exit
+  --corner CORNER
+  --calib CALIB
+  --gt GT
+  --gt-marks GT_MARKS  pixel positions of the hidden-hallway tape marks
+  --gt-floor GT_FLOOR  the same marks in floor metres
+  --offset OFFSET      seconds added to the ground-truth clock
+  --out OUT
+  --d-max D_MAX
+----- stderr -----

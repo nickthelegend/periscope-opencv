@@ -1,0 +1,93 @@
+{
+ "snr_floor_3m": 0.06875657502570781,
+ "sweep": [
+  {
+   "snr3": 0.20626972507712343,
+   "noise_dn": 2.29128784747792,
+   "signal3_dn": 0.4726233143718245,
+   "recall_3m": 1.0,
+   "mae_3m": 2.621786014141075,
+   "median_3m": 1.7102467972648867,
+   "first_detect_m": 4.195548049829665,
+   "lead_s": 2.3333333333333335,
+   "fa_empty": 0.0,
+   "fa_approach": 0.0,
+   "noise_scale": 1,
+   "pass": true
+  },
+  {
+   "snr3": 0.06875657502570781,
+   "noise_dn": 6.87386354243376,
+   "signal3_dn": 0.4726233143718245,
+   "recall_3m": 0.9672131147540983,
+   "mae_3m": 3.09690124885626,
+   "median_3m": 2.549456817186069,
+   "first_detect_m": 2.7827387123525376,
+   "lead_s": 1.0666666666666667,
+   "fa_empty": 0.0,
+   "fa_approach": 0.0,
+   "noise_scale": 3,
+   "pass": true
+  },
+  {
+   "snr3": 0.02578371563464043,
+   "noise_dn": 18.33030277982336,
+   "signal3_dn": 0.4726233143718245,
+   "recall_3m": 0.7213114754098361,
+   "mae_3m": 5.26686229307208,
+   "median_3m": 5.112537086183796,
+   "first_detect_m": 1.6568589075776106,
+   "lead_s": 0.2,
+   "fa_empty": 0.0,
+   "fa_approach": 0.0,
+   "noise_scale": 8,
+   "pass": false
+  }
+ ],
+ "variants": [
+  {
+   "snr3": 0.20626972507712343,
+   "noise_dn": 2.29128784747792,
+   "signal3_dn": 0.4726233143718245,
+   "recall_3m": 1.0,
+   "mae_3m": 2.621786014141075,
+   "median_3m": 1.7102467972648867,
+   "first_detect_m": 4.195548049829665,
+   "lead_s": 2.3333333333333335,
+   "fa_empty": 0.0,
+   "fa_approach": 0.0,
+   "name": "red top (baseline)",
+   "pass": true
+  },
+  {
+   "snr3": 0.23413315734252835,
+   "noise_dn": 2.29128784747792,
+   "signal3_dn": 0.5364664581105709,
+   "recall_3m": 1.0,
+   "mae_3m": 2.6030974895509114,
+   "median_3m": 1.7502296911689825,
+   "first_detect_m": 4.195548049829665,
+   "lead_s": 2.2666666666666666,
+   "fa_empty": 0.0,
+   "fa_approach": 0.0,
+   "name": "navy top",
+   "pass": true
+  },
+  {
+   "snr3": 0.09510241972550533,
+   "noise_dn": 2.29128784747792,
+   "signal3_dn": 0.2179070185827948,
+   "recall_3m": 1.0,
+   "mae_3m": 2.8431515959358964,
+   "median_3m": 1.948143997374828,
+   "first_detect_m": 3.273291590222638,
+   "lead_s": 1.5333333333333334,
+   "fa_empty": 0.0,
+   "fa_approach": 0.0,
+   "name": "mid-grey top",
+   "pass": true
+  }
+ ],
+ "seeds": 1,
+ "criteria": "recall >= 0.9 and angle MAE <= 6 deg within 3 m of the corner, zero false alarms on 14 s of empty hallway"
+}

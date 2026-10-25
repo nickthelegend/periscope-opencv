@@ -1,0 +1,13 @@
+{
+  "id": "UI-CALIBRATE-PAGE",
+  "status": "PASS",
+  "expected": "GET http://127.0.0.1:8740/calibrate.html serves web/calibrate.html with status 200, title \"Periscope · mark the tape\", H1 \"Mark the tape\", and back link <a href=\"./\">Back to the console</a>",
+  "observed": {},
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:24Z"
+}

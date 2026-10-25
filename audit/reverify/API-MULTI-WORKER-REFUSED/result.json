@@ -1,0 +1,13 @@
+{
+  "id": "API-MULTI-WORKER-REFUSED",
+  "status": "PASS",
+  "expected": "With WEB_CONCURRENCY > 1, server startup raises RuntimeError matching \"the alert feed is process-local: run a single worker\"; with WEB_CONCURRENCY=1 startup succeeds",
+  "observed": {},
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:13:10Z"
+}

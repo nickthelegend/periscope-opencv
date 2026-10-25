@@ -1,0 +1,47 @@
+{
+  "id": "UI-SPACETIME-SCRUB",
+  "status": "PASS",
+  "expected": "Dragging or focusing and pressing arrow keys on #stBox updates aria-valuenow to t.toFixed(2), aria-valuetext to \"{t.toFixed(1)} seconds\", and seeks all slave videos to target frame",
+  "observed": {
+    "target_t": 9.2,
+    "videos": [
+      {
+        "time": 9.225,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 9.225,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 9.225,
+        "paused": true,
+        "rate": 1
+      }
+    ],
+    "screen": {
+      "alertH": "Someone at the corner",
+      "alertP": "Bearing 33° and closing. Stop sent to the forklift before they step into view.",
+      "statusTxt": "STOP",
+      "aPhi": "33.2°",
+      "aEta": "3.9s",
+      "aZ": "123.2σ",
+      "decA": "Stop the vehicle",
+      "decW": "Bearing 33° and falling 7°/s: the walker is heading for the corner line.",
+      "clock": "9.20 / 19.00 s",
+      "hudT": "t 9.20 s",
+      "playTxt": "Play run",
+      "state": "coming",
+      "action": "stop_vehicle"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:20Z"
+}

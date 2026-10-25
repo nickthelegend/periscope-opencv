@@ -1,0 +1,35 @@
+argv: .venv/bin/python tools/make_demo.py --out audit/cli/demo-rerun
+pid: 83385
+timeout_s: 900
+elapsed_s: 14.8
+timed_out: false
+exit_code: 0
+----- stdout -----
+{
+ "near": {
+  "frames": 380,
+  "eval_frames": 82,
+  "recall": 1.0,
+  "false_alarm_rate": 0.0,
+  "angle_mae_deg": 2.114368068270658,
+  "angle_median_deg": 1.290898199142692,
+  "angle_p90_deg": 5.425028928750739,
+  "first_detect_distance_m": 4.439357019877639,
+  "lead_time_s": 2.1,
+  "max_detect_distance_m": 6.83406220302133
+ },
+ "far": {
+  "frames": 380,
+  "eval_frames": 236,
+  "recall": 0.6991525423728814,
+  "false_alarm_rate": 0.0,
+  "angle_mae_deg": 1.2541492166649204,
+  "angle_median_deg": 0.6533954377217128,
+  "angle_p90_deg": 3.853373385103614,
+  "first_detect_distance_m": 4.439357019877639,
+  "lead_time_s": 2.1,
+  "max_detect_distance_m": 6.83406220302133
+ }
+}
+events: [{'t': 16.75, 'action': 'relearn_background', 'why': 'lighting or exposure changed; the empty-hallway reference is stale'}]
+----- stderr -----

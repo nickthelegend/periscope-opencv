@@ -1,0 +1,20 @@
+{
+  "id": "EDGE-INTERRUPT-TAB-CLOSE",
+  "status": "PASS",
+  "expected": "Window pagehide event while playing triggers keepalive fetch to POST /api/alerts/status with live=false and reason \"closed\"; server bus marks stream stale with reason \"closed\"",
+  "observed": {
+    "server_stale": {
+      "run": "demo",
+      "reason": "closed",
+      "live": false,
+      "t": 1792959136.645524
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:12:16Z"
+}

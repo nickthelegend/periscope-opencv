@@ -1,0 +1,29 @@
+{
+  "id": "UI-PLAY-PAUSE",
+  "status": "PASS",
+  "expected": "Clicking #playBtn while playing sets userPaused=true and pauses #vFloor (#playTxt becomes \"Resume\", aria-label becomes \"Play\"); clicking again resumes playback (#playTxt becomes \"Pause\", aria-label becomes \"Pause\")",
+  "observed": {
+    "screen": {
+      "alertH": "Learning the empty hallway",
+      "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+      "statusTxt": "Learning",
+      "aPhi": "–",
+      "aEta": "–",
+      "aZ": "–",
+      "decA": "Learning the background",
+      "decW": "Measuring the empty floor and its noise before trusting any change.",
+      "clock": "0.35 / 19.00 s",
+      "hudT": "t 0.35 s",
+      "playTxt": "Pause",
+      "state": "learning",
+      "action": "learning"
+    }
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:10Z"
+}

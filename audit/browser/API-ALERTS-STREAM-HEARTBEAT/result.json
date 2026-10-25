@@ -1,0 +1,55 @@
+{
+  "id": "API-ALERTS-STREAM-HEARTBEAT",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "sse": [
+    {
+      "event": "heartbeat",
+      "data": {
+        "t": 1792955973.394929,
+        "live": true,
+        "run": "demo",
+        "age_s": 0.64
+      },
+      "received": 349.19999999552965
+    },
+    {
+      "event": "heartbeat",
+      "data": {
+        "t": 1792955978.396655,
+        "live": false,
+        "run": "demo",
+        "age_s": 5.642
+      },
+      "received": 5351.29999999702
+    }
+  ],
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "canvasHidden": true,
+    "width": 300,
+    "height": 150,
+    "dropVisible": true,
+    "points": "",
+    "copyDisabled": true,
+    "list": "1\ncorner\n2\nwall, 50 cm\n3\nwall, 100 cm\n4\n90\u00b0 line, 50 cm\n5\n90\u00b0 line, 100 cm\n6\ndiagonal (optional)"
+  },
+  "status": "FAIL",
+  "observation": "Heartbeat fields match, but measured interval was 5.002100s in Chrome (5.001726s by server timestamps), exceeding the literal maximum 5.000000s. No scheduling tolerance was authorized by the expected cell."
+}

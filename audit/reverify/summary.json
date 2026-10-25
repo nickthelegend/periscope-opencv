@@ -1,0 +1,1649 @@
+{
+  "UI-SERVE-LOCAL": {
+    "id": "UI-SERVE-LOCAL",
+    "status": "PASS",
+    "expected": "GET http://127.0.0.1:8740 serves web/index.html with status 200, title \"Periscope · see who's coming around the corner\", and H1 \"See who's coming around the corner.\"; no deployed URL exists for this project",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:06Z"
+  },
+  "UI-RUN-SELECT": {
+    "id": "UI-RUN-SELECT",
+    "status": "PASS",
+    "expected": "#runSel dropdown contains options populated from GET /api/runs; default option is selected with text \"Synthetic corner · red top · lit hallway\" and value \"demo\"; zero console errors",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:07Z"
+  },
+  "UI-SYNTH-TAG": {
+    "id": "UI-SYNTH-TAG",
+    "status": "PASS",
+    "expected": "#kindTag element is not hidden and displays visible text \"Synthetic scene\"; #sceneFoot text is exactly \"Synthetic: per-pixel SNR 0.224 at 3 m · noise 2.29 DN · signal 0.513 DN\"",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:08Z"
+  },
+  "UI-AUTOPLAY": {
+    "id": "UI-AUTOPLAY",
+    "status": "PASS",
+    "expected": "Default load with prefers-reduced-motion not set to reduce autoplays video (#vFloor.paused is false, #vFloor.playbackRate is 1); #playTxt text is \"Pause\", #playBtn aria-label is \"Pause\"",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.30 / 19.00 s",
+        "hudT": "t 0.30 s",
+        "playTxt": "Pause",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:09Z"
+  },
+  "UI-PLAY-PAUSE": {
+    "id": "UI-PLAY-PAUSE",
+    "status": "PASS",
+    "expected": "Clicking #playBtn while playing sets userPaused=true and pauses #vFloor (#playTxt becomes \"Resume\", aria-label becomes \"Play\"); clicking again resumes playback (#playTxt becomes \"Pause\", aria-label becomes \"Pause\")",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.35 / 19.00 s",
+        "hudT": "t 0.35 s",
+        "playTxt": "Pause",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:10Z"
+  },
+  "UI-RESTART": {
+    "id": "UI-RESTART",
+    "status": "PASS",
+    "expected": "Clicking #restartBtn seeks frame 0, plays video, resets transport clock to \"0.00 / 19.00 s\", and sets HUD #hudT to \"t 0.00 s\"",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.15 / 19.00 s",
+        "hudT": "t 0.15 s",
+        "playTxt": "Pause",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:11Z"
+  },
+  "UI-REPLAY-LOOP": {
+    "id": "UI-REPLAY-LOOP",
+    "status": "PASS",
+    "expected": "When #vFloor reaches duration end, #playTxt becomes \"Replay\"; after 2500 ms kiosk loop timer seeks to frame 0 and restarts playback",
+    "observed": {
+      "restart_delay_s": 2.4993151249946095,
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.15 / 19.00 s",
+        "hudT": "t 0.15 s",
+        "playTxt": "Pause",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:15Z"
+  },
+  "UI-KEY-SHORTCUTS": {
+    "id": "UI-KEY-SHORTCUTS",
+    "status": "PASS",
+    "expected": "Pressing Space on document toggles play/pause; pressing ArrowLeft or ArrowRight outside inputs pauses and steps exactly one frame backward or forward",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.25 / 19.00 s",
+        "hudT": "t 0.25 s",
+        "playTxt": "Resume",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:16Z"
+  },
+  "UI-SPEED-CONTROL": {
+    "id": "UI-SPEED-CONTROL",
+    "status": "PASS",
+    "expected": "Clicking \"2×\" sets playbackRate to 2 on #vFloor, #vShadow, and #vHidden, and sets aria-pressed=\"true\" on 2× button and \"false\" on 0.5× and 1× buttons",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:17Z"
+  },
+  "UI-FLOOR-VIEW": {
+    "id": "UI-FLOOR-VIEW",
+    "status": "PASS",
+    "expected": "Clicking \"Camera\" sets #stage data-view=\"camera\" and hides #vShadow; clicking \"Shadow ×70\" sets data-view=\"shadow\" and hides #vFloor; clicking \"Split\" sets data-view=\"split\" and reveals wipe divider",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:18Z"
+  },
+  "UI-WIPE-DIVIDER": {
+    "id": "UI-WIPE-DIVIDER",
+    "status": "PASS",
+    "expected": "Dragging #wipeBtn or pressing ArrowLeft/Right updates --split CSS percentage clamped between 4% and 96% and updates aria-valuenow to corresponding integer percentage",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:19Z"
+  },
+  "UI-SPACETIME-SCRUB": {
+    "id": "UI-SPACETIME-SCRUB",
+    "status": "PASS",
+    "expected": "Dragging or focusing and pressing arrow keys on #stBox updates aria-valuenow to t.toFixed(2), aria-valuetext to \"{t.toFixed(1)} seconds\", and seeks all slave videos to target frame",
+    "observed": {
+      "target_t": 9.2,
+      "videos": [
+        {
+          "time": 9.225,
+          "paused": true,
+          "rate": 1
+        },
+        {
+          "time": 9.225,
+          "paused": true,
+          "rate": 1
+        },
+        {
+          "time": 9.225,
+          "paused": true,
+          "rate": 1
+        }
+      ],
+      "screen": {
+        "alertH": "Someone at the corner",
+        "alertP": "Bearing 33° and closing. Stop sent to the forklift before they step into view.",
+        "statusTxt": "STOP",
+        "aPhi": "33.2°",
+        "aEta": "3.9s",
+        "aZ": "123.2σ",
+        "decA": "Stop the vehicle",
+        "decW": "Bearing 33° and falling 7°/s: the walker is heading for the corner line.",
+        "clock": "9.20 / 19.00 s",
+        "hudT": "t 9.20 s",
+        "playTxt": "Play run",
+        "state": "coming",
+        "action": "stop_vehicle"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:20Z"
+  },
+  "UI-OVERLAY-TOGGLE": {
+    "id": "UI-OVERLAY-TOGGLE",
+    "status": "PASS",
+    "expected": "Clicking \"Track\" or \"Truth\" (#truthBtn) toggles aria-pressed attribute between \"true\" and \"false\" and redraws spacetime canvas overlay",
+    "observed": {
+      "screen": {
+        "alertH": "Someone at the corner",
+        "alertP": "Bearing 73° and closing. Stop sent to the forklift before they step into view.",
+        "statusTxt": "STOP",
+        "aPhi": "73.4°",
+        "aEta": "6.3s",
+        "aZ": "10.4σ",
+        "decA": "Stop the vehicle",
+        "decW": "Bearing 73° and falling 2°/s: the walker is heading for the corner line.",
+        "clock": "6.35 / 19.00 s",
+        "hudT": "t 6.35 s",
+        "playTxt": "Resume",
+        "state": "coming",
+        "action": "stop_vehicle"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:21Z"
+  },
+  "UI-MAP-VIEW": {
+    "id": "UI-MAP-VIEW",
+    "status": "PASS",
+    "expected": "Clicking \"Hidden hallway\" (#hiddenBtn) hides #plan SVG, displays #vHidden video, and shows #mapNote with text \"Ground-truth camera. Periscope never sees this view.\"; clicking \"Plan\" restores SVG plan view",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:22Z"
+  },
+  "UI-DECISION-LOG": {
+    "id": "UI-DECISION-LOG",
+    "status": "PASS",
+    "expected": "Clicking a row in #log pauses playback and seeks all videos to that event timestamp (e.g. clicking row at 16.8 s seeks video currentTime to 16.8 s)",
+    "observed": {
+      "videos": [
+        {
+          "time": 16.774999,
+          "paused": true,
+          "rate": 1
+        },
+        {
+          "time": 16.774999,
+          "paused": true,
+          "rate": 1
+        },
+        {
+          "time": 16.774999,
+          "paused": true,
+          "rate": 1
+        }
+      ],
+      "screen": {
+        "alertH": "Corner clear",
+        "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+        "statusTxt": "Clear",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "2.6σ",
+        "decA": "Re-learn the background",
+        "decW": "Light changed since the background was learned.",
+        "clock": "16.75 / 19.00 s",
+        "hudT": "t 16.75 s",
+        "playTxt": "Play run",
+        "state": "clear",
+        "action": "relearn_background"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:23Z"
+  },
+  "UI-CALIBRATE-PAGE": {
+    "id": "UI-CALIBRATE-PAGE",
+    "status": "PASS",
+    "expected": "GET http://127.0.0.1:8740/calibrate.html serves web/calibrate.html with status 200, title \"Periscope · mark the tape\", H1 \"Mark the tape\", and back link <a href=\"./\">Back to the console</a>",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:24Z"
+  },
+  "UI-CALIBRATE-LOAD": {
+    "id": "UI-CALIBRATE-LOAD",
+    "status": "PASS",
+    "expected": "Selecting an image file via #file input removes hidden attribute from canvas #cv, sets cv.width and cv.height to image dimensions, hides #drop, and resets points list to empty",
+    "observed": {
+      "image_dimensions": [
+        480,
+        360
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:25Z"
+  },
+  "UI-CALIBRATE-MODE": {
+    "id": "UI-CALIBRATE-MODE",
+    "status": "PASS",
+    "expected": "Clicking \"Hidden hallway\" sets aria-pressed=\"true\" on gt button, clears points, and renders 4 list items (A, B, C, D); clicking \"Corner camera\" restores 6 list items (1 to 6)",
+    "observed": {
+      "image_dimensions": [
+        480,
+        360
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:26Z"
+  },
+  "UI-CALIBRATE-CLICK": {
+    "id": "UI-CALIBRATE-CLICK",
+    "status": "PASS",
+    "expected": "Clicking canvas draws circle and text marker, marks corresponding #list row with class \"done\" and coordinates \"{x}, {y}\", and updates readonly #out textarea with space-separated \"{x.toFixed(1)},{y.toFixed(1)}\" points",
+    "observed": {
+      "image_dimensions": [
+        480,
+        360
+      ],
+      "output": "60.0,69.9",
+      "row": "1\ncorner\n60, 70"
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:27Z"
+  },
+  "UI-CALIBRATE-UNDO": {
+    "id": "UI-CALIBRATE-UNDO",
+    "status": "PASS",
+    "expected": "Clicking #undo removes the last clicked point from canvas, marks corresponding list row as uncompleted, and updates #out textarea value",
+    "observed": {
+      "image_dimensions": [
+        480,
+        360
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:28Z"
+  },
+  "UI-CALIBRATE-COPY": {
+    "id": "UI-CALIBRATE-COPY",
+    "status": "PASS",
+    "expected": "When required points count is reached (5 for corner, 4 for gt), #copy button loses disabled attribute; clicking writes #out value to clipboard, button text becomes \"Copied\" and reverts to \"Copy marks\" after 1400 ms",
+    "observed": {
+      "image_dimensions": [
+        480,
+        360
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:53Z"
+  },
+  "API-HEALTH": {
+    "id": "API-HEALTH",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON body {\"ok\": true}",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:31Z"
+  },
+  "API-RUNS": {
+    "id": "API-RUNS",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON array containing run object {\"id\": \"demo\", \"title\": \"Synthetic corner · red top · lit hallway\", \"kind\": \"synthetic\", \"frames\": 380}",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:32Z"
+  },
+  "API-ANALYZE-SUCCESS": {
+    "id": "API-ANALYZE-SUCCESS",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON response {\"id\": \"up-<hex>\"}; web/runs/up-<hex>/ directory contains run.json, floor.mp4, shadow.mp4, spacetime.png; GET /api/runs subsequently lists the new run id",
+    "observed": {
+      "created_run": "up-a504e161",
+      "new_up_directories_after_cleanup": []
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:55Z"
+  },
+  "API-ANALYZE-BAD-CALIB": {
+    "id": "API-ANALYZE-BAD-CALIB",
+    "status": "PASS",
+    "expected": "HTTP status 400 Bad Request with detail starting with \"bad calibration:\"; no up-* directory is persisted under web/runs/",
+    "observed": {
+      "new_up_directories_after_cleanup": []
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:33Z"
+  },
+  "API-ANALYZE-UNREADABLE": {
+    "id": "API-ANALYZE-UNREADABLE",
+    "status": "PASS",
+    "expected": "HTTP status 422 Unprocessable Entity with detail starting with \"cannot open video:\"; temporary up-* directory is deleted",
+    "observed": {
+      "new_up_directories_after_cleanup": []
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:34Z"
+  },
+  "API-ANALYZE-TOO-LARGE": {
+    "id": "API-ANALYZE-TOO-LARGE",
+    "status": "PASS",
+    "expected": "HTTP status 413 Payload Too Large with detail \"clip too large (500 MB max)\"; temporary up-* directory is deleted",
+    "observed": {
+      "video_bytes_streamed": 525336576,
+      "temporary_fixture_deleted": true,
+      "new_up_directories_after_cleanup": []
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:36Z"
+  },
+  "API-ALERTS-STATUS-LIVE": {
+    "id": "API-ALERTS-STATUS-LIVE",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON response {\"t\": <float>, \"live\": true, \"run\": \"demo\", \"age_s\": <float>}; sets bus.live=true and resets watchdog timer",
+    "observed": {
+      "events": [
+        {
+          "event": "heartbeat",
+          "data": {
+            "t": 1792959100.100389,
+            "live": true,
+            "run": "demo",
+            "age_s": 1.507
+          },
+          "received": 3732.60000000149
+        }
+      ],
+      "status": {
+        "t": 1792959096.782486,
+        "live": true,
+        "run": "demo",
+        "age_s": 0.0
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:40Z"
+  },
+  "API-ALERTS-STATUS-STALE": {
+    "id": "API-ALERTS-STATUS-STALE",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON response {\"t\": <float>, \"live\": false, \"run\": \"demo\", \"age_s\": <float>}; bus marks run stale and broadcasts SSE stale event",
+    "observed": {
+      "events": [
+        {
+          "event": "stale",
+          "data": {
+            "run": "demo",
+            "reason": "paused",
+            "live": false,
+            "t": 1792959100.917724
+          },
+          "received": 513.8000000044703
+        }
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:41Z"
+  },
+  "API-ALERTS-PUBLISH-CLEAR": {
+    "id": "API-ALERTS-PUBLISH-CLEAR",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON response {\"sent\": true, \"subscribers\": <int>}; SSE stream receives event: alert with data {\"run\": \"demo\", \"state\": \"clear\", \"level\": null, \"bearing_deg\": null}",
+    "observed": {
+      "events": [
+        {
+          "event": "alert",
+          "data": {
+            "run": "demo",
+            "state": "clear",
+            "level": null,
+            "bearing_deg": null,
+            "confidence": 0.9,
+            "t": 1
+          },
+          "received": 362.20000000298023
+        }
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:41Z"
+  },
+  "API-ALERTS-PUBLISH-SOMEONE": {
+    "id": "API-ALERTS-PUBLISH-SOMEONE",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON response {\"sent\": true, \"subscribers\": <int>}; SSE stream receives event: alert with data {\"run\": \"demo\", \"state\": \"someone\", \"level\": \"watch\", \"bearing_deg\": 75.0}",
+    "observed": {
+      "events": [
+        {
+          "event": "alert",
+          "data": {
+            "run": "demo",
+            "state": "someone",
+            "level": "watch",
+            "bearing_deg": 75,
+            "confidence": 0.9,
+            "t": 1
+          },
+          "received": 451.29999999701977
+        }
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:42Z"
+  },
+  "API-ALERTS-PUBLISH-STOP": {
+    "id": "API-ALERTS-PUBLISH-STOP",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON response {\"sent\": true, \"subscribers\": <int>}; SSE stream receives event: alert with data {\"run\": \"demo\", \"state\": \"someone\", \"level\": \"stop\", \"bearing_deg\": 73.4}",
+    "observed": {
+      "events": [
+        {
+          "event": "alert",
+          "data": {
+            "run": "demo",
+            "state": "someone",
+            "level": "stop",
+            "bearing_deg": 73.4,
+            "confidence": 0.9,
+            "t": 1
+          },
+          "received": 459.3999999985099
+        }
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:43Z"
+  },
+  "API-ALERTS-DEDUP": {
+    "id": "API-ALERTS-DEDUP",
+    "status": "PASS",
+    "expected": "HTTP status 200 and JSON response {\"sent\": false, \"subscribers\": <int>}; no duplicate alert event is emitted over SSE stream",
+    "observed": {
+      "events": [
+        {
+          "event": "alert",
+          "data": {
+            "run": "demo",
+            "state": "clear",
+            "level": null,
+            "bearing_deg": null,
+            "confidence": 0.9,
+            "t": 1
+          },
+          "received": 381.3999999985099
+        }
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:44Z"
+  },
+  "API-ALERTS-STREAM-CONNECT": {
+    "id": "API-ALERTS-STREAM-CONNECT",
+    "status": "PASS",
+    "expected": "HTTP status 200 with headers Content-Type text/event-stream, Cache-Control no-cache, X-Accel-Buffering no; emits initial event: heartbeat followed by event: alert if an active alert exists",
+    "observed": {
+      "events": [
+        {
+          "event": "alert",
+          "data": {
+            "run": "demo",
+            "state": "someone",
+            "level": "watch",
+            "bearing_deg": 75,
+            "confidence": 0.9,
+            "t": 1
+          },
+          "received": 377.6000000014901
+        }
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:44Z"
+  },
+  "API-ALERTS-STREAM-HEARTBEAT": {
+    "id": "API-ALERTS-STREAM-HEARTBEAT",
+    "status": "PASS",
+    "expected": "SSE stream receives event: heartbeat containing {\"t\": <float>, \"live\": <bool>, \"run\": <string or null>, \"age_s\": <float or null>} at least once every HEARTBEAT_S (5.0 s)",
+    "observed": {
+      "received_gaps_s": [
+        4.00219999999553,
+        4.00170000000298,
+        4.00220000000298
+      ],
+      "server_gaps_s": [
+        4.002319097518921,
+        4.001550912857056,
+        4.0022971630096436
+      ],
+      "heartbeats": [
+        {
+          "event": "heartbeat",
+          "data": {
+            "t": 1792959105.5702798,
+            "live": false,
+            "run": "demo",
+            "age_s": 0.806
+          },
+          "received": 414.3999999985099
+        },
+        {
+          "event": "heartbeat",
+          "data": {
+            "t": 1792959109.572599,
+            "live": false,
+            "run": "demo",
+            "age_s": 4.809
+          },
+          "received": 4416.5999999940395
+        },
+        {
+          "event": "heartbeat",
+          "data": {
+            "t": 1792959113.5741498,
+            "live": false,
+            "run": "demo",
+            "age_s": 8.81
+          },
+          "received": 8418.29999999702
+        },
+        {
+          "event": "heartbeat",
+          "data": {
+            "t": 1792959117.576447,
+            "live": false,
+            "run": "demo",
+            "age_s": 12.812
+          },
+          "received": 12420.5
+        }
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:57Z"
+  },
+  "API-ALERTS-AUTH-LOOPBACK": {
+    "id": "API-ALERTS-AUTH-LOOPBACK",
+    "status": "PASS",
+    "expected": "Request from client IP outside 127.0.0.1 or ::1 without PERISCOPE_ALERT_TOKEN returns HTTP status 403 Forbidden with detail \"alerts can only be published from this machine (or set PERISCOPE_ALERT_TOKEN)\"",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:58Z"
+  },
+  "API-ALERTS-AUTH-ORIGIN": {
+    "id": "API-ALERTS-AUTH-ORIGIN",
+    "status": "PASS",
+    "expected": "Request with Origin header not matching {scheme}://{host} returns HTTP status 403 Forbidden with detail \"cross-origin publisher refused\"",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:11:59Z"
+  },
+  "ENG-DEMO-FRAME-0-LEARNING": {
+    "id": "ENG-DEMO-FRAME-0-LEARNING",
+    "status": "PASS",
+    "expected": "#alert has data-s=\"learning\"; #alertH text is \"Learning the empty hallway\"; #statusTxt text is \"Learning\"; #alertP text is \"Hold still. Periscope is measuring the floor and its noise before it watches for shadows.\"; #aPhi, #aEta, #aZ are \"–\"; #decision has data-a=\"learning\", #decA is \"Learning the background\", #decW is \"Measuring the empty floor and its noise before trusting any change.\"",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:00Z"
+  },
+  "ENG-DEMO-FRAME-40-CLEAR": {
+    "id": "ENG-DEMO-FRAME-40-CLEAR",
+    "status": "PASS",
+    "expected": "#alert has data-s=\"clear\"; #alertH text is \"Corner clear\"; #statusTxt text is \"Clear\"; #alertP text is \"No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.\"; #aPhi is \"–\", #aEta is \"–\", #aZ is \"2.8\" with unit \"σ\"; #decision has data-a=\"watch\", #decA is \"Watching\", #decW is \"Noise, shake and light are inside limits; nothing above the noise floor.\"",
+    "observed": {
+      "screen": {
+        "alertH": "Corner clear",
+        "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+        "statusTxt": "Clear",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "2.8σ",
+        "decA": "Watching",
+        "decW": "Noise, shake and light are inside limits; nothing above the noise floor.",
+        "clock": "2.00 / 19.00 s",
+        "hudT": "t 2.00 s",
+        "playTxt": "Resume",
+        "state": "clear",
+        "action": "watch"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:01Z"
+  },
+  "ENG-DEMO-FRAME-116-PRESENT": {
+    "id": "ENG-DEMO-FRAME-116-PRESENT",
+    "status": "PASS",
+    "expected": "#alert has data-s=\"present\"; #alertH text is \"Someone in the hidden hallway\"; #statusTxt text is \"Someone hidden\"; #alertP text is \"Bearing 75°. Watching which way they move.\"; #aPhi is \"75.0\" with unit \"°\", #aEta is \"–\", #aZ is \"6.2\" with unit \"σ\"; #decision has data-a=\"watch\", #decA is \"Watching\", #decW is \"Shadow at 75° is 6.2σ above noise; not closing on the corner.\"",
+    "observed": {
+      "screen": {
+        "alertH": "Someone in the hidden hallway",
+        "alertP": "Bearing 75°. Watching which way they move.",
+        "statusTxt": "Someone hidden",
+        "aPhi": "75.0°",
+        "aEta": "–",
+        "aZ": "6.2σ",
+        "decA": "Watching",
+        "decW": "Shadow at 75° is 6.2σ above noise; not closing on the corner.",
+        "clock": "5.80 / 19.00 s",
+        "hudT": "t 5.80 s",
+        "playTxt": "Resume",
+        "state": "present",
+        "action": "watch"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:02Z"
+  },
+  "ENG-DEMO-FRAME-127-COMING": {
+    "id": "ENG-DEMO-FRAME-127-COMING",
+    "status": "PASS",
+    "expected": "#alert has data-s=\"coming\" and red gradient background; .big text is \"STOP\" with computed display \"block\"; #alertH text is \"Someone at the corner\"; #statusTxt text is \"STOP\"; #alertP text is \"Bearing 73° and closing. Stop sent to the forklift before they step into view.\"; #aPhi is \"73.4°\", #aEta is \"6.3\" with unit \"s\", #aZ is \"10.4\" with unit \"σ\"; #decision has data-a=\"stop_vehicle\", #decA is \"Stop the vehicle\", #decW is \"Bearing 73° and falling 2°/s: the walker is heading for the corner line.\"",
+    "observed": {
+      "screen": {
+        "alertH": "Someone at the corner",
+        "alertP": "Bearing 73° and closing. Stop sent to the forklift before they step into view.",
+        "statusTxt": "STOP",
+        "aPhi": "73.4°",
+        "aEta": "6.3s",
+        "aZ": "10.4σ",
+        "decA": "Stop the vehicle",
+        "decW": "Bearing 73° and falling 2°/s: the walker is heading for the corner line.",
+        "clock": "6.35 / 19.00 s",
+        "hudT": "t 6.35 s",
+        "playTxt": "Resume",
+        "state": "coming",
+        "action": "stop_vehicle"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:56Z"
+  },
+  "ENG-DEMO-FRAME-194-WALKING-AWAY": {
+    "id": "ENG-DEMO-FRAME-194-WALKING-AWAY",
+    "status": "PASS",
+    "expected": "#alert has data-s=\"present\"; #alertH text is \"Someone in the hidden hallway\"; #statusTxt text is \"Someone hidden\"; #alertP text is \"Bearing 37° and rising: they are walking away from the corner.\"; #aPhi is \"37.4°\", #aEta is \"–\"; .big text STOP has computed display \"none\"",
+    "observed": {
+      "screen": {
+        "alertH": "Someone in the hidden hallway",
+        "alertP": "Bearing 37° and rising: they are walking away from the corner.",
+        "statusTxt": "Someone hidden",
+        "aPhi": "37.4°",
+        "aEta": "–",
+        "aZ": "106.6σ",
+        "decA": "Stop the vehicle",
+        "decW": "Bearing 37° and falling 3°/s: the walker is heading for the corner line.",
+        "clock": "9.70 / 19.00 s",
+        "hudT": "t 9.70 s",
+        "playTxt": "Resume",
+        "state": "present",
+        "action": "stop_vehicle"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:58Z"
+  },
+  "ENG-DEMO-FRAME-335-RELEARN": {
+    "id": "ENG-DEMO-FRAME-335-RELEARN",
+    "status": "PASS",
+    "expected": "#decision has data-a=\"relearn_background\"; #decA text is \"Re-learn the background\"; #decW text is \"Light changed since the background was learned.\"; #log contains row with time \"16.8 s\", bold text \"Re-learn the background\", and detail \"lighting or exposure changed; the empty-hallway reference is stale\"",
+    "observed": {
+      "screen": {
+        "alertH": "Corner clear",
+        "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+        "statusTxt": "Clear",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "2.6σ",
+        "decA": "Re-learn the background",
+        "decW": "Light changed since the background was learned.",
+        "clock": "16.75 / 19.00 s",
+        "hudT": "t 16.75 s",
+        "playTxt": "Resume",
+        "state": "clear",
+        "action": "relearn_background"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:06Z"
+  },
+  "ENG-CHECKS-ASSESSMENT": {
+    "id": "ENG-CHECKS-ASSESSMENT",
+    "status": "PASS",
+    "expected": "#checks displays 7 check rows with labels Predicted range (\"5.2 m\"), Pixel noise (\"1.58 %\"), Camera shake (\"0.01 px\"), View drift (\"0.0 px\"), Light change (\"-0.02 %\"), Clipped pixels (\"0.00 %\"), Wedge pixels (\"29,623\"); zero rows have class \"bad\"",
+    "observed": {
+      "checks": "Predicted range\n5.2 m\nPixel noise\n1.58 %\nCamera shake\n0.01 px\nView drift\n0.0 px\nLight change\n-0.02 %\nClipped pixels\n0.00 %\nWedge pixels\n29,623",
+      "screen": {
+        "alertH": "Corner clear",
+        "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+        "statusTxt": "Clear",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "2.8σ",
+        "decA": "Watching",
+        "decW": "Noise, shake and light are inside limits; nothing above the noise floor.",
+        "clock": "2.00 / 19.00 s",
+        "hudT": "t 2.00 s",
+        "playTxt": "Resume",
+        "state": "clear",
+        "action": "watch"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:07Z"
+  },
+  "ENG-GROUND-TRUTH-SCORES": {
+    "id": "ENG-GROUND-TRUTH-SCORES",
+    "status": "PASS",
+    "expected": "#scores dt/dd grid displays First detection \"4.4 m from corner\", Warning lead \"2.1 s\", Bearing error \"2.1 ° mean\", Detected within 3 m \"100 % of frames\", False alarms \"0.0 % empty frames\", Bearing error p90 \"5.4 °\"; #fine text includes \"Synthetic run, scored against the renderer's truth.\"",
+    "observed": {
+      "scores": "First detection 4.4 m from corner\nWarning lead 2.1 s\nBearing error 2.1 ° mean\nDetected within 3 m 100 % of frames\nFalse alarms 0.0 % empty frames\nBearing error p90 5.4 °",
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:59Z"
+  },
+  "EDGE-375PX-SYNTHETIC-LABEL": {
+    "id": "EDGE-375PX-SYNTHETIC-LABEL",
+    "status": "PASS",
+    "expected": "At 375px-wide viewport, a judge can tell this run is synthetic via visible label \"Synthetic scene\" (PRODUCT.md principle 4); zero console errors",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:09Z"
+  },
+  "EDGE-375PX-CONSOLE-LAYOUT": {
+    "id": "EDGE-375PX-CONSOLE-LAYOUT",
+    "status": "PASS",
+    "expected": "At 375px-wide viewport, page renders within 375px width without horizontal scroll (overflow-x); panels and wells stack vertically; zero console errors",
+    "observed": {
+      "dimensions": {
+        "viewport": 375,
+        "width": 375,
+        "body": 375
+      },
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:10Z"
+  },
+  "EDGE-375PX-CALIBRATE-LAYOUT": {
+    "id": "EDGE-375PX-CALIBRATE-LAYOUT",
+    "status": "PASS",
+    "expected": "At 375px-wide viewport, web/calibrate.html renders without horizontal scroll; canvas stage and control panel stack into a single column; zero console errors",
+    "observed": {
+      "dimensions": {
+        "viewport": 375,
+        "width": 375,
+        "body": 375
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:10Z"
+  },
+  "EDGE-CALIB-EMPTY-STATE": {
+    "id": "EDGE-CALIB-EMPTY-STATE",
+    "status": "PASS",
+    "expected": "#drop is visible with text \"No frame loaded yet. Choose an image, or drop one here.\"; canvas #cv has hidden attribute; #copy button has disabled attribute; #out textarea value is empty string",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:11Z"
+  },
+  "EDGE-CALIB-INVALID-FILE": {
+    "id": "EDGE-CALIB-INVALID-FILE",
+    "status": "PASS",
+    "expected": "Selecting or dropping a non-image file (e.g. text or pdf) is ignored; #drop remains visible; #cv remains hidden; points list remains empty; zero console errors",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:12Z"
+  },
+  "EDGE-CALIB-COPY-INCOMPLETE": {
+    "id": "EDGE-CALIB-COPY-INCOMPLETE",
+    "status": "PASS",
+    "expected": "#copy button remains disabled while clicked points count is less than 5 in corner mode or less than 4 in hidden hallway mode",
+    "observed": {
+      "image_dimensions": [
+        480,
+        360
+      ]
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:13Z"
+  },
+  "EDGE-INTERRUPT-PAUSE": {
+    "id": "EDGE-INTERRUPT-PAUSE",
+    "status": "PASS",
+    "expected": "Clicking #playBtn or pressing Space pauses #vFloor; #playTxt becomes \"Resume\"; #playBtn aria-label becomes \"Play\"; sends POST /api/alerts/status with live=false and reason \"paused\"",
+    "observed": {
+      "events": [
+        {
+          "event": "stale",
+          "data": {
+            "run": "demo",
+            "reason": "paused",
+            "live": false,
+            "t": 1792959134.0450618
+          },
+          "received": 555.5
+        }
+      ],
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.20 / 19.00 s",
+        "hudT": "t 0.20 s",
+        "playTxt": "Resume",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:14Z"
+  },
+  "EDGE-INTERRUPT-SEEK": {
+    "id": "EDGE-INTERRUPT-SEEK",
+    "status": "PASS",
+    "expected": "Scrubbing #stBox or pressing arrow keys pauses video; sends POST /api/alerts/status with live=false and reason \"seek\"; displays alert and HUD values for target frame; zero console errors",
+    "observed": {
+      "target_t": 0.2,
+      "videos": [
+        {
+          "time": 0.225,
+          "paused": true,
+          "rate": 1
+        },
+        {
+          "time": 0.225,
+          "paused": true,
+          "rate": 1
+        },
+        {
+          "time": 0.225,
+          "paused": true,
+          "rate": 1
+        }
+      ],
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.20 / 19.00 s",
+        "hudT": "t 0.20 s",
+        "playTxt": "Resume",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:15Z"
+  },
+  "EDGE-INTERRUPT-TAB-CLOSE": {
+    "id": "EDGE-INTERRUPT-TAB-CLOSE",
+    "status": "PASS",
+    "expected": "Window pagehide event while playing triggers keepalive fetch to POST /api/alerts/status with live=false and reason \"closed\"; server bus marks stream stale with reason \"closed\"",
+    "observed": {
+      "server_stale": {
+        "run": "demo",
+        "reason": "closed",
+        "live": false,
+        "t": 1792959136.645524
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:16Z"
+  },
+  "EDGE-INTERRUPT-RUN-SWITCH": {
+    "id": "EDGE-INTERRUPT-RUN-SWITCH",
+    "status": "PASS",
+    "expected": "Selecting a new run in #runSel sends POST /api/alerts/status with live=false and reason \"switched\"; server broadcasts SSE stale event with reason \"switched\"; new run loads from frame 0",
+    "observed": {
+      "events": [
+        {
+          "event": "stale",
+          "data": {
+            "run": "demo",
+            "reason": "switched",
+            "live": false,
+            "t": 1792959137.565842
+          },
+          "received": 527.2000000029802
+        }
+      ],
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.10 / 19.00 s",
+        "hudT": "t 0.10 s",
+        "playTxt": "Pause",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:17Z"
+  },
+  "EDGE-INTERRUPT-REDUCED-MOTION": {
+    "id": "EDGE-INTERRUPT-REDUCED-MOTION",
+    "status": "PASS",
+    "expected": "Console does not autoplay on load; #vFloor stays paused; #playTxt displays \"Play run\"; #playBtn aria-label displays \"Play\"",
+    "observed": {
+      "screen": {
+        "alertH": "Learning the empty hallway",
+        "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+        "statusTxt": "Learning",
+        "aPhi": "–",
+        "aEta": "–",
+        "aZ": "–",
+        "decA": "Learning the background",
+        "decW": "Measuring the empty floor and its noise before trusting any change.",
+        "clock": "0.00 / 19.00 s",
+        "hudT": "t 0.00 s",
+        "playTxt": "Play run",
+        "state": "learning",
+        "action": "learning"
+      }
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:19Z"
+  },
+  "EDGE-ALERT-NOT-LIVE": {
+    "id": "EDGE-ALERT-NOT-LIVE",
+    "status": "PASS",
+    "expected": "HTTP status 409 Conflict with detail \"that run is not playing; post /api/alerts/status first\"",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:19Z"
+  },
+  "EDGE-ALERT-BACKWARD-T": {
+    "id": "EDGE-ALERT-BACKWARD-T",
+    "status": "PASS",
+    "expected": "HTTP status 409 Conflict with detail \"alert is older than the last one in this live span\"",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:20Z"
+  },
+  "EDGE-ALERT-MALFORMED-BODY": {
+    "id": "EDGE-ALERT-MALFORMED-BODY",
+    "status": "PASS",
+    "expected": "HTTP status 422 Unprocessable Entity with detail \"level is required for someone and must be null for clear\"",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:21Z"
+  },
+  "EDGE-ALERT-SUBSCRIBER-OVERFLOW": {
+    "id": "EDGE-ALERT-SUBSCRIBER-OVERFLOW",
+    "status": "PASS",
+    "expected": "Stream emits \"event: resync\" with data {\"reason\": \"subscriber too slow; reconnect\"} and closes connection",
+    "observed": {
+      "stream_lines": [
+        "event: alert",
+        "data: {\"run\": \"demo\", \"state\": \"someone\", \"level\": \"watch\", \"bearing_deg\": 75.0, \"confidence\": 0.9, \"t\": 1.0}",
+        "",
+        "event: alert",
+        "data: {\"run\": \"demo\", \"state\": \"clear\", \"level\": null, \"bearing_deg\": null, \"confidence\": 0.9, \"t\": 1.0}",
+        "",
+        "event: resync",
+        "data: {\"t\": 1792959179.966408, \"reason\": \"subscriber too slow; reconnect\"}",
+        ""
+      ],
+      "stream_closed": true
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:13:05Z"
+  },
+  "EDGE-ALERT-KEEPALIVE-TIMEOUT": {
+    "id": "EDGE-ALERT-KEEPALIVE-TIMEOUT",
+    "status": "PASS",
+    "expected": "Server bus marks run stale; SSE stream emits \"event: stale\" with reason \"timeout\" and live=false",
+    "observed": {
+      "events": [
+        {
+          "event": "stale",
+          "data": {
+            "run": "demo",
+            "reason": "timeout",
+            "live": false,
+            "t": 1792959145.631271
+          },
+          "received": 3409.2999999970198
+        }
+      ],
+      "elapsed_s": 3.049529916999745
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:25Z"
+  },
+  "EDGE-RUNS-EMPTY-FALLBACK": {
+    "id": "EDGE-RUNS-EMPTY-FALLBACK",
+    "status": "FAIL",
+    "expected": "A failed or empty /api/runs response does not present that hardcoded option as if the server had listed a run; zero console errors",
+    "observed": {
+      "empty_case": "HTTP 200 [], no fabricated option",
+      "failed_case": "Real missing runs directory caused HTTP 500; unavailable panel and zero options"
+    },
+    "issues": [
+      "console error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "unexpected HTTP: {'event': 'response', 'url': 'http://127.0.0.1:8740/api/runs', 'status': 500, 'method': 'GET', 'post_data': None}"
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:12:28Z"
+  },
+  "EDGE-RUN-LOAD-NOT-FOUND": {
+    "id": "EDGE-RUN-LOAD-NOT-FOUND",
+    "status": "PASS",
+    "expected": "#console inner HTML is replaced with error panel showing bold text \"That run could not be loaded.\" followed by \"Check that runs/{id}/run.json exists, or pick another run.\"",
+    "observed": {
+      "panel": "That run could not be loaded.\nCheck that runs/vanishing/run.json exists, or pick another run."
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:13:06Z"
+  },
+  "API-ALERTS-AUTH-TOKEN": {
+    "id": "API-ALERTS-AUTH-TOKEN",
+    "status": "PASS",
+    "expected": "With PERISCOPE_ALERT_TOKEN set, request without header or with invalid token returns HTTP 401 with detail \"alert token required\"; request with valid Authorization: Bearer <token> returns HTTP 200",
+    "observed": {
+      "summary": "Throwaway process token: missing/invalid bearer 401 exact detail; valid bearer 200. Token excluded from evidence."
+    },
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:13:08Z"
+  },
+  "API-MULTI-WORKER-REFUSED": {
+    "id": "API-MULTI-WORKER-REFUSED",
+    "status": "PASS",
+    "expected": "With WEB_CONCURRENCY > 1, server startup raises RuntimeError matching \"the alert feed is process-local: run a single worker\"; with WEB_CONCURRENCY=1 startup succeeds",
+    "observed": {},
+    "issues": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "browser": "156.0.8078.4",
+    "timestamp_utc": "2026-10-25T20:13:10Z"
+  }
+}

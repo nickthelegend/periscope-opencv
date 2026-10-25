@@ -1,0 +1,13 @@
+{
+  "id": "API-RUNS",
+  "status": "PASS",
+  "expected": "HTTP status 200 and JSON array containing run object {\"id\": \"demo\", \"title\": \"Synthetic corner · red top · lit hallway\", \"kind\": \"synthetic\", \"frames\": 380}",
+  "observed": {},
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:32Z"
+}

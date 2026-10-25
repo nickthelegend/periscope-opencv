@@ -1,0 +1,35 @@
+{
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8740/?autoplay=0",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8740/api/runs",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8740/favicon.svg",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "failed": []
+}

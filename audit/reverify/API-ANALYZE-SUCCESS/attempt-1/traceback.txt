@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 126, in run
+    try:fn(c)
+        ^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 283, in api
+    elif id.startswith('API-ANALYZE-'):analyze(c)
+                                       ^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/audit/reverify/run_checks.py", line 348, in analyze
+    body=r.json();c.ok(re.fullmatch('up-[a-f0-9]+',body.get('id','')),'new upload id');run_id=body['id'];d=runs/run_id;c.observed['created_run']=run_id
+                                                                                              ~~~~^^^^^^
+KeyError: 'id'

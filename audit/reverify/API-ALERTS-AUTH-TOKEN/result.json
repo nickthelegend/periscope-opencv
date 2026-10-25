@@ -1,0 +1,15 @@
+{
+  "id": "API-ALERTS-AUTH-TOKEN",
+  "status": "PASS",
+  "expected": "With PERISCOPE_ALERT_TOKEN set, request without header or with invalid token returns HTTP 401 with detail \"alert token required\"; request with valid Authorization: Bearer <token> returns HTTP 200",
+  "observed": {
+    "summary": "Throwaway process token: missing/invalid bearer 401 exact detail; valid bearer 200. Token excluded from evidence."
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:13:08Z"
+}

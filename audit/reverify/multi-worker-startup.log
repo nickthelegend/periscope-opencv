@@ -1,0 +1,16 @@
+INFO:     Started server process [19390]
+INFO:     Waiting for application startup.
+ERROR:    Traceback (most recent call last):
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/.venv/lib/python3.12/site-packages/starlette/routing.py", line 661, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jaibajrang/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/server.py", line 184, in lifespan
+    check_single_worker()
+  File "/Volumes/Extreme SSD/Projects/wave1/.loom-worktrees/periscope-opencv-e45f0537c49c/omvo6r5o3/t8/server.py", line 173, in check_single_worker
+    raise RuntimeError("the alert feed is process-local: run a single worker (unset WEB_CONCURRENCY / --workers 1)")
+RuntimeError: the alert feed is process-local: run a single worker (unset WEB_CONCURRENCY / --workers 1)
+
+ERROR:    Application startup failed. Exiting.

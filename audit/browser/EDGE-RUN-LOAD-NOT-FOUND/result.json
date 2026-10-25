@@ -1,0 +1,26 @@
+{
+  "id": "EDGE-RUN-LOAD-NOT-FOUND",
+  "page_errors": [
+    "Cannot read properties of null (reading 'getBoundingClientRect')"
+  ],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "status": "FAIL",
+  "observation": "Exact missing-run error panel rendered; run.json HTTP 404 and console resource error fail the strict item.; console/page/network errors: [{\"type\": \"error\", \"text\": \"Failed to load resource: the server responded with a status of 404 (Not Found)\"}, \"Cannot read properties of null (reading 'getBoundingClientRect')\", {\"event\": \"response\", \"url\": \"http://127.0.0.1:8740/runs/up-884a6112/run.json\", \"status\": 404, \"headers\": {\"content-type\": \"application/json\"}}]"
+}

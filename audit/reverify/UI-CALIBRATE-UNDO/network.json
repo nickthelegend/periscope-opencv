@@ -1,0 +1,47 @@
+{
+  "requests": [
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:8740/calibrate.html",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.gstatic.com/l/font?kit=or3NQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8zbXmTkiSlcuFog&skey=f2030a904b731103&v=v6",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "https://fonts.gstatic.com/l/font?kit=gyBUhwUxId8gMGYQMKR3pzfaWI_RnONalrErE8iusq2Kkq6JNBi4zpPN36U&skey=70a816dcd17c8a3c&v=v5",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "http://127.0.0.1:8740/favicon.svg",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    },
+    {
+      "event": "response",
+      "url": "blob:http://127.0.0.1:8740/b7576288-f50c-403b-b1cc-9ad61a759300",
+      "status": 200,
+      "method": "GET",
+      "post_data": null
+    }
+  ],
+  "failed": []
+}

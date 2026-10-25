@@ -1,0 +1,14 @@
+compared sha256, size, and mtime_ns before bench/snr/make_demo/pytest and after
+result: UNCHANGED
+paths:
+  results/sweep.md  size=1657  sha256=5639e13812cc68dfd512a604d5d380bc679b2e6c37e1782338834986566c74d5
+  results/sweep.json  size=8431  sha256=f19eefff3c2990300999ec1ad1fe3caa390555ddba63600cb95dff88cb014d8d
+  results/sweep.png  size=34001  sha256=54b1cb9c7a59dcc21767857bddff6f890b4ae910328312272d53401d08a75c7a
+  web/runs/demo/run.json  size=61309  sha256=13a361d0d012d373821bd6962eb55f12bd9620e35d03d3246f575cf2f4395cba
+  web/runs/demo/floor.mp4  size=1903719  sha256=1077e144ef0ddd31cdffeec6a25b711c6947beb79974271096b9d52c0defe904
+  web/runs/demo/shadow.mp4  size=2276311  sha256=b3a0c15d2db3857d52893377667dea644a3b75b7243163d10b681052cee13bc7
+  web/runs/demo/hidden.mp4  size=414630  sha256=ddee09e8f6f4e6042aa25c3c991cb64b5daa81cfc1e0ba911327d4d7cbbde42f
+  web/runs/demo/floor.webm  size=71904  sha256=4a47e22b2de93c802a39f1b59ad3270fa37e4a31df6edd4768c8fca2fc687c59
+  web/runs/demo/shadow.webm  size=336570  sha256=d4592b20dc74e9838ac9aedcbca154981ec1c03e06ec247427a0bdd959d88dea
+  web/runs/demo/hidden.webm  size=39818  sha256=5a3ea2703b6adc5b660dfbc7fa3b729b098691e2bcd96feb923984b4de27fc18
+  web/runs/demo/spacetime.png  size=28377  sha256=7a4986a918efc2d0eff3e59550a6b466bbd400bfbde7d7830bd1189037601f57

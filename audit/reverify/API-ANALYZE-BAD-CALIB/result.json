@@ -1,0 +1,15 @@
+{
+  "id": "API-ANALYZE-BAD-CALIB",
+  "status": "PASS",
+  "expected": "HTTP status 400 Bad Request with detail starting with \"bad calibration:\"; no up-* directory is persisted under web/runs/",
+  "observed": {
+    "new_up_directories_after_cleanup": []
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:11:33Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "UI-SPACETIME-SCRUB",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "alertH": "Someone in the hidden hallway",
+    "alertP": "Bearing 76\u00b0 and rising: they are walking away from the corner.",
+    "statusTxt": "Someone hidden",
+    "aPhi": "76.1\u00b0",
+    "aEta": "\u2013",
+    "aZ": "7.7\u03c3",
+    "decA": "Watching",
+    "decW": "Shadow at 76\u00b0 is 7.7\u03c3 above noise; not closing on the corner.",
+    "clock": "12.25 / 19.00 s",
+    "hudT": "t 12.25 s",
+    "playTxt": "Resume",
+    "state": "present",
+    "action": "watch",
+    "STOPdisplay": "none",
+    "background": "linear-gradient(rgba(242, 181, 60, 0.1), rgba(242, 181, 60, 0.02) 70%), none",
+    "videos": [
+      {
+        "time": 12.275,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 12.275,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 12.275,
+        "paused": true,
+        "rate": 1
+      }
+    ]
+  },
+  "status": "PASS",
+  "observation": "Observed all expected results."
+}

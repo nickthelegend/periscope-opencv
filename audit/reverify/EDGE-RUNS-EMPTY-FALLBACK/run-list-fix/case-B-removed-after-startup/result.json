@@ -1,0 +1,19 @@
+{
+  "row": "EDGE-RUNS-EMPTY-FALLBACK",
+  "case": "case-B-removed-after-startup",
+  "status": "PASS",
+  "observed": {
+    "catalog_status": 200,
+    "catalog": [],
+    "options": [],
+    "panel": "No recorded runs yet.\nAnalyze a calibrated clip to add a run, then reload."
+  },
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "Chrome for Testing",
+  "browser_version": "156.0.8078.4",
+  "timestamp_utc": "2026-10-25T20:23:38.548165+00:00"
+}
