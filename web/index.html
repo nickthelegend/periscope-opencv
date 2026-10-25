@@ -506,6 +506,54 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   let run = null, base = "", stImg = null, frameIdx = -1, playing = false, showTrack = true, showTruth = true;
   let decisions = [], lastQ = null, loopTimer = null, userPaused = false;
 
+  // ---------- live alert feed: publish the state shown here; server.py relays it on /api/alerts/stream ----------
+  const KEEPALIVE_MS = 1000;   // server STALE_S (3 s) must stay >= 2x this
+  const conf = (z) => (z > 0 ? Math.min(1, Math.log10(1 + z) / Math.log10(401)) : 0);
+  // The token rides in the fragment (#alert_token=…), which never reaches the server, logs or Referer; strip it at once.
+  const alertToken = (() => {
+    let tok = new URLSearchParams(location.hash.slice(1)).get("alert_token");
+    if (tok) history.replaceState(null, "", location.pathname + location.search);
+    try { if (tok) sessionStorage.setItem("alert_token", tok); else tok = sessionStorage.getItem("alert_token"); } catch (_) {}
+    return tok || null;
+  })();
+  let runId = null, lastSent = null, keepTimer = null, postQ = Promise.resolve();
+  function feedInit(keepalive) {
+    const headers = { "Content-Type": "application/json" };
+    if (alertToken) headers.Authorization = "Bearer " + alertToken;
+    return { method: "POST", headers, keepalive };
+  }
+  // one chain, so paused → seek → live → alert always arrive in the order they happened
+  function pub(path, body) {
+    postQ = postQ.then(() => fetch(path, { ...feedInit(false), body: JSON.stringify(body) })).catch(() => {});
+  }
+  // live only while the floor video is really advancing; a blocked autoplay or a stall lets the keepalive lapse
+  const mediaRunning = () => playing && !vF.paused && !vF.ended && vF.readyState >= 3;
+  function feedLive() {
+    if (!runId || !mediaRunning()) return;
+    lastSent = null;
+    pub("api/alerts/status", { run: runId, live: true, reason: "playing" });
+    clearInterval(keepTimer);
+    keepTimer = setInterval(() => { if (mediaRunning()) pub("api/alerts/status", { run: runId, live: true, reason: "playing" }); }, KEEPALIVE_MS);
+  }
+  function feedStop(reason) {
+    clearInterval(keepTimer); keepTimer = null; lastSent = null;
+    if (runId) pub("api/alerts/status", { run: runId, live: false, reason });
+  }
+  function maybeAlert(i) {
+    const f = run.frames[i], s = f.s;
+    if (s === "learning") { lastSent = null; return; }     // blind: say nothing rather than "clear"
+    if (!(s in STATE_TXT)) return;
+    const state = s === "clear" ? "clear" : "someone", level = s === "coming" ? "stop" : s === "present" ? "watch" : null;
+    const key = state + "/" + level;
+    if (key === lastSent) return;
+    lastSent = key;
+    pub("api/alerts", { run: runId, state, level, bearing_deg: state === "clear" || f.phi == null ? null : f.phi,
+      confidence: conf(f.z), t: f.t ?? i / run.fps });
+  }
+  addEventListener("pagehide", () => {
+    if (playing && runId) fetch("api/alerts/status", { ...feedInit(true), body: JSON.stringify({ run: runId, live: false, reason: "closed" }) }).catch(() => {});
+  });
+
   // ---------- loading ----------
   async function listRuns() {
     const sel = $("#runSel");
@@ -529,7 +577,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   }
 
   async function load(id) {
-    pause(); clearTimeout(loopTimer);
+    pause("switched"); clearTimeout(loopTimer);
+    runId = id;
     base = `runs/${id}/`;
     const res = await fetch(base + "run.json").catch(() => null);
     if (!res || !res.ok) { $("#console").innerHTML = `<div class="panel empty" style="grid-column:1/-1"><b>That run could not be loaded.</b>Check that runs/${id}/run.json exists, or pick another run.</div>`; return; }
@@ -808,7 +857,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     $("#aPhi").innerHTML = f.phi == null ? "–" : `${f.phi.toFixed(1)}<small>°</small>`;
     $("#aEta").innerHTML = f.eta == null || s !== "coming" ? "–" : `${f.eta.toFixed(1)}<small>s</small>`;
     $("#aZ").innerHTML = s === "learning" ? "–" : `${Math.sqrt(Math.max(0, f.z)).toFixed(1)}<small>σ</small>`;
-    $("#aBar").style.transform = `scaleX(${s === "learning" ? 0 : Math.min(1, Math.log10(1 + f.z) / Math.log10(401))})`;
+    $("#aBar").style.transform = `scaleX(${s === "learning" ? 0 : conf(f.z)})`;
     $("#hudPhi").textContent = f.phi == null ? "bearing –" : `bearing ${f.phi.toFixed(1)}°`;
     let q = null; for (let k = i; k >= 0; k--) if (run.frames[k].q) { q = run.frames[k].q; break; }
     const action = s === "coming" ? "stop_vehicle" : s === "learning" ? "learning" : (q ? q.a : "watch");
@@ -841,6 +890,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     if (!run) return;
     i = Math.max(0, Math.min(run.frames.length - 1, i));
     if (i === frameIdx) return;
+    const prev = frameIdx;
     frameIdx = i;
     const t = i / run.fps, dur = run.frames.length / run.fps;
     $("#clock").textContent = `${t.toFixed(2)} / ${dur.toFixed(2)} s`;
@@ -848,6 +898,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     $("#stBox").setAttribute("aria-valuenow", t.toFixed(2));
     $("#stBox").setAttribute("aria-valuetext", `${t.toFixed(1)} seconds`);
     setState(i); drawOverlay(i); drawPlan(i); drawSpacetime(i); drawZ(i);
+    if (playing && i > prev) maybeAlert(i);   // only live forward playback publishes; seeks and redraws never do
   }
   function syncSlaves() {
     for (const v of [vS, vH]) if (v.readyState >= 1 && Math.abs(v.currentTime - vF.currentTime) > 0.08) v.currentTime = vF.currentTime;
@@ -867,13 +918,19 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   function play() {
     if (!run) return;
     clearTimeout(loopTimer);
-    if (vF.ended || frameIdx >= run.frames.length - 1) { for (const v of [vF, vS, vH]) if (v.readyState >= 1) v.currentTime = 0; }
-    playing = true;
-    for (const v of [vF, vS, vH]) { v.playbackRate = rate; v.play().catch(() => {}); }
+    if (vF.ended || frameIdx >= run.frames.length - 1) {
+      for (const v of [vF, vS, vH]) if (v.readyState >= 1) v.currentTime = 0;
+      frameIdx = -1;   // replay: frame 0 counts as forward progress, so the feed restarts from the first frame
+    }
+    playing = true;   // the feed goes live on the floor video's "playing" event, not here
+    vF.playbackRate = rate;
+    vF.play().catch(() => { if (playing) pause("error"); });   // autoplay blocked or media failed: never report live
+    for (const v of [vS, vH]) { v.playbackRate = rate; v.play().catch(() => {}); }
     setPlayUi(true);
     requestAnimationFrame(tick);
   }
-  function pause() {
+  function pause(reason = "paused") {
+    if (playing) feedStop(reason);
     playing = false;
     for (const v of [vF, vS, vH]) v.pause();
     setPlayUi(false);
@@ -882,10 +939,16 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     if (!run) return;
     const t = (Math.max(0, Math.min(run.frames.length - 1, i)) + 0.5) / run.fps;
     for (const v of [vF, vS, vH]) if (v.readyState >= 1) v.currentTime = t;
+    feedStop("seek");
+    if (playing) feedLive();   // a new live span: the server forgets the old clock, and the current state is sent again
     show(i);
   }
+  vF.addEventListener("playing", () => { if (playing) feedLive(); });
+  // paused from outside the console (OS media keys, the browser) or broken media: end the live span
+  vF.addEventListener("pause", () => { if (playing && !vF.ended) { userPaused = true; pause("paused"); } });
+  vF.addEventListener("error", () => { if (playing) pause("error"); });   // media error only, not a <source> fallback
   vF.addEventListener("ended", () => {
-    pause(); $("#playTxt").textContent = "Replay";
+    pause("ended"); $("#playTxt").textContent = "Replay";
     if (autoplay && !userPaused) loopTimer = setTimeout(() => { seek(0); play(); }, 2500);   // kiosk loop for judges
   });
   // rAF stops in background tabs; timeupdate keeps the panels moving there (at ~4 Hz)
