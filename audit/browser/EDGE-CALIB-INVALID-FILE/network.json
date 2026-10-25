@@ -1,0 +1,65 @@
+[
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/calibrate.html",
+    "method": "GET",
+    "resource_type": "document",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/calibrate.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    }
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    "method": "GET",
+    "resource_type": "stylesheet",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    "status": 200,
+    "headers": {
+      "content-type": "text/css; charset=utf-8",
+      "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+    }
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/l/font?kit=gyBUhwUxId8gMGYQMKR3pzfaWI_RnONalrErE8iusq2Kkq6JNBi4zpPN36U&skey=70a816dcd17c8a3c&v=v5",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/l/font?kit=or3NQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8zbXmTkiSlcuFog&skey=f2030a904b731103&v=v6",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/l/font?kit=or3NQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8zbXmTkiSlcuFog&skey=f2030a904b731103&v=v6",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "private, max-age=86400"
+    }
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/l/font?kit=gyBUhwUxId8gMGYQMKR3pzfaWI_RnONalrErE8iusq2Kkq6JNBi4zpPN36U&skey=70a816dcd17c8a3c&v=v5",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "private, max-age=86400"
+    }
+  }
+]

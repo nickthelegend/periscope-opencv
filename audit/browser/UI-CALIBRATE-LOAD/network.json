@@ -1,0 +1,95 @@
+[
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/calibrate.html",
+    "method": "GET",
+    "resource_type": "document",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/calibrate.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    }
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    "method": "GET",
+    "resource_type": "stylesheet",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+    "status": 200,
+    "headers": {
+      "content-type": "text/css; charset=utf-8",
+      "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+    }
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+    "status": 200,
+    "headers": {
+      "content-type": "font/woff2",
+      "cache-control": "public, max-age=31536000"
+    }
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+    "status": 200,
+    "headers": {
+      "content-type": "font/woff2",
+      "cache-control": "public, max-age=31536000"
+    }
+  },
+  {
+    "event": "request",
+    "url": "blob:http://127.0.0.1:8740/a65ccfc0-9242-48b4-b1fe-e7c6efe8c0bc",
+    "method": "GET",
+    "resource_type": "image",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "blob:http://127.0.0.1:8740/a65ccfc0-9242-48b4-b1fe-e7c6efe8c0bc",
+    "status": 200,
+    "headers": {
+      "content-type": "image/png"
+    }
+  },
+  {
+    "event": "request",
+    "url": "blob:http://127.0.0.1:8740/12a8e848-0ae7-41d4-ad19-dbc1fb43bb9d",
+    "method": "GET",
+    "resource_type": "image",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "blob:http://127.0.0.1:8740/12a8e848-0ae7-41d4-ad19-dbc1fb43bb9d",
+    "status": 200,
+    "headers": {
+      "content-type": "image/png"
+    }
+  }
+]

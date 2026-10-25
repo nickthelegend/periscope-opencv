@@ -1,0 +1,55 @@
+{
+  "browser": "Google Chrome for Testing 156.0.8078.4",
+  "playwright": "1.64.1 (installed in .venv only)",
+  "base_url": "http://127.0.0.1:8740",
+  "owned_audit_rows": 65,
+  "counts": {
+    "PASS": 57,
+    "FAIL": 8,
+    "UNTESTED": 0
+  },
+  "failures": {
+    "UI-SERVE-LOCAL": "HTTP 200; exact title and H1. Google Fonts stylesheet status recorded in network.json.; console/page/network errors: [{\"type\": \"error\", \"text\": \"Failed to load resource: the server responded with a status of 404 (Not Found)\"}]",
+    "EDGE-375PX-SYNTHETIC-LABEL": "Synthetic scene label is hidden at 375px",
+    "API-HEALTH": "HTTP 200 and exact {\"ok\":true} matched; this fresh browser page logged a favicon.ico 404 resource error, failing the zero-console-error rule.",
+    "API-ALERTS-STREAM-HEARTBEAT": "Heartbeat fields match, but measured interval was 5.002100s in Chrome (5.001726s by server timestamps), exceeding the literal maximum 5.000000s. No scheduling tolerance was authorized by the expected cell.",
+    "EDGE-ALERT-MALFORMED-BODY": "detail: observed [{'type': 'value_error', 'loc': ['body'], 'msg': 'Value error, level is required for someone and must be null for clear', 'input': {'run': 'demo', 'state': 'someone', 'confidence': 0.9, 't': 1}, 'ctx': {'error': {}}}]; expected 'level is required for someone and must be null for clear'",
+    "EDGE-ALERT-KEEPALIVE-TIMEOUT": "stale event live field: observed None; expected False",
+    "EDGE-RUN-LOAD-NOT-FOUND": "Exact missing-run error panel rendered; run.json HTTP 404 and console resource error fail the strict item.; console/page/network errors: [{\"type\": \"error\", \"text\": \"Failed to load resource: the server responded with a status of 404 (Not Found)\"}, \"Cannot read properties of null (reading 'getBoundingClientRect')\", {\"event\": \"response\", \"url\": \"http://127.0.0.1:8740/runs/up-884a6112/run.json\", \"status\": 404, \"headers\": {\"content-type\": \"application/json\"}}]",
+    "EDGE-RUNS-EMPTY-FALLBACK": "Empty /api/runs returned []; UI fabricated demo option. Separate genuine 500 from malformed persisted metadata also fabricated demo and logged resource error; evidence audit/browser/EDGE-RUNS-EMPTY-FALLBACK-FAILED/."
+  },
+  "untouched_other_worker_rows": [
+    "API-NO-ONCHAIN",
+    "CLI-CALIBRATE-FRAME-ONLY",
+    "CLI-CALIBRATE-MARKS",
+    "CLI-CALIBRATE-AUTO",
+    "CLI-MAKE-DEMO",
+    "CLI-BENCH",
+    "CLI-SNR-SWEEP-QUICK",
+    "CLI-SCORE-FOOTAGE-REAL",
+    "CLI-NO-MCP",
+    "EDGE-CLI-CALIB-MISSING-FLAGS",
+    "EDGE-CLI-CALIB-UNREADABLE-VIDEO",
+    "EDGE-CLI-CALIB-AUTO-REFUSED"
+  ],
+  "google_fonts": "Both HTML-page stylesheet requests returned HTTP 200; statuses are in every per-item network log.",
+  "oversize_upload": {
+    "video_bytes": 525336576,
+    "http_status": 413,
+    "method": "Playwright APIRequestContext multipart fs.createReadStream",
+    "temporary_file_removed": true
+  },
+  "real_filmed_corner": "No real-footage performance claim was tested; CLI and real-footage rows belong to another worker.",
+  "scope": "Phase 2 browser/HTTP checks only; product source unchanged; no deployment or push.",
+  "cleanup": {
+    "server_pids_started_or_owned": [
+      79425,
+      98411,
+      98418,
+      98440
+    ],
+    "all_servers_stopped": true,
+    "heavy_slot_release_exit": 0,
+    "heavy_slot_released": true
+  }
+}

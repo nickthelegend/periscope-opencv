@@ -1,0 +1,58 @@
+{
+  "id": "UI-OVERLAY-TOGGLE",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "alertH": "Someone at the corner",
+    "alertP": "Bearing 53\u00b0 and closing. Stop sent to the forklift before they step into view.",
+    "statusTxt": "STOP",
+    "aPhi": "52.6\u00b0",
+    "aEta": "1.7s",
+    "aZ": "58.8\u03c3",
+    "decA": "Stop the vehicle",
+    "decW": "Bearing 53\u00b0 and falling 16\u00b0/s: the walker is heading for the corner line.",
+    "clock": "8.00 / 19.00 s",
+    "hudT": "t 8.00 s",
+    "playTxt": "Resume",
+    "state": "coming",
+    "action": "stop_vehicle",
+    "STOPdisplay": "block",
+    "background": "linear-gradient(rgb(232, 56, 45), rgb(196, 42, 33))",
+    "videos": [
+      {
+        "time": 8.025,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 8.025,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 8.025,
+        "paused": true,
+        "rate": 1
+      }
+    ]
+  },
+  "status": "PASS",
+  "observation": "Observed all expected results."
+}

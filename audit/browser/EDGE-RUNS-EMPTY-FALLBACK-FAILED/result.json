@@ -1,0 +1,64 @@
+{
+  "id": "EDGE-RUNS-EMPTY-FALLBACK-FAILED",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "observed_options": [
+    {
+      "value": "demo",
+      "text": "Synthetic corner \u00b7 red top \u00b7 lit hallway"
+    }
+  ],
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "alertH": "Learning the empty hallway",
+    "alertP": "Hold still. Periscope is measuring the floor and its noise before it watches for shadows.",
+    "statusTxt": "Learning",
+    "aPhi": "\u2013",
+    "aEta": "\u2013",
+    "aZ": "\u2013",
+    "decA": "Learning the background",
+    "decW": "Measuring the empty floor and its noise before trusting any change.",
+    "clock": "0.60 / 19.00 s",
+    "hudT": "t 0.60 s",
+    "playTxt": "Pause",
+    "state": "learning",
+    "action": "learning",
+    "STOPdisplay": "none",
+    "background": "linear-gradient(rgb(17, 20, 26), rgb(13, 16, 21))",
+    "videos": [
+      {
+        "time": 0.6129,
+        "paused": false,
+        "rate": 1
+      },
+      {
+        "time": 0.6129,
+        "paused": false,
+        "rate": 1
+      },
+      {
+        "time": 0.6128,
+        "paused": false,
+        "rate": 1
+      }
+    ]
+  },
+  "status": "FAIL",
+  "observation": "failed /api/runs must not fabricate a listed run: observed [{'value': 'demo', 'text': 'Synthetic corner \u00b7 red top \u00b7 lit hallway'}]; expected []; console/page/network errors: [{\"type\": \"error\", \"text\": \"Failed to load resource: the server responded with a status of 500 (Internal Server Error)\"}, {\"event\": \"response\", \"url\": \"http://127.0.0.1:8740/api/runs\", \"status\": 500, \"headers\": {\"content-type\": \"text/plain; charset=utf-8\"}}]"
+}

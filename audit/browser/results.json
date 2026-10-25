@@ -1,0 +1,337 @@
+{
+  "UI-SERVE-LOCAL": {
+    "status": "FAIL",
+    "observation": "HTTP 200; exact title and H1. Google Fonts stylesheet status recorded in network.json.; console/page/network errors: [{\"type\": \"error\", \"text\": \"Failed to load resource: the server responded with a status of 404 (Not Found)\"}]",
+    "evidence": "audit/browser/UI-SERVE-LOCAL/"
+  },
+  "UI-RUN-SELECT": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-RUN-SELECT/"
+  },
+  "UI-SYNTH-TAG": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-SYNTH-TAG/"
+  },
+  "UI-AUTOPLAY": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-AUTOPLAY/"
+  },
+  "UI-PLAY-PAUSE": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-PLAY-PAUSE/"
+  },
+  "UI-RESTART": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-RESTART/"
+  },
+  "UI-REPLAY-LOOP": {
+    "status": "PASS",
+    "observation": "Replay shown at ended; resumed near frame 0 after 2.520s.",
+    "evidence": "audit/browser/UI-REPLAY-LOOP/"
+  },
+  "UI-KEY-SHORTCUTS": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-KEY-SHORTCUTS/"
+  },
+  "UI-SPEED-CONTROL": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-SPEED-CONTROL/"
+  },
+  "UI-FLOOR-VIEW": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-FLOOR-VIEW/"
+  },
+  "UI-WIPE-DIVIDER": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-WIPE-DIVIDER/"
+  },
+  "UI-SPACETIME-SCRUB": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-SPACETIME-SCRUB/"
+  },
+  "UI-OVERLAY-TOGGLE": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-OVERLAY-TOGGLE/"
+  },
+  "UI-MAP-VIEW": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-MAP-VIEW/"
+  },
+  "UI-DECISION-LOG": {
+    "status": "PASS",
+    "observation": "Clicked 16.8s row; paused and all video times [16.774999, 16.774999, 16.774999].",
+    "evidence": "audit/browser/UI-DECISION-LOG/"
+  },
+  "UI-CALIBRATE-PAGE": {
+    "status": "PASS",
+    "observation": "HTTP 200; exact title, H1, and back link. Google Fonts stylesheet status recorded in network.json.",
+    "evidence": "audit/browser/UI-CALIBRATE-PAGE/"
+  },
+  "UI-CALIBRATE-LOAD": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-CALIBRATE-LOAD/"
+  },
+  "UI-CALIBRATE-MODE": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-CALIBRATE-MODE/"
+  },
+  "UI-CALIBRATE-CLICK": {
+    "status": "PASS",
+    "observation": "Marker drawn; done row coordinates 128, 198; readonly output 128.0,197.9.",
+    "evidence": "audit/browser/UI-CALIBRATE-CLICK/"
+  },
+  "UI-CALIBRATE-UNDO": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-CALIBRATE-UNDO/"
+  },
+  "UI-CALIBRATE-COPY": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/UI-CALIBRATE-COPY/"
+  },
+  "ENG-DEMO-FRAME-0-LEARNING": {
+    "status": "PASS",
+    "observation": "Exact expected text, units, state and action at demo frame 0.",
+    "evidence": "audit/browser/ENG-DEMO-FRAME-0-LEARNING/"
+  },
+  "ENG-DEMO-FRAME-40-CLEAR": {
+    "status": "PASS",
+    "observation": "Exact expected text, units, state and action at demo frame 40.",
+    "evidence": "audit/browser/ENG-DEMO-FRAME-40-CLEAR/"
+  },
+  "ENG-DEMO-FRAME-116-PRESENT": {
+    "status": "PASS",
+    "observation": "Exact expected text, units, state and action at demo frame 116.",
+    "evidence": "audit/browser/ENG-DEMO-FRAME-116-PRESENT/"
+  },
+  "ENG-DEMO-FRAME-127-COMING": {
+    "status": "PASS",
+    "observation": "All exact frame-127 text, states, units, STOP block and red gradient confirmed.",
+    "evidence": "audit/browser/ENG-DEMO-FRAME-127-COMING/"
+  },
+  "ENG-DEMO-FRAME-194-WALKING-AWAY": {
+    "status": "PASS",
+    "observation": "Exact expected text, units, state and action at demo frame 194.",
+    "evidence": "audit/browser/ENG-DEMO-FRAME-194-WALKING-AWAY/"
+  },
+  "ENG-DEMO-FRAME-335-RELEARN": {
+    "status": "PASS",
+    "observation": "Exact frame-335 decision plus 16.8 s log row and full explanation.",
+    "evidence": "audit/browser/ENG-DEMO-FRAME-335-RELEARN/"
+  },
+  "ENG-CHECKS-ASSESSMENT": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/ENG-CHECKS-ASSESSMENT/"
+  },
+  "ENG-GROUND-TRUTH-SCORES": {
+    "status": "PASS",
+    "observation": "All six exact score labels, values and units matched; renderer-truth statement present.",
+    "evidence": "audit/browser/ENG-GROUND-TRUTH-SCORES/"
+  },
+  "EDGE-375PX-SYNTHETIC-LABEL": {
+    "status": "FAIL",
+    "observation": "Synthetic scene label is hidden at 375px",
+    "evidence": "audit/browser/EDGE-375PX-SYNTHETIC-LABEL/"
+  },
+  "EDGE-375PX-CONSOLE-LAYOUT": {
+    "status": "PASS",
+    "observation": "Viewport/body dimensions {'viewport': 375, 'width': 375, 'body': 375}; single-column panels.",
+    "evidence": "audit/browser/EDGE-375PX-CONSOLE-LAYOUT/"
+  },
+  "EDGE-375PX-CALIBRATE-LAYOUT": {
+    "status": "PASS",
+    "observation": "Viewport/body dimensions {'viewport': 375, 'width': 375, 'body': 375}; single-column panels.",
+    "evidence": "audit/browser/EDGE-375PX-CALIBRATE-LAYOUT/"
+  },
+  "EDGE-CALIB-EMPTY-STATE": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/EDGE-CALIB-EMPTY-STATE/"
+  },
+  "EDGE-CALIB-INVALID-FILE": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/EDGE-CALIB-INVALID-FILE/"
+  },
+  "EDGE-CALIB-COPY-INCOMPLETE": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/EDGE-CALIB-COPY-INCOMPLETE/"
+  },
+  "EDGE-INTERRUPT-PAUSE": {
+    "status": "PASS",
+    "observation": "Paused/closed playback; real POST live=false reason=paused; SSE confirms stale state.",
+    "evidence": "audit/browser/EDGE-INTERRUPT-PAUSE/"
+  },
+  "EDGE-INTERRUPT-SEEK": {
+    "status": "PASS",
+    "observation": "Paused/closed playback; real POST live=false reason=seek; SSE confirms stale state.",
+    "evidence": "audit/browser/EDGE-INTERRUPT-SEEK/"
+  },
+  "EDGE-INTERRUPT-TAB-CLOSE": {
+    "status": "PASS",
+    "observation": "Navigation while playing emitted real server SSE stale reason=closed and bus live=false. Chrome pagehide keepalive itself is omitted by Playwright request events; server receipt is proven by its closed event.",
+    "evidence": "audit/browser/EDGE-INTERRUPT-TAB-CLOSE/"
+  },
+  "EDGE-INTERRUPT-REDUCED-MOTION": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/EDGE-INTERRUPT-REDUCED-MOTION/"
+  },
+  "EDGE-INTERRUPT-REDUCED-MOTION-QUERY": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/EDGE-INTERRUPT-REDUCED-MOTION-QUERY/"
+  },
+  "API-HEALTH": {
+    "status": "FAIL",
+    "observation": "HTTP 200 and exact {\"ok\":true} matched; this fresh browser page logged a favicon.ico 404 resource error, failing the zero-console-error rule.",
+    "evidence": "audit/browser/API-HEALTH/"
+  },
+  "API-RUNS": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/API-RUNS/"
+  },
+  "API-ANALYZE-SUCCESS": {
+    "status": "PASS",
+    "observation": "HTTP 200; up-884a6112 created with run.json, floor.mp4, shadow.mp4, spacetime.png; listed by /api/runs. Generated upload removed after tests.",
+    "evidence": "audit/browser/API-ANALYZE-SUCCESS/"
+  },
+  "API-ANALYZE-BAD-CALIB": {
+    "status": "PASS",
+    "observation": "HTTP 400; detail starts bad calibration:; no upload directory persisted.",
+    "evidence": "audit/browser/API-ANALYZE-BAD-CALIB/"
+  },
+  "API-ANALYZE-UNREADABLE": {
+    "status": "PASS",
+    "observation": "HTTP 422; detail starts cannot open video:; no upload directory persisted.",
+    "evidence": "audit/browser/API-ANALYZE-UNREADABLE/"
+  },
+  "API-ANALYZE-TOO-LARGE": {
+    "status": "PASS",
+    "observation": "Playwright multipart ReadStream sent 525336576 bytes (>524288000); HTTP 413 exact detail; no temporary up-* persisted; 501MiB fixture deleted.",
+    "evidence": "audit/browser/API-ANALYZE-TOO-LARGE/"
+  },
+  "API-ALERTS-STATUS-LIVE": {
+    "status": "PASS",
+    "observation": "HTTP 200 live=true run=demo, numeric t/age_s; keepalive renewed watchdog beyond initial 3s span.",
+    "evidence": "audit/browser/API-ALERTS-STATUS-LIVE/"
+  },
+  "API-ALERTS-STATUS-STALE": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/API-ALERTS-STATUS-STALE/"
+  },
+  "API-ALERTS-PUBLISH-CLEAR": {
+    "status": "PASS",
+    "observation": "HTTP 200 sent=true, subscribers=1; exact alert fields received over real SSE.",
+    "evidence": "audit/browser/API-ALERTS-PUBLISH-CLEAR/"
+  },
+  "API-ALERTS-PUBLISH-SOMEONE": {
+    "status": "PASS",
+    "observation": "HTTP 200 sent=true, subscribers=1; exact alert fields received over real SSE.",
+    "evidence": "audit/browser/API-ALERTS-PUBLISH-SOMEONE/"
+  },
+  "API-ALERTS-PUBLISH-STOP": {
+    "status": "PASS",
+    "observation": "HTTP 200 sent=true, subscribers=1; exact alert fields received over real SSE.",
+    "evidence": "audit/browser/API-ALERTS-PUBLISH-STOP/"
+  },
+  "API-ALERTS-DEDUP": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/API-ALERTS-DEDUP/"
+  },
+  "API-ALERTS-STREAM-CONNECT": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/API-ALERTS-STREAM-CONNECT/"
+  },
+  "API-ALERTS-STREAM-HEARTBEAT": {
+    "status": "FAIL",
+    "observation": "Heartbeat fields match, but measured interval was 5.002100s in Chrome (5.001726s by server timestamps), exceeding the literal maximum 5.000000s. No scheduling tolerance was authorized by the expected cell.",
+    "evidence": "audit/browser/API-ALERTS-STREAM-HEARTBEAT/"
+  },
+  "API-ALERTS-AUTH-ORIGIN": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/API-ALERTS-AUTH-ORIGIN/"
+  },
+  "API-ALERTS-AUTH-LOOPBACK": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/API-ALERTS-AUTH-LOOPBACK/"
+  },
+  "EDGE-ALERT-NOT-LIVE": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/EDGE-ALERT-NOT-LIVE/"
+  },
+  "EDGE-ALERT-BACKWARD-T": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/EDGE-ALERT-BACKWARD-T/"
+  },
+  "EDGE-ALERT-MALFORMED-BODY": {
+    "status": "FAIL",
+    "observation": "detail: observed [{'type': 'value_error', 'loc': ['body'], 'msg': 'Value error, level is required for someone and must be null for clear', 'input': {'run': 'demo', 'state': 'someone', 'confidence': 0.9, 't': 1}, 'ctx': {'error': {}}}]; expected 'level is required for someone and must be null for clear'",
+    "evidence": "audit/browser/EDGE-ALERT-MALFORMED-BODY/"
+  },
+  "EDGE-ALERT-KEEPALIVE-TIMEOUT": {
+    "status": "FAIL",
+    "observation": "stale event live field: observed None; expected False",
+    "evidence": "audit/browser/EDGE-ALERT-KEEPALIVE-TIMEOUT/"
+  },
+  "EDGE-ALERT-SUBSCRIBER-OVERFLOW": {
+    "status": "PASS",
+    "observation": "768 concurrent real posts triggered resync reason=subscriber too slow; reconnect and the stream closed.",
+    "evidence": "audit/browser/EDGE-ALERT-SUBSCRIBER-OVERFLOW/"
+  },
+  "EDGE-INTERRUPT-RUN-SWITCH": {
+    "status": "PASS",
+    "observation": "Observed all expected results.",
+    "evidence": "audit/browser/EDGE-INTERRUPT-RUN-SWITCH/"
+  },
+  "EDGE-RUN-LOAD-NOT-FOUND": {
+    "status": "FAIL",
+    "observation": "Exact missing-run error panel rendered; run.json HTTP 404 and console resource error fail the strict item.; console/page/network errors: [{\"type\": \"error\", \"text\": \"Failed to load resource: the server responded with a status of 404 (Not Found)\"}, \"Cannot read properties of null (reading 'getBoundingClientRect')\", {\"event\": \"response\", \"url\": \"http://127.0.0.1:8740/runs/up-884a6112/run.json\", \"status\": 404, \"headers\": {\"content-type\": \"application/json\"}}]",
+    "evidence": "audit/browser/EDGE-RUN-LOAD-NOT-FOUND/"
+  },
+  "API-ALERTS-AUTH-TOKEN": {
+    "status": "PASS",
+    "observation": "With a throwaway token in this server process only: missing/invalid bearer returned exact 401 detail; valid bearer returned 200 live=true. Credential values were excluded from evidence.",
+    "evidence": "audit/browser/API-ALERTS-AUTH-TOKEN/"
+  },
+  "EDGE-RUNS-EMPTY-FALLBACK": {
+    "status": "FAIL",
+    "observation": "Empty /api/runs returned []; UI fabricated demo option. Separate genuine 500 from malformed persisted metadata also fabricated demo and logged resource error; evidence audit/browser/EDGE-RUNS-EMPTY-FALLBACK-FAILED/.",
+    "evidence": "audit/browser/EDGE-RUNS-EMPTY-FALLBACK/"
+  },
+  "EDGE-RUNS-EMPTY-FALLBACK-FAILED": {
+    "status": "FAIL",
+    "observation": "failed /api/runs must not fabricate a listed run: observed [{'value': 'demo', 'text': 'Synthetic corner \u00b7 red top \u00b7 lit hallway'}]; expected []; console/page/network errors: [{\"type\": \"error\", \"text\": \"Failed to load resource: the server responded with a status of 500 (Internal Server Error)\"}, {\"event\": \"response\", \"url\": \"http://127.0.0.1:8740/api/runs\", \"status\": 500, \"headers\": {\"content-type\": \"text/plain; charset=utf-8\"}}]",
+    "evidence": "audit/browser/EDGE-RUNS-EMPTY-FALLBACK-FAILED/"
+  },
+  "API-MULTI-WORKER-REFUSED": {
+    "status": "PASS",
+    "observation": "WEB_CONCURRENCY=2 started two workers, both raised the exact process-local single-worker RuntimeError and startup failed (startup.log). The WEB_CONCURRENCY=1 instance started and served this fresh calibration page with HTTP 200. Uvicorn parent exit code was 0; the plan does not require a particular exit code.",
+    "evidence": "audit/browser/API-MULTI-WORKER-REFUSED/"
+  }
+}

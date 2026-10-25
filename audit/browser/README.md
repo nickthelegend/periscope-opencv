@@ -1,0 +1,13 @@
+# Periscope Phase 2 browser audit
+
+Tested 65 browser, control, viewport and HTTP rows against the existing AUDIT.md expectations: 57 PASS, 8 FAIL, 0 UNTESTED. Other-worker CLI/source-inventory rows remain untouched.
+
+Used Google Chrome for Testing 156.0.8078.4 via Playwright 1.64.1. Each item started in a fresh page/browser context at 1280×800, or 375×812 for the mobile rows. The product ran at http://127.0.0.1:8740. Every ID directory includes screenshot.png, console.json, network.json and result.json. Some follow-up cases have their own directory without adding table rows. Browser cleanup cancellations are excluded by saving evidence before closing the test context.
+
+The baseline fixture is the existing labelled synthetic demo. No routes were mocked or intercepted. Upload success used a short actual video cut from the demo floor.mp4 and a Calibration constructed by periscope.geometry.Calibration.from_rays. The 413 case sent 525,336,576 video bytes through Playwright multipart fs.createReadStream and removed the 501 MiB temporary file. The uploaded run was deleted after the run-switch and genuine missing-run tests. All product files are unchanged.
+
+The empty listing case used a separate actual Uvicorn instance with PERISCOPE_RUNS pointing to an empty temporary directory; its failed-listing follow-up used malformed persisted metadata in that directory to produce a genuine HTTP 500. No application source was changed. The non-loopback authentication check used a real TCP connection bound to this machine's LAN interface. The token check used a throwaway token confined to its server process; token values and Authorization headers were excluded from evidence.
+
+Queue overflow was demonstrated with 768 real concurrent Playwright alert requests: the stream emitted resync with the expected reason and closed. Pagehide's keepalive request is omitted by Playwright's per-page network events; a separate live SSE observer received reason=closed, proving the server received it. Both Google Fonts stylesheets returned 200. The heartbeat expectation was applied literally: a measured 5.002100 s client interval (5.001726 s server interval) exceeds the stated 5.0 s maximum and fails.
+
+No product fixes were made; fix cells are empty. See summary.json for counts and one-line failures. Startup, process and cleanup records are included. Main server PID 79425 was terminated; temporary server PIDs 98411 and 98418 were terminated. Multi-worker parent 98440 and its children 98532/98533 exited after their startup refusal. All Chrome and server processes started for this run were gone when checked. The heavy slot was released, and /tmp/grokbot-heavy-slots/slot1 was absent after release.

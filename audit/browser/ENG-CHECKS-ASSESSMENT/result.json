@@ -1,0 +1,58 @@
+{
+  "id": "ENG-CHECKS-ASSESSMENT",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "alertH": "Corner clear",
+    "alertP": "No shadow above the noise floor. Nobody is moving in the hidden hallway, or they are out of range.",
+    "statusTxt": "Clear",
+    "aPhi": "\u2013",
+    "aEta": "\u2013",
+    "aZ": "2.8\u03c3",
+    "decA": "Watching",
+    "decW": "Noise, shake and light are inside limits; nothing above the noise floor.",
+    "clock": "2.00 / 19.00 s",
+    "hudT": "t 2.00 s",
+    "playTxt": "Play run",
+    "state": "clear",
+    "action": "watch",
+    "STOPdisplay": "none",
+    "background": "linear-gradient(rgb(17, 20, 26), rgb(13, 16, 21))",
+    "videos": [
+      {
+        "time": 2.025,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 2.025,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 2.025,
+        "paused": true,
+        "rate": 1
+      }
+    ]
+  },
+  "status": "PASS",
+  "observation": "Observed all expected results."
+}

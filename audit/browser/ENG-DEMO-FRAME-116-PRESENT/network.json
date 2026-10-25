@@ -1,0 +1,155 @@
+[
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/?autoplay=0",
+    "method": "GET",
+    "resource_type": "document",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/?autoplay=0",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    }
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+    "method": "GET",
+    "resource_type": "stylesheet",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+    "status": 200,
+    "headers": {
+      "content-type": "text/css; charset=utf-8",
+      "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+    }
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/api/runs",
+    "method": "GET",
+    "resource_type": "fetch",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/api/runs",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/run.json",
+    "method": "GET",
+    "resource_type": "fetch",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/run.json",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/spacetime.png",
+    "method": "GET",
+    "resource_type": "image",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/floor.mp4",
+    "method": "GET",
+    "resource_type": "media",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/shadow.mp4",
+    "method": "GET",
+    "resource_type": "media",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/hidden.mp4",
+    "method": "GET",
+    "resource_type": "media",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/spacetime.png",
+    "status": 200,
+    "headers": {
+      "content-type": "image/png"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/hidden.mp4",
+    "status": 206,
+    "headers": {
+      "content-type": "video/mp4"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/floor.mp4",
+    "status": 206,
+    "headers": {
+      "content-type": "video/mp4"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/shadow.mp4",
+    "status": 206,
+    "headers": {
+      "content-type": "video/mp4"
+    }
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/s/geistmono/v6/or3nQ6H-1_WfwkMZI_qYFrcdmhHkjko.woff2",
+    "status": 200,
+    "headers": {
+      "content-type": "font/woff2",
+      "cache-control": "public, max-age=31536000"
+    }
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2",
+    "status": 200,
+    "headers": {
+      "content-type": "font/woff2",
+      "cache-control": "public, max-age=31536000"
+    }
+  }
+]

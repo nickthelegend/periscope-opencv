@@ -1,0 +1,250 @@
+[
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/",
+    "method": "GET",
+    "resource_type": "document",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    }
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+    "method": "GET",
+    "resource_type": "stylesheet",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+    "status": 200,
+    "headers": {
+      "content-type": "text/css; charset=utf-8",
+      "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+    }
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/l/font?kit=gyBUhwUxId8gMGYQMKR3pzfaWI_RnONalrErE8iusq2KksmJNBi4zpPN36U&skey=70a816dcd17c8a3c&v=v5",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "https://fonts.gstatic.com/l/font?kit=or3NQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8IbLmTkiSlcuFog&skey=f2030a904b731103&v=v6",
+    "method": "GET",
+    "resource_type": "font",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/api/runs",
+    "method": "GET",
+    "resource_type": "fetch",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/api/runs",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/run.json",
+    "method": "GET",
+    "resource_type": "fetch",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/run.json",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/spacetime.png",
+    "method": "GET",
+    "resource_type": "image",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/floor.mp4",
+    "method": "GET",
+    "resource_type": "media",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/shadow.mp4",
+    "method": "GET",
+    "resource_type": "media",
+    "body": null
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/runs/demo/hidden.mp4",
+    "method": "GET",
+    "resource_type": "media",
+    "body": null
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/spacetime.png",
+    "status": 200,
+    "headers": {
+      "content-type": "image/png"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/shadow.mp4",
+    "status": 206,
+    "headers": {
+      "content-type": "video/mp4"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/hidden.mp4",
+    "status": 206,
+    "headers": {
+      "content-type": "video/mp4"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/runs/demo/floor.mp4",
+    "status": 206,
+    "headers": {
+      "content-type": "video/mp4"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "method": "POST",
+    "resource_type": "fetch",
+    "body": {
+      "run": "demo",
+      "live": true,
+      "reason": "playing"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/l/font?kit=or3NQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8IbLmTkiSlcuFog&skey=f2030a904b731103&v=v6",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "private, max-age=86400"
+    }
+  },
+  {
+    "event": "response",
+    "url": "https://fonts.gstatic.com/l/font?kit=gyBUhwUxId8gMGYQMKR3pzfaWI_RnONalrErE8iusq2KksmJNBi4zpPN36U&skey=70a816dcd17c8a3c&v=v5",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "private, max-age=86400"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "method": "POST",
+    "resource_type": "fetch",
+    "body": {
+      "run": "demo",
+      "live": false,
+      "reason": "paused"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "method": "POST",
+    "resource_type": "fetch",
+    "body": {
+      "run": "demo",
+      "live": false,
+      "reason": "seek"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "method": "POST",
+    "resource_type": "fetch",
+    "body": {
+      "run": "demo",
+      "live": false,
+      "reason": "seek"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  {
+    "event": "request",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "method": "POST",
+    "resource_type": "fetch",
+    "body": {
+      "run": "demo",
+      "live": true,
+      "reason": "playing"
+    }
+  },
+  {
+    "event": "response",
+    "url": "http://127.0.0.1:8740/api/alerts/status",
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    }
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "id": "ENG-DEMO-FRAME-127-COMING",
+  "page_errors": [],
+  "issues": [],
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser": "156.0.8078.4",
+  "navigation_status": 200,
+  "observed_frame": {
+    "alertH": "Someone at the corner",
+    "alertP": "Bearing 73\u00b0 and closing. Stop sent to the forklift before they step into view.",
+    "statusTxt": "STOP",
+    "aPhi": "73.4\u00b0",
+    "aEta": "6.3s",
+    "aZ": "10.4\u03c3",
+    "decA": "Stop the vehicle",
+    "decW": "Bearing 73\u00b0 and falling 2\u00b0/s: the walker is heading for the corner line.",
+    "clock": "6.35 / 19.00 s",
+    "hudT": "t 6.35 s",
+    "playTxt": "Play run",
+    "state": "coming",
+    "action": "stop_vehicle",
+    "STOPdisplay": "block",
+    "background": "linear-gradient(rgb(232, 56, 45), rgb(196, 42, 33))",
+    "videos": [
+      {
+        "time": 6.375,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 6.375,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 6.375,
+        "paused": true,
+        "rate": 1
+      }
+    ]
+  },
+  "fonts": [
+    {
+      "event": "response",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap",
+      "status": 200,
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800"
+      }
+    }
+  ],
+  "screen_state": {
+    "alertH": "Someone at the corner",
+    "alertP": "Bearing 73\u00b0 and closing. Stop sent to the forklift before they step into view.",
+    "statusTxt": "STOP",
+    "aPhi": "73.4\u00b0",
+    "aEta": "6.3s",
+    "aZ": "10.4\u03c3",
+    "decA": "Stop the vehicle",
+    "decW": "Bearing 73\u00b0 and falling 2\u00b0/s: the walker is heading for the corner line.",
+    "clock": "6.35 / 19.00 s",
+    "hudT": "t 6.35 s",
+    "playTxt": "Play run",
+    "state": "coming",
+    "action": "stop_vehicle",
+    "STOPdisplay": "block",
+    "background": "linear-gradient(rgb(232, 56, 45), rgb(196, 42, 33))",
+    "videos": [
+      {
+        "time": 6.375,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 6.375,
+        "paused": true,
+        "rate": 1
+      },
+      {
+        "time": 6.375,
+        "paused": true,
+        "rate": 1
+      }
+    ]
+  },
+  "status": "PASS",
+  "observation": "All exact frame-127 text, states, units, STOP block and red gradient confirmed."
+}
