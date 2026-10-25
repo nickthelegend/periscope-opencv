@@ -1,0 +1,5 @@
+argv: .venv/bin/python tools/calibrate.py audit/cli/reverify/frame.png --auto --min-confidence 1.1 --out audit/cli/reverify/calib/auto-refused
+exit_code: 1
+----- stdout -----
+----- stderr -----
+auto calibration refused (low confidence 1.00 < 1.10: weak corner); click the tape marks and use --marks

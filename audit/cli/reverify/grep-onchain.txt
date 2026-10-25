@@ -1,0 +1,11 @@
+argv: rg -n -i -g '*.py' -g '*.html' -g '*.js' -g '*.toml' -g '*.yml' -g '*.yaml' -g '!.venv/**' -g '!audit/**' 'web3|ethers|wallet|blockchain|contract'
+exit_code: 1
+----- product-extension matches (AUDIT.md and audit/ excluded) -----
+(no matches)
+
+Scope is audit/cli/reverify/search-scope.txt: 27 files (periscope/*.py, server.py, tests/*.py, tools/*.py, web/calibrate.html, web/index.html). No .js, .toml, or .yml files are in the repo outside .venv.
+
+----- words outside that scope, not counted -----
+AUDIT.md and audit/ mention contract and wallet in the audit text itself. Those matches are excluded.
+LICENSE:19 is the MIT disclaimer "ACTION OF CONTRACT", legal boilerplate, not a chain client.
+No web3, ethers, wallet, or blockchain client is in the product code.

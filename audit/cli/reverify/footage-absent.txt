@@ -1,0 +1,10 @@
+argv: test -e data/raw/take1_corner.mov data/raw/take1_hidden.mov data/raw/take1_corner.mp4 data/raw/take1_hidden.mp4; find data -type f
+ABSENT data/raw/take1_corner.mov
+ABSENT data/raw/take1_hidden.mov
+ABSENT data/raw/take1_corner.mp4
+ABSENT data/raw/take1_hidden.mp4
+ABSENT directory data/
+FILMING.md corner clip: data/raw/take1_corner.mov
+FILMING.md hidden-hallway clip: data/raw/take1_hidden.mov
+score_footage.py docstring also names data/raw/take1_corner.mp4 and data/raw/take1_hidden.mp4
+no clip invented

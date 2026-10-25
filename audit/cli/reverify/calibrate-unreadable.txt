@@ -1,0 +1,6 @@
+argv: .venv/bin/python tools/calibrate.py audit/cli/reverify/does-not-exist.mov --auto --out audit/cli/reverify/calib/unreadable
+exit_code: 1
+----- stdout -----
+----- stderr -----
+OpenCV: Couldn't read video stream from file "audit/cli/reverify/does-not-exist.mov"
+cannot read audit/cli/reverify/does-not-exist.mov

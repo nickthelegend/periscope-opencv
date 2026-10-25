@@ -1,0 +1,5 @@
+argv: .venv/bin/python tools/calibrate.py audit/cli/reverify/frame.png --out audit/cli/reverify/calib/missing-flags
+exit_code: 1
+----- stdout -----
+----- stderr -----
+give --marks or --auto
