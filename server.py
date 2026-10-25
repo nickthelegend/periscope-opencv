@@ -227,6 +227,7 @@ def read_run(run_id: str) -> dict | None:
 
 @app.get("/api/runs")
 def runs():
+    RUNS.mkdir(parents=True, exist_ok=True)
     out = []
     for d in sorted(RUNS.iterdir()):
         if (r := read_run(d.name)) is not None:
@@ -243,6 +244,7 @@ def resolve_run(run_id: str):
 
 @app.post("/api/analyze")
 async def analyze(video: UploadFile = File(...), calib: str = Form(...), title: str = Form("Uploaded clip")):
+    RUNS.mkdir(parents=True, exist_ok=True)
     try:
         cal = Calibration.from_json(calib)
     except Exception as e:  # noqa: BLE001 - report any malformed calibration to the client

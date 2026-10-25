@@ -24,6 +24,19 @@ def test_favicon_and_health():
         assert "<svg" in response.text
 
 
+def test_missing_runs_directory_is_an_empty_catalog(tmp_path, monkeypatch):
+    runs_dir = tmp_path / "missing" / "runs"
+    monkeypatch.setattr(server, "RUNS", runs_dir)
+    assert not runs_dir.exists()
+
+    response = get("/api/runs")
+
+    assert response.status_code == 200
+    assert response.json() == []
+    assert runs_dir.is_dir()
+    assert get("/api/runs/demo").json() == {"run": None}
+
+
 def test_run_list_and_resolution_follow_files(tmp_path, monkeypatch):
     metadata = json.loads((server.WEB / "runs/demo/run.json").read_text())
     monkeypatch.setattr(server, "RUNS", tmp_path)
