@@ -14,3 +14,7 @@ results/take*/
 !web/runs/demo/*.mp4
 # Loom's local state (event log, attachments, machine config)
 .loom/
+
+# failure-case run for the console, regenerate with:
+#   .venv/bin/python tools/make_demo.py --noise 4 --out web/runs/noise4 --title "Synthetic corner · red top · 4× camera noise"
+web/runs/noise4/

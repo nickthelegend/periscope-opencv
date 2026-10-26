@@ -23,6 +23,7 @@ def main():
     ap.add_argument("--out", default=str(ROOT / "web" / "runs" / "demo"))
     ap.add_argument("--fps", type=float, default=20.0)
     ap.add_argument("--noise", type=float, default=1.0, help="noise multiplier (1 = phone in a lit room)")
+    ap.add_argument("--title", default="Synthetic corner · red top · lit hallway", help="name shown in the console's run picker")
     a = ap.parse_args()
 
     pos = approach_and_leave(a.fps, empty_s=3.0, tail_s=4.0)
@@ -43,7 +44,7 @@ def main():
                        "hallway, pauses 1.4 m from the corner (still out of the camera's sight), walks away; then a lamp switches on.",
     }
     run, _ = export_run(scene.render(pos), scene.calibration(), a.fps, (scene.width, scene.height), a.out,
-                        truth=(phi, d, pos), title="Synthetic corner · red top · lit hallway", scene_info=info)
+                        truth=(phi, d, pos), title=a.title, scene_info=info)
     gt = GroundTruthCamera()
     w = _FFmpegWriter(Path(a.out) / "hidden.mp4", (gt.width, gt.height), a.fps)
     for f in gt.render(pos):

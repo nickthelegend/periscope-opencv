@@ -930,7 +930,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     const why = action === "learning" ? "Measuring the empty floor and its noise before trusting any change." :
       action === "stop_vehicle" ? `Bearing ${f.phi.toFixed(0)}° and falling ${Math.abs(f.pd || 0).toFixed(0)}°/s: the walker is heading for the corner line.` :
       action === "watch" ? (s === "present" ? `Shadow at ${f.phi.toFixed(0)}° is ${Math.sqrt(f.z).toFixed(1)}σ above noise; not closing on the corner.` : "Noise, shake and light are inside limits; nothing above the noise floor.") :
-      ({ relearn_background: "Light changed since the background was learned.", add_light: "Predicted range is too short to warn in time.",
+      ({ relearn_background: "Light changed since the background was learned.", add_light: q && q.m.noise_pct >= 2.5 ? "Pixel noise is above its limit; more light lifts the shadow out of it." : "Predicted range is too short to warn in time.",
          steady_camera: "Shake is larger than the shadow can tolerate.", recalibrate: "The view has slid since the tape marks were clicked.",
          reframe: "Too little floor beside the corner is in view." })[action] || "";
     $("#decW").textContent = why;
